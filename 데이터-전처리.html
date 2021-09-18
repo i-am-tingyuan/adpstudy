@@ -270,7 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>주성분 분석 결과에 summary함수를 적용하면 결과에 대한 요약 설명이 나온다. summary 결과로 나오는 Standard deviation은 주성분의 표준편차, Proportion of Variance는 주성분의 기여율, Cumulative Proportion은 누적기여율을 의미한다.</li>
 <li>제1주성분과 제2주성분까지의 누적 기여율은 대략 86.8%로 2개의 주성분변수를 활용하여 전체 데이터의 약 86.8%를 설명할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="데이터-전처리.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.prin, <span class="at">type=</span><span class="st">&#39;l&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="데이터-전처리.html#cb8-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.path =</span> <span class="st">&#39;MainFiles/&#39;</span>)</span>
+<span id="cb8-2"><a href="데이터-전처리.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.prin, <span class="at">type=</span><span class="st">&#39;l&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 - 주성분들에 의해 설명되는 변동의 비율은 Screeplot을 통해 시각적으로도 확인이 가능하다. 그래프의 3번재 주성분에서 기울기가 급격하게 줄어드는 형태를 보이므로, 그 이전 주성분인 2번째 주성분까지 선택하는 것이 적절하다.</p>
 <p><strong>(3) Loading</strong></p>
@@ -302,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Colorado    1.5145629 -0.9875551 -1.09500699  0.001464887</code></pre>
 <p><strong>(5) 제 1-2 주성분에 의한 행렬도</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="데이터-전처리.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(US.prin, <span class="at">scale=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="MainFiles/unnamed-chunk-7-1.png" width="672" /></p>
 <ul>
 <li>biplot 함수는 제1주성분과 제2주성분으로 이루어진 좌표평면상에 원데이터 행들의 주성분점수를 산점도의 형태로 나타내고, 각 변수에 대한 주성분계수를 화살표로 시각화하여 그래프로 표현해 준다.</li>
 <li>제1주성분의 모든 주성분계수는 양수이므로 가로축(PC1)을 기준으로 모든 변수가 0 이상의 값을 가리키는 축을 나타내고 있다. PC1을 이루는 선형 결합식에서 상대적 부하량의 절대값이 가장 큰 Assault 변수는 가장 수평의 형태를 나타내고 있으며, 상대적 부하량의 절대값이 가장 작은 UrbanPop 변수는 가장 수직에 가까운 형태를 나타내고 있다.</li>
@@ -1499,7 +1500,7 @@ na.omit(데이터명)</code></pre>
 <h3><span class="header-section-number">2.6.3</span> boxplot을 활용한 이상치 판별</h3>
 <p><strong>Q1. 내장데이터 airquality의 Ozone 변수에 대한 boxplot을 그려보자. 또한 이를 OzoneBP 이라는 변수에 저장하여 lower whisker와 upper whisker 밖에 있는 이상치가 존재하는지를 확인해 보자.</strong></p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="데이터-전처리.html#cb203-1" aria-hidden="true" tabindex="-1"></a>(OzoneBP<span class="ot">&lt;-</span><span class="fu">boxplot</span>(airquality<span class="sc">$</span>Ozone))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="MainFiles/unnamed-chunk-62-1.png" width="672" /></p>
 <pre><code>## $stats
 ##          [,1]
 ## [1,]  1.00000
@@ -1581,7 +1582,7 @@ na.omit(데이터명)</code></pre>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="데이터-전처리.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(today)</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="데이터-전처리.html#cb223-1" aria-hidden="true" tabindex="-1"></a>(time<span class="ot">&lt;-</span><span class="fu">Sys.time</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-18 23:03:24 KST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-18 23:39:59 KST&quot;</code></pre>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="데이터-전처리.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(time)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="데이터-전처리.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># today 내부의 값 확인: 1970년 1월 1일 이후로 경과한 일 수를 의미함. </span></span>
@@ -1589,12 +1590,12 @@ na.omit(데이터명)</code></pre>
 <pre><code>## [1] 18888</code></pre>
 <div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="데이터-전처리.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time 내부의 값 확인: 1970년 1월 1일 00:00:00 이후로 경과한 초 수를 의미함.</span></span>
 <span id="cb229-2"><a href="데이터-전처리.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(time)</span></code></pre></div>
-<pre><code>## [1] 1631973804</code></pre>
+<pre><code>## [1] 1631975999</code></pre>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="데이터-전처리.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unclass를 적용한 time값을 다시 원래 날짜 형식으로 변환하기</span></span>
 <span id="cb231-2"><a href="데이터-전처리.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unclass(time)은 1970년 1월 1일 이후로 경과한 초수를 의미하므로, </span></span>
 <span id="cb231-3"><a href="데이터-전처리.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co"># origin 인자값으로 &#39;1970-01-01&#39;을 지정</span></span>
 <span id="cb231-4"><a href="데이터-전처리.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="fu">unclass</span>(time), <span class="at">origin=</span><span class="st">&quot;1970-01-01&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-18 23:03:24 KST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-18 23:39:59 KST&quot;</code></pre>
 </div>
 <div id="날짜-표시형식-변경" class="section level4" number="2.7.1.2">
 <h4><span class="header-section-number">2.7.1.2</span> 날짜 표시형식 변경</h4>
@@ -1603,7 +1604,7 @@ na.omit(데이터명)</code></pre>
 <span id="cb233-2"><a href="데이터-전처리.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(now)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="데이터-전처리.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(now, <span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-18 23:03:24&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-18 23:39:59&quot;</code></pre>
 <div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="데이터-전처리.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">format</span>(now, <span class="st">&quot;%y-%m-%d %H:%M:%S&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p><strong>Q2. “20200101”이라는 문자열을 Date 형식으로 변환한 후, date 변수에 저장하여 class를 확인해 보자.</strong></p>
