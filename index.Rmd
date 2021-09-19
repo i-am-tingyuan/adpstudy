@@ -1,11 +1,13 @@
 ---
 title: "ADPStudy"
 author: "tingyuan"
+date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::gitbook: default
   #bookdown::pdf_book: default
+output-dir: "docs"
 ---
 
 # R기초
