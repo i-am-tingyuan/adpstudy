@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 정형 데이터마이닝 | ADPStudy</title>
+  <meta name="description" content="4 정형 데이터마이닝 | ADPStudy" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 정형 데이터마이닝 | ADPStudy" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 정형 데이터마이닝 | ADPStudy" />
+  
+  
+  
+
+<meta name="author" content="tingyuan" />
+
+
+<meta name="date" content="2021-09-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="통계분석.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R기초</a></li>
+<li class="chapter" data-level="2" data-path="데이터-전처리.html"><a href="데이터-전처리.html"><i class="fa fa-check"></i><b>2</b> 데이터 전처리</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#제어문"><i class="fa fa-check"></i><b>2.1</b> 제어문</a></li>
+<li class="chapter" data-level="2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-변환"><i class="fa fa-check"></i><b>2.2</b> 데이터 변환</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#파생변수-생성"><i class="fa fa-check"></i><b>2.2.1</b> 파생변수 생성</a></li>
+<li class="chapter" data-level="2.2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#변수-축소"><i class="fa fa-check"></i><b>2.2.2</b> 변수 축소</a></li>
+<li class="chapter" data-level="2.2.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#표준화와-정규화"><i class="fa fa-check"></i><b>2.2.3</b> 표준화와 정규화</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-결합-및-요약"><i class="fa fa-check"></i><b>2.3</b> 데이터 결합 및 요약</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-결합"><i class="fa fa-check"></i><b>2.3.1</b> 데이터 결합</a></li>
+<li class="chapter" data-level="2.3.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-요약"><i class="fa fa-check"></i><b>2.3.2</b> 데이터 요약</a></li>
+<li class="chapter" data-level="2.3.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#apply-계열-함수"><i class="fa fa-check"></i><b>2.3.3</b> apply 계열 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#패키지를-활용한-데이터-전처리"><i class="fa fa-check"></i><b>2.4</b> 패키지를 활용한 데이터 전처리</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#plyr"><i class="fa fa-check"></i><b>2.4.1</b> plyr</a></li>
+<li class="chapter" data-level="2.4.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#dplyr"><i class="fa fa-check"></i><b>2.4.2</b> dplyr</a></li>
+<li class="chapter" data-level="2.4.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#reshape2"><i class="fa fa-check"></i><b>2.4.3</b> reshape2</a></li>
+<li class="chapter" data-level="2.4.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#data.table"><i class="fa fa-check"></i><b>2.4.4</b> data.table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="데이터-전처리.html"><a href="데이터-전처리.html#결측치"><i class="fa fa-check"></i><b>2.5</b> 결측치</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#결측치-인식"><i class="fa fa-check"></i><b>2.5.1</b> 결측치 인식</a></li>
+<li class="chapter" data-level="2.5.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#결측치-처리"><i class="fa fa-check"></i><b>2.5.2</b> 결측치 처리</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="데이터-전처리.html"><a href="데이터-전처리.html#이상치-인식"><i class="fa fa-check"></i><b>2.6</b> 이상치 인식</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#이상치란"><i class="fa fa-check"></i><b>2.6.1</b> 이상치란?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#사분위수"><i class="fa fa-check"></i><b>2.6.2</b> 사분위수</a></li>
+<li class="chapter" data-level="2.6.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#boxplot을-활용한-이상치-판별"><i class="fa fa-check"></i><b>2.6.3</b> boxplot을 활용한 이상치 판별</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="데이터-전처리.html"><a href="데이터-전처리.html#날짜-데이터-전처리"><i class="fa fa-check"></i><b>2.7</b> 날짜 데이터 전처리</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#날짜-데이터-다루기"><i class="fa fa-check"></i><b>2.7.1</b> 날짜 데이터 다루기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="통계분석.html"><a href="통계분석.html"><i class="fa fa-check"></i><b>3</b> 통계분석</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="통계분석.html"><a href="통계분석.html#통계-자료의-획득방법"><i class="fa fa-check"></i><b>3.1</b> 통계 자료의 획득방법</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="통계분석.html"><a href="통계분석.html#총조사전수-조사census"><i class="fa fa-check"></i><b>3.1.1</b> 총조사/전수 조사(census)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="통계분석.html"><a href="통계분석.html#표본조사"><i class="fa fa-check"></i><b>3.1.2</b> 표본조사</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="통계분석.html"><a href="통계분석.html#t-검정-t-test"><i class="fa fa-check"></i><b>3.2</b> T-검정 (T-Test)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="통계분석.html"><a href="통계분석.html#일표본-t-검정-one-sample-t-test"><i class="fa fa-check"></i><b>3.2.1</b> 일표본 T-검정 (One Sample T-Test)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="통계분석.html"><a href="통계분석.html#대응표본-t-검정-paired-sample-t-test"><i class="fa fa-check"></i><b>3.2.2</b> 대응표본 T-검정 (Paired Sample T-Test)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="통계분석.html"><a href="통계분석.html#독립표본-t-검정-independent-sample-t-test"><i class="fa fa-check"></i><b>3.2.3</b> 독립표본 T-검정 (Independent Sample T-Test)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="통계분석.html"><a href="통계분석.html#교차분석"><i class="fa fa-check"></i><b>3.3</b> 교차분석</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="통계분석.html"><a href="통계분석.html#교차분석-개념"><i class="fa fa-check"></i><b>3.3.1</b> 교차분석 개념</a></li>
+<li class="chapter" data-level="3.3.2" data-path="통계분석.html"><a href="통계분석.html#적합성-검정"><i class="fa fa-check"></i><b>3.3.2</b> 적합성 검정</a></li>
+<li class="chapter" data-level="3.3.3" data-path="통계분석.html"><a href="통계분석.html#독립성-검정"><i class="fa fa-check"></i><b>3.3.3</b> 독립성 검정</a></li>
+<li class="chapter" data-level="3.3.4" data-path="통계분석.html"><a href="통계분석.html#동질성-검정"><i class="fa fa-check"></i><b>3.3.4</b> 동질성 검정</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="통계분석.html"><a href="통계분석.html#분산분석-anova"><i class="fa fa-check"></i><b>3.4</b> 분산분석 (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="통계분석.html"><a href="통계분석.html#분산분석의-개념"><i class="fa fa-check"></i><b>3.4.1</b> 분산분석의 개념</a></li>
+<li class="chapter" data-level="3.4.2" data-path="통계분석.html"><a href="통계분석.html#일원배치-분산분석-one-way-anova"><i class="fa fa-check"></i><b>3.4.2</b> 일원배치 분산분석 (One-way ANOVA)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="통계분석.html"><a href="통계분석.html#이원배치-분산분석-two-way-anova"><i class="fa fa-check"></i><b>3.4.3</b> 이원배치 분산분석 (Two-way ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="통계분석.html"><a href="통계분석.html#상관분석"><i class="fa fa-check"></i><b>3.5</b> 상관분석</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="통계분석.html"><a href="통계분석.html#상관분석-개념"><i class="fa fa-check"></i><b>3.5.1</b> 상관분석 개념</a></li>
+<li class="chapter" data-level="3.5.2" data-path="통계분석.html"><a href="통계분석.html#상관분석의-유형"><i class="fa fa-check"></i><b>3.5.2</b> 상관분석의 유형</a></li>
+<li class="chapter" data-level="3.5.3" data-path="통계분석.html"><a href="통계분석.html#상관계수-검정"><i class="fa fa-check"></i><b>3.5.3</b> 상관계수 검정</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="통계분석.html"><a href="통계분석.html#회귀분석"><i class="fa fa-check"></i><b>3.6</b> 회귀분석</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="통계분석.html"><a href="통계분석.html#회귀분석의-개념"><i class="fa fa-check"></i><b>3.6.1</b> 회귀분석의 개념</a></li>
+<li class="chapter" data-level="3.6.2" data-path="통계분석.html"><a href="통계분석.html#단순선형회귀분석"><i class="fa fa-check"></i><b>3.6.2</b> 단순선형회귀분석</a></li>
+<li class="chapter" data-level="3.6.3" data-path="통계분석.html"><a href="통계분석.html#다중선형회귀분석-다변량-회귀분석"><i class="fa fa-check"></i><b>3.6.3</b> 다중선형회귀분석 (다변량 회귀분석)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html"><i class="fa fa-check"></i><b>4</b> 정형 데이터마이닝</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#데이터-분할과-성과분석"><i class="fa fa-check"></i><b>4.1</b> 데이터 분할과 성과분석</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#데이터-분할"><i class="fa fa-check"></i><b>4.1.1</b> 데이터 분할</a></li>
+<li class="chapter" data-level="4.1.2" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#성과분석"><i class="fa fa-check"></i><b>4.1.2</b> 성과분석</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#분류-분석"><i class="fa fa-check"></i><b>4.2</b> 분류 분석</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#로지스틱-회귀분석"><i class="fa fa-check"></i><b>4.2.1</b> 로지스틱 회귀분석</a></li>
+<li class="chapter" data-level="4.2.2" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#의사결정나무"><i class="fa fa-check"></i><b>4.2.2</b> 의사결정나무</a></li>
+<li class="chapter" data-level="4.2.3" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#앙상블-기법"><i class="fa fa-check"></i><b>4.2.3</b> 앙상블 기법</a></li>
+<li class="chapter" data-level="4.2.4" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#svm-support-vector-machine"><i class="fa fa-check"></i><b>4.2.4</b> SVM (Support Vector Machine)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ADPStudy</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="정형-데이터마이닝" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> 정형 데이터마이닝</h1>
+<div id="데이터-분할과-성과분석" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> 데이터 분할과 성과분석</h2>
+<div id="데이터-분할" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> 데이터 분할</h3>
+<div id="sample" class="section level4" number="4.1.1.1">
+<h4><span class="header-section-number">4.1.1.1</span> sample</h4>
+<p><b>[함수사용법]</b></p>
+<pre><code>sample(x, size, replace=FALSE, prob...)</code></pre>
+<p><strong>Q. credit 데이터를 train, validation, test로 분할해보자.</strong></p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="정형-데이터마이닝.html#cb362-1" aria-hidden="true" tabindex="-1"></a>credit.df<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;./data/german_credit_dataset.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb362-2"><a href="정형-데이터마이닝.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(credit.df)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1000 obs. of  21 variables:
+##  $ credit.rating                 : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ account.balance               : int  1 1 2 1 1 1 1 1 4 2 ...
+##  $ credit.duration.months        : int  18 9 12 12 12 10 8 6 18 24 ...
+##  $ previous.credit.payment.status: int  4 4 2 4 4 4 4 4 4 2 ...
+##  $ credit.purpose                : int  2 0 9 0 0 0 0 0 3 3 ...
+##  $ credit.amount                 : int  1049 2799 841 2122 2171 2241 3398 1361 1098 3758 ...
+##  $ savings                       : int  1 1 2 1 1 1 1 1 1 3 ...
+##  $ employment.duration           : int  2 3 4 3 3 2 4 2 1 1 ...
+##  $ installment.rate              : int  4 2 2 3 4 1 1 2 4 1 ...
+##  $ marital.status                : int  2 3 2 3 3 3 3 3 2 2 ...
+##  $ guarantor                     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ residence.duration            : int  4 2 4 2 4 3 4 4 4 4 ...
+##  $ current.assets                : int  2 1 1 1 2 1 1 1 3 4 ...
+##  $ age                           : int  21 36 23 39 38 48 39 40 65 23 ...
+##  $ other.credits                 : int  3 3 3 3 1 3 3 3 3 3 ...
+##  $ apartment.type                : int  1 1 1 1 2 1 2 2 2 1 ...
+##  $ bank.credits                  : int  1 2 1 2 2 2 2 1 2 1 ...
+##  $ occupation                    : int  3 3 2 2 2 2 2 2 1 1 ...
+##  $ dependents                    : int  1 2 1 2 1 2 1 2 1 1 ...
+##  $ telephone                     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ foreign.worker                : int  1 1 1 2 2 2 2 2 1 1 ...</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="정형-데이터마이닝.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
+<span id="cb364-2"><a href="정형-데이터마이닝.html#cb364-2" aria-hidden="true" tabindex="-1"></a>idx<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">3</span>, <span class="fu">nrow</span>(credit.df), <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>))</span>
+<span id="cb364-3"><a href="정형-데이터마이닝.html#cb364-3" aria-hidden="true" tabindex="-1"></a>train<span class="ot">&lt;-</span>credit.df[idx<span class="sc">==</span><span class="dv">1</span>,]</span>
+<span id="cb364-4"><a href="정형-데이터마이닝.html#cb364-4" aria-hidden="true" tabindex="-1"></a>validation<span class="ot">&lt;-</span>credit.df[idx<span class="sc">==</span><span class="dv">2</span>,]</span>
+<span id="cb364-5"><a href="정형-데이터마이닝.html#cb364-5" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>credit.df[idx<span class="sc">==</span><span class="dv">3</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="정형-데이터마이닝.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train)</span></code></pre></div>
+<pre><code>## [1] 483</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="정형-데이터마이닝.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(validation)</span></code></pre></div>
+<pre><code>## [1] 293</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="정형-데이터마이닝.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(test)</span></code></pre></div>
+<pre><code>## [1] 224</code></pre>
+</div>
+<div id="createdatapartition" class="section level4" number="4.1.1.2">
+<h4><span class="header-section-number">4.1.1.2</span> createDataPartition</h4>
+<ul>
+<li>caret 패키지에서 목적변수를 고려한 데이터 분리를 지원하며, 함수를 사용해 분리한 데이터는 변수값의 비율이 원본 데이터와 같게 유지된다.</li>
+<li><b>[함수사용법]</b></li>
+</ul>
+<pre><code>createDataPartition(y, times, p, list=TRUE, ...)</code></pre>
+<p><strong>Q. credit 데이터를 train, test로 분할해 보자.</strong></p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="정형-데이터마이닝.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;caret&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb372-2"><a href="정형-데이터마이닝.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;caret&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:sampling&#39;:
+## 
+##     cluster</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="정형-데이터마이닝.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 목적변수로 credit.rating을 지정, 생성할 데이터 분할은 1개로 지정, 훈련데이터는 70%로 설정</span></span>
+<span id="cb377-2"><a href="정형-데이터마이닝.html#cb377-2" aria-hidden="true" tabindex="-1"></a>part<span class="ot">&lt;-</span><span class="fu">createDataPartition</span>(credit.df<span class="sc">$</span>credit.rating, <span class="at">times=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.7</span>)</span>
+<span id="cb377-3"><a href="정형-데이터마이닝.html#cb377-3" aria-hidden="true" tabindex="-1"></a>parts<span class="ot">&lt;-</span><span class="fu">as.vector</span>(part<span class="sc">$</span>Resample1)</span>
+<span id="cb377-4"><a href="정형-데이터마이닝.html#cb377-4" aria-hidden="true" tabindex="-1"></a>train<span class="ot">&lt;-</span>credit.df[parts,]</span>
+<span id="cb377-5"><a href="정형-데이터마이닝.html#cb377-5" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>credit.df[<span class="sc">-</span>parts,]</span></code></pre></div>
+</div>
+</div>
+<div id="성과분석" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> 성과분석</h3>
+<div id="오분류표-confusion-matrix" class="section level4" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> 오분류표 (Confusion Matrix)</h4>
+<div id="개념-2" class="section level5" number="4.1.2.1.1">
+<h5><span class="header-section-number">4.1.2.1.1</span> 개념</h5>
+<ul>
+<li>목표 변수의 <b>실제 범주</b>와 <b>모형에 의해 예측된 분류 범주</b> 사이의 관계를 나타내는 표</li>
+<li>TP (True Positive)<br/>
+TN (True Negative)<br/>
+FP (False Positive)<br/>
+FN (False Negative)</li>
+</ul>
+</div>
+<div id="분석-지표" class="section level5" number="4.1.2.1.2">
+<h5><span class="header-section-number">4.1.2.1.2</span> 분석 지표</h5>
+<ul>
+<li><p>정분류율 : 전체 관측치 중 실제값과 예측치가 일치한 정도<br/>
+<span class="math inline">\(Accuracy=\frac{TN+TP}{TN+TP+FN+FP}\)</span></p></li>
+<li><p>오분류율 : 전체 관측치 중 실제값과 예측치가 다른 정도<br/>
+<span class="math inline">\(1 - Accuracy\)</span></p></li>
+<li><p>민감도 (Sensitivity (TPR: True Positive Rate)) : 실제값이 True인 관측치 중 예측치가 적중한 정도<br/>
+<span class="math inline">\(Sensitivity=\frac{TP}{TP+FN}\)</span></p></li>
+<li><p>특이도 (Specificity (TNR: True Negative Rate)) : 실제값이 False인 관측치 중 예측치가 적중한 정도<br/>
+<span class="math inline">\(Specificity=\frac{TN}{TN+FP}\)</span></p></li>
+<li><p>정확도 (Precision) : True로 예측된 것 중 실제로 True인 것들의 비율<br/>
+<span class="math inline">\(Precision=\frac{TP}{TP+FP}\)</span></p></li>
+<li><p>재현율 (Recall) : 실제 True인 값 중 True를 얼마나 찾았는지에 대한 비율<br/>
+<span class="math inline">\(Recall=\frac{TP}{TP+FN} (=Sensitivity)\)</span></p></li>
+<li><p>F1-score : 정확도와 재현율을 보정하여 하나의 지표로 나타낸 값<br/>
+<span class="math inline">\(F_{1}=2\times \frac{Precision \times Recall}{Precision+Recall}\)</span></p></li>
+<li><p><b>[함수사용법]</b></p></li>
+</ul>
+<pre><code>confusionMatrix(data, reference)</code></pre>
+<p><strong>Q. 임의의 값을 활용하여 Confusion Matrix를 그려보자.</strong></p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="정형-데이터마이닝.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;caret&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb379-2"><a href="정형-데이터마이닝.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb379-3"><a href="정형-데이터마이닝.html#cb379-3" aria-hidden="true" tabindex="-1"></a>predicted<span class="ot">&lt;-</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb379-4"><a href="정형-데이터마이닝.html#cb379-4" aria-hidden="true" tabindex="-1"></a>actual<span class="ot">&lt;-</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb379-5"><a href="정형-데이터마이닝.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span>predicted <span class="sc">+</span> actual)</span></code></pre></div>
+<pre><code>##          actual
+## predicted 0 1
+##         0 3 2
+##         1 1 6</code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="정형-데이터마이닝.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(predicted<span class="sc">==</span>actual)<span class="sc">/</span><span class="fu">NROW</span>(actual) <span class="co"># 정분류율을 직접 식으로 계산</span></span></code></pre></div>
+<pre><code>## [1] 0.75</code></pre>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="정형-데이터마이닝.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(predicted, actual)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction 0 1
+##          0 3 2
+##          1 1 6
+##                                           
+##                Accuracy : 0.75            
+##                  95% CI : (0.4281, 0.9451)
+##     No Information Rate : 0.6667          
+##     P-Value [Acc &gt; NIR] : 0.3931          
+##                                           
+##                   Kappa : 0.4706          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1.0000          
+##                                           
+##             Sensitivity : 0.7500          
+##             Specificity : 0.7500          
+##          Pos Pred Value : 0.6000          
+##          Neg Pred Value : 0.8571          
+##              Prevalence : 0.3333          
+##          Detection Rate : 0.2500          
+##    Detection Prevalence : 0.4167          
+##       Balanced Accuracy : 0.7500          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+</div>
+</div>
+<div id="roc-그래프" class="section level4" number="4.1.2.2">
+<h4><span class="header-section-number">4.1.2.2</span> ROC 그래프</h4>
+<ul>
+<li>ROC 그래프의 x축에는 FP Ratio(1-특이도)를 나타내며, y축에는 민감도를 나타내 이 두 평가값의 관계로 모형을 평가한다.</li>
+<li>모형의 성과를 평가하는 기준은 ROC 그래프의 밑부분 면적이며, 면적이 넓을수록 좋은 모형으로 평가한다.</li>
+<li><b>[함수사용법]</b></li>
+</ul>
+<pre><code>prediction(predictions, labels)</code></pre>
+<pre><code>performance(prediction.object, acc(accuracy), fpr(FP Rate), tpr(TP Rate), ...)</code></pre>
+<p><strong>Q. 임의의 값으로 ROC Curve를 그려보자.</strong></p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="정형-데이터마이닝.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb387-2"><a href="정형-데이터마이닝.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb387-3"><a href="정형-데이터마이닝.html#cb387-3" aria-hidden="true" tabindex="-1"></a>probability<span class="ot">&lt;-</span><span class="fu">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb387-4"><a href="정형-데이터마이닝.html#cb387-4" aria-hidden="true" tabindex="-1"></a>(labels<span class="ot">&lt;-</span><span class="fu">ifelse</span>(probability<span class="sc">&gt;</span><span class="fl">0.5</span><span class="sc">&amp;</span><span class="fu">runif</span>(<span class="dv">100</span>)<span class="sc">&lt;</span><span class="fl">0.4</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>##   [1] 1 2 2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 2 1 2 2 1 2 2 2 2 1 2 2 1 2 2 2 2 2 2
+##  [38] 1 1 2 2 2 1 2 2 2 2 2 2 1 2 2 2 2 1 2 2 2 2 2 2 2 2 2 1 2 2 2 2 1 2 1 2 2
+##  [75] 2 2 2 2 2 2 1 2 2 2 2 2 1 2 1 2 2 2 2 1 2 1 1 2 2 2</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="정형-데이터마이닝.html#cb389-1" aria-hidden="true" tabindex="-1"></a>pred<span class="ot">&lt;-</span><span class="fu">prediction</span>(probability, labels)</span>
+<span id="cb389-2"><a href="정형-데이터마이닝.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="정형-데이터마이닝.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred, <span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values <span class="co"># AUROC</span></span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.1735986</code></pre>
+</div>
+</div>
+</div>
+<div id="분류-분석" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> 분류 분석</h2>
+<p>분류 분석은 반응변수의 속성값에 대해 다양한 변수를 이용하여 모형을 구축하고 이를 사용해 새로운 자료에 대한 예측 및 분류를 수행하는 분석이다. 반응변수가 범주형인 경우의 예측 모형은 새로 입력되는 자료에 대한 분류가 주목적이며, 반응변수가 연속형인 경우에는 그 값을 예측하는 것이 주목적이다. 예측 민 분류 기법은 목표 마케팅, 성과예측, 의학진단, 사기검출, 제조 등 다양한 분야에 이용되고 있다.</p>
+<div id="로지스틱-회귀분석" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> 로지스틱 회귀분석</h3>
+<ul>
+<li>로지스틱 회귀모형은 반응변수가 범주형인 경우에 적용되는 회귀분석 모형이다. 이 방법은 새로운 설명변수의 값이 주어질 때 반응변수의 각 범주에 속할 확률이 얼마인지를 추정하여, 추정 확률을 기준치에 따라분류하는 목적으로 활용된다. 이 때, 모형의 적합을 통해 추정된 확률을 사후확률 (Posterior Probability)라고 한다.</li>
+<li>반응변수 y에 대한 다중 로지스틱 회귀모형은 다음과 같다.</li>
+<li>로지스틱 회귀모형은 오즈(odds)의 관점에서 해석이 가능하다. exp(<span class="math inline">\(\beta_{1}\)</span>)의 의미는 나머지 변수(x<sub>1</sub>, …,x<sub>k</sub>)가 주어질 때, 한단위 증가할 때마다 성공(y=1)의 오즈가 몇 배 증가하는지를 나타내는 값이다.</li>
+<li>오즈비(odds ratio) : 오즈는 성공할 확률이 실패할 확률의 몇배인지를 나타내는 확률이며, 오즈비는 오즈의 비율이다.</li>
+</ul>
+<div id="r을-이용한-이항-로지스틱-회귀분석" class="section level4" number="4.2.1.1">
+<h4><span class="header-section-number">4.2.1.1</span> R을 이용한 이항 로지스틱 회귀분석</h4>
+<p><b>[함수사용법]</b></p>
+<pre><code>glm(formula, data, family=&quot;binomial&quot;...)</code></pre>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식(종속변수~독립변수)</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>family</td>
+<td>분석에 따른 link function 선택, binomial(이항), gaussian(가우시안), Gamma(감마), poisson(포아송) 등이 있음.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>predict(model, newdata, type, ...)</code></pre>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>model</td>
+<td>개발한 모형</td>
+</tr>
+<tr class="even">
+<td>newdata</td>
+<td>예측을 수행할 test 데이터</td>
+</tr>
+<tr class="odd">
+<td>type</td>
+<td>예측 결과의 유형 지정, link(log-odds값), class(범주형(factor)값), response(0~1 확률값)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. credit 데이터를 분할하고, train 데이터로 로지스틱 회귀모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="정형-데이터마이닝.html#cb394-1" aria-hidden="true" tabindex="-1"></a>credit<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;./data/credit_final.csv&quot;</span>)</span>
+<span id="cb394-2"><a href="정형-데이터마이닝.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(credit<span class="sc">$</span>credit.rating) <span class="co"># 종속변수 factor 변환</span></span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="정형-데이터마이닝.html#cb396-1" aria-hidden="true" tabindex="-1"></a>credit<span class="sc">$</span>credit.rating<span class="ot">&lt;-</span><span class="fu">factor</span>(credit<span class="sc">$</span>credit.rating)</span>
+<span id="cb396-2"><a href="정형-데이터마이닝.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(credit)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1000 obs. of  21 variables:
+##  $ credit.rating                 : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ account.balance               : int  1 1 2 1 1 1 1 1 3 2 ...
+##  $ credit.duration.months        : int  18 9 12 12 12 10 8 6 18 24 ...
+##  $ previous.credit.payment.status: int  3 3 2 3 3 3 3 3 3 2 ...
+##  $ credit.purpose                : int  2 4 4 4 4 4 4 4 3 3 ...
+##  $ credit.amount                 : int  1049 2799 841 2122 2171 2241 3398 1361 1098 3758 ...
+##  $ savings                       : int  1 1 2 1 1 1 1 1 1 3 ...
+##  $ employment.duration           : int  1 2 3 2 2 1 3 1 1 1 ...
+##  $ installment.rate              : int  4 2 2 3 4 1 1 2 4 1 ...
+##  $ marital.status                : int  1 3 1 3 3 3 3 3 1 1 ...
+##  $ guarantor                     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ residence.duration            : int  4 2 4 2 4 3 4 4 4 4 ...
+##  $ current.assets                : int  2 1 1 1 2 1 1 1 3 4 ...
+##  $ age                           : int  21 36 23 39 38 48 39 40 65 23 ...
+##  $ other.credits                 : int  2 2 2 2 1 2 2 2 2 2 ...
+##  $ apartment.type                : int  1 1 1 1 2 1 2 2 2 1 ...
+##  $ bank.credits                  : int  1 2 1 2 2 2 2 1 2 1 ...
+##  $ occupation                    : int  3 3 2 2 2 2 2 2 1 1 ...
+##  $ dependents                    : int  1 2 1 2 1 2 1 2 1 1 ...
+##  $ telephone                     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ foreign.worker                : int  1 1 1 2 2 2 2 2 1 1 ...</code></pre>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="정형-데이터마이닝.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb398-2"><a href="정형-데이터마이닝.html#cb398-2" aria-hidden="true" tabindex="-1"></a>idx<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(credit), <span class="fu">nrow</span>(credit)<span class="sc">*</span><span class="fl">0.7</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb398-3"><a href="정형-데이터마이닝.html#cb398-3" aria-hidden="true" tabindex="-1"></a>train<span class="ot">&lt;-</span>credit[idx,]</span>
+<span id="cb398-4"><a href="정형-데이터마이닝.html#cb398-4" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>credit[<span class="sc">-</span>idx,]</span>
+<span id="cb398-5"><a href="정형-데이터마이닝.html#cb398-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-6"><a href="정형-데이터마이닝.html#cb398-6" aria-hidden="true" tabindex="-1"></a>logistic<span class="ot">&lt;-</span><span class="fu">glm</span>(credit.rating<span class="sc">~</span>.,<span class="at">data=</span>train,<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb398-7"><a href="정형-데이터마이닝.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logistic)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = credit.rating ~ ., family = &quot;binomial&quot;, data = train)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.4763  -0.7811   0.4133   0.7147   2.0078  
+## 
+## Coefficients:
+##                                  Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                    -4.249e+00  1.419e+00  -2.994 0.002754 ** 
+## account.balance                 8.687e-01  1.224e-01   7.096 1.28e-12 ***
+## credit.duration.months         -2.145e-02  1.072e-02  -2.000 0.045501 *  
+## previous.credit.payment.status  5.635e-01  1.897e-01   2.971 0.002973 ** 
+## credit.purpose                 -4.133e-01  1.111e-01  -3.721 0.000198 ***
+## credit.amount                  -7.722e-05  5.011e-05  -1.541 0.123341    
+## savings                         3.531e-01  9.689e-02   3.645 0.000268 ***
+## employment.duration             1.311e-01  1.003e-01   1.307 0.191067    
+## installment.rate               -1.986e-01  1.002e-01  -1.983 0.047357 *  
+## marital.status                  1.724e-01  9.722e-02   1.774 0.076139 .  
+## guarantor                       6.995e-01  3.548e-01   1.971 0.048679 *  
+## residence.duration             -2.940e-02  9.385e-02  -0.313 0.754063    
+## current.assets                 -2.963e-01  1.075e-01  -2.757 0.005828 ** 
+## age                             1.587e-02  1.009e-02   1.573 0.115623    
+## other.credits                   4.845e-01  2.480e-01   1.953 0.050801 .  
+## apartment.type                  4.437e-01  2.061e-01   2.152 0.031369 *  
+## bank.credits                   -2.773e-01  2.391e-01  -1.160 0.246186    
+## occupation                     -1.608e-01  1.672e-01  -0.962 0.335964    
+## dependents                     -1.087e-01  2.831e-01  -0.384 0.700955    
+## telephone                       4.068e-01  2.257e-01   1.803 0.071425 .  
+## foreign.worker                  1.433e+00  8.141e-01   1.760 0.078390 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 846.57  on 699  degrees of freedom
+## Residual deviance: 651.47  on 679  degrees of freedom
+## AIC: 693.47
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<ul>
+<li>회귀계수의 p-value가 유의수준 0.05보다 높게 나타나는 변수가 많으므로, step 함수에서 단계적 선택법을 이용하여 로지스틱 회귀분석을 다시 실시한다.</li>
+</ul>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="정형-데이터마이닝.html#cb400-1" aria-hidden="true" tabindex="-1"></a>step.logistic<span class="ot">&lt;-</span><span class="fu">step</span>(<span class="fu">glm</span>(credit.rating<span class="sc">~</span><span class="dv">1</span>, <span class="at">data=</span>train, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>), </span>
+<span id="cb400-2"><a href="정형-데이터마이닝.html#cb400-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope=</span><span class="fu">list</span>(lower<span class="sc">~</span><span class="dv">1</span>, <span class="at">upper=</span><span class="sc">~</span>account.balance<span class="sc">+</span>credit.duration.months<span class="sc">+</span>previous.credit.payment.status<span class="sc">+</span>credit.purpose<span class="sc">+</span>credit.amount<span class="sc">+</span>savings<span class="sc">+</span>employment.duration<span class="sc">+</span>installment.rate<span class="sc">+</span>marital.status<span class="sc">+</span>guarantor<span class="sc">+</span>residence.duration<span class="sc">+</span>current.assets<span class="sc">+</span>age<span class="sc">+</span>other.credits<span class="sc">+</span>apartment.type<span class="sc">+</span>bank.credits<span class="sc">+</span>occupation<span class="sc">+</span>dependents<span class="sc">+</span>telephone<span class="sc">+</span>foreign.worker), <span class="at">direction=</span><span class="st">&quot;both&quot;</span>)</span></code></pre></div>
+<pre><code>## Start:  AIC=848.57
+## credit.rating ~ 1
+## 
+##                                  Df Deviance    AIC
+## + account.balance                 1   761.97 765.97
+## + savings                         1   817.12 821.12
+## + credit.duration.months          1   818.40 822.40
+## + previous.credit.payment.status  1   821.29 825.29
+## + current.assets                  1   832.86 836.86
+## + credit.amount                   1   835.30 839.30
+## + age                             1   835.37 839.37
+## + credit.purpose                  1   837.72 841.72
+## + employment.duration             1   837.80 841.80
+## + other.credits                   1   839.28 843.28
+## + foreign.worker                  1   839.45 843.45
+## + installment.rate                1   842.94 846.94
+## + marital.status                  1   843.24 847.24
+## + telephone                       1   843.75 847.75
+## + apartment.type                  1   844.24 848.24
+## &lt;none&gt;                                846.57 848.57
+## + occupation                      1   845.33 849.33
+## + guarantor                       1   845.60 849.60
+## + bank.credits                    1   845.79 849.79
+## + dependents                      1   846.34 850.34
+## + residence.duration              1   846.39 850.39
+## 
+## Step:  AIC=765.97
+## credit.rating ~ account.balance
+## 
+##                                  Df Deviance    AIC
+## + credit.duration.months          1   738.84 744.84
+## + previous.credit.payment.status  1   747.38 753.38
+## + current.assets                  1   748.44 754.44
+## + savings                         1   749.48 755.48
+## + foreign.worker                  1   751.18 757.18
+## + credit.purpose                  1   751.40 757.40
+## + age                             1   752.09 758.09
+## + credit.amount                   1   752.24 758.24
+## + other.credits                   1   754.34 760.34
+## + employment.duration             1   756.99 762.99
+## + guarantor                       1   757.16 763.16
+## + marital.status                  1   759.13 765.13
+## + installment.rate                1   759.48 765.48
+## &lt;none&gt;                                761.97 765.97
+## + occupation                      1   760.38 766.38
+## + apartment.type                  1   760.65 766.65
+## + telephone                       1   760.86 766.86
+## + residence.duration              1   760.91 766.91
+## + dependents                      1   761.72 767.72
+## + bank.credits                    1   761.95 767.95
+## - account.balance                 1   846.57 848.57
+## 
+## Step:  AIC=744.84
+## credit.rating ~ account.balance + credit.duration.months
+## 
+##                                  Df Deviance    AIC
+## + previous.credit.payment.status  1   724.73 732.73
+## + savings                         1   725.43 733.43
+## + credit.purpose                  1   727.04 735.04
+## + age                             1   730.32 738.32
+## + foreign.worker                  1   731.34 739.34
+## + employment.duration             1   732.40 740.40
+## + current.assets                  1   733.16 741.16
+## + other.credits                   1   733.23 741.23
+## + guarantor                       1   733.69 741.69
+## + marital.status                  1   734.34 742.34
+## + apartment.type                  1   735.60 743.60
+## + telephone                       1   735.74 743.74
+## + installment.rate                1   736.81 744.81
+## &lt;none&gt;                                738.84 744.84
+## + residence.duration              1   737.75 745.75
+## + occupation                      1   738.60 746.60
+## + dependents                      1   738.69 746.69
+## + bank.credits                    1   738.81 746.81
+## + credit.amount                   1   738.84 746.84
+## - credit.duration.months          1   761.97 765.97
+## - account.balance                 1   818.40 822.40
+## 
+## Step:  AIC=732.73
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status
+## 
+##                                  Df Deviance    AIC
+## + savings                         1   709.53 719.53
+## + credit.purpose                  1   713.08 723.08
+## + foreign.worker                  1   717.65 727.65
+## + guarantor                       1   718.72 728.72
+## + age                             1   719.12 729.12
+## + current.assets                  1   719.90 729.90
+## + employment.duration             1   720.59 730.59
+## + other.credits                   1   720.85 730.85
+## + bank.credits                    1   721.21 731.21
+## + marital.status                  1   721.60 731.60
+## + apartment.type                  1   722.13 732.13
+## + telephone                       1   722.61 732.61
+## + installment.rate                1   722.70 732.70
+## &lt;none&gt;                                724.73 732.73
+## + residence.duration              1   724.10 734.10
+## + occupation                      1   724.21 734.21
+## + dependents                      1   724.63 734.63
+## + credit.amount                   1   724.70 734.70
+## - previous.credit.payment.status  1   738.84 744.84
+## - credit.duration.months          1   747.38 753.38
+## - account.balance                 1   793.25 799.25
+## 
+## Step:  AIC=719.53
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings
+## 
+##                                  Df Deviance    AIC
+## + credit.purpose                  1   697.86 709.86
+## + guarantor                       1   701.87 713.87
+## + foreign.worker                  1   703.31 715.31
+## + current.assets                  1   704.12 716.12
+## + age                             1   704.83 716.83
+## + other.credits                   1   705.56 717.56
+## + marital.status                  1   705.89 717.89
+## + employment.duration             1   706.35 718.35
+## + apartment.type                  1   706.49 718.49
+## + bank.credits                    1   706.94 718.94
+## + installment.rate                1   707.42 719.42
+## &lt;none&gt;                                709.53 719.53
+## + telephone                       1   708.50 720.50
+## + occupation                      1   709.13 721.13
+## + residence.duration              1   709.29 721.29
+## + dependents                      1   709.40 721.40
+## + credit.amount                   1   709.43 721.43
+## - savings                         1   724.73 732.73
+## - previous.credit.payment.status  1   725.43 733.43
+## - credit.duration.months          1   733.39 741.39
+## - account.balance                 1   760.85 768.85
+## 
+## Step:  AIC=709.86
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose
+## 
+##                                  Df Deviance    AIC
+## + current.assets                  1   690.41 704.41
+## + foreign.worker                  1   690.93 704.93
+## + guarantor                       1   690.96 704.96
+## + age                             1   692.75 706.75
+## + marital.status                  1   692.89 706.89
+## + employment.duration             1   694.44 708.44
+## + apartment.type                  1   694.56 708.56
+## + other.credits                   1   694.89 708.89
+## &lt;none&gt;                                697.86 709.86
+## + bank.credits                    1   696.00 710.00
+## + installment.rate                1   696.12 710.12
+## + occupation                      1   696.52 710.52
+## + telephone                       1   696.92 710.92
+## + credit.amount                   1   697.40 711.40
+## + dependents                      1   697.63 711.63
+## + residence.duration              1   697.77 711.77
+## - credit.purpose                  1   709.53 719.53
+## - savings                         1   713.08 723.08
+## - previous.credit.payment.status  1   713.72 723.72
+## - credit.duration.months          1   722.75 732.75
+## - account.balance                 1   751.20 761.20
+## 
+## Step:  AIC=704.41
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets
+## 
+##                                  Df Deviance    AIC
+## + apartment.type                  1   682.70 698.70
+## + age                             1   683.31 699.31
+## + foreign.worker                  1   684.57 700.57
+## + guarantor                       1   684.94 700.94
+## + marital.status                  1   685.00 701.00
+## + employment.duration             1   686.34 702.34
+## + other.credits                   1   688.09 704.09
+## + telephone                       1   688.35 704.35
+## &lt;none&gt;                                690.41 704.41
+## + bank.credits                    1   688.64 704.64
+## + installment.rate                1   689.04 705.04
+## + occupation                      1   690.02 706.02
+## + residence.duration              1   690.11 706.11
+## + dependents                      1   690.13 706.13
+## + credit.amount                   1   690.34 706.34
+## - current.assets                  1   697.86 709.86
+## - credit.purpose                  1   704.12 716.12
+## - previous.credit.payment.status  1   705.30 717.30
+## - savings                         1   706.36 718.36
+## - credit.duration.months          1   706.49 718.49
+## - account.balance                 1   744.08 756.08
+## 
+## Step:  AIC=698.7
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type
+## 
+##                                  Df Deviance    AIC
+## + foreign.worker                  1   676.21 694.21
+## + guarantor                       1   677.12 695.12
+## + age                             1   678.76 696.76
+## + marital.status                  1   679.37 697.37
+## + employment.duration             1   679.61 697.61
+## + other.credits                   1   679.81 697.81
+## + installment.rate                1   680.47 698.47
+## + telephone                       1   680.58 698.58
+## &lt;none&gt;                                682.70 698.70
+## + bank.credits                    1   681.07 699.07
+## + occupation                      1   682.35 700.35
+## + residence.duration              1   682.39 700.39
+## + dependents                      1   682.63 700.63
+## + credit.amount                   1   682.63 700.63
+## - apartment.type                  1   690.41 704.41
+## - current.assets                  1   694.56 708.56
+## - previous.credit.payment.status  1   696.22 710.22
+## - credit.purpose                  1   697.55 711.55
+## - savings                         1   699.58 713.58
+## - credit.duration.months          1   700.14 714.14
+## - account.balance                 1   735.18 749.18
+## 
+## Step:  AIC=694.21
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker
+## 
+##                                  Df Deviance    AIC
+## + guarantor                       1   672.46 692.46
+## + age                             1   672.50 692.50
+## + other.credits                   1   673.01 693.01
+## + employment.duration             1   673.02 693.02
+## + marital.status                  1   673.43 693.43
+## + telephone                       1   673.89 693.89
+## &lt;none&gt;                                676.21 694.21
+## + installment.rate                1   674.68 694.68
+## + bank.credits                    1   674.79 694.79
+## + residence.duration              1   675.92 695.92
+## + occupation                      1   675.94 695.94
+## + credit.amount                   1   675.98 695.98
+## + dependents                      1   676.17 696.17
+## - foreign.worker                  1   682.70 698.70
+## - apartment.type                  1   684.57 700.57
+## - current.assets                  1   687.01 703.01
+## - previous.credit.payment.status  1   689.51 705.51
+## - credit.duration.months          1   691.63 707.63
+## - credit.purpose                  1   691.85 707.85
+## - savings                         1   692.44 708.44
+## - account.balance                 1   730.93 746.93
+## 
+## Step:  AIC=692.46
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker + guarantor
+## 
+##                                  Df Deviance    AIC
+## + age                             1   668.86 690.86
+## + other.credits                   1   669.00 691.00
+## + employment.duration             1   669.15 691.15
+## + marital.status                  1   669.93 691.93
+## + telephone                       1   670.01 692.01
+## &lt;none&gt;                                672.46 692.46
+## + bank.credits                    1   670.79 692.79
+## + installment.rate                1   671.11 693.11
+## + credit.amount                   1   672.07 694.07
+## + occupation                      1   672.19 694.19
+## + residence.duration              1   672.20 694.20
+## - guarantor                       1   676.21 694.21
+## + dependents                      1   672.43 694.43
+## - foreign.worker                  1   677.12 695.12
+## - apartment.type                  1   680.81 698.81
+## - current.assets                  1   682.08 700.08
+## - previous.credit.payment.status  1   686.53 704.53
+## - credit.purpose                  1   687.00 705.00
+## - credit.duration.months          1   688.83 706.83
+## - savings                         1   689.97 707.97
+## - account.balance                 1   729.18 747.18
+## 
+## Step:  AIC=690.86
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker + guarantor + age
+## 
+##                                  Df Deviance    AIC
+## + other.credits                   1   665.40 689.40
+## + marital.status                  1   666.21 690.21
+## + bank.credits                    1   666.82 690.82
+## &lt;none&gt;                                668.86 690.86
+## + telephone                       1   666.95 690.95
+## + employment.duration             1   667.09 691.09
+## + installment.rate                1   667.18 691.18
+## - age                             1   672.46 692.46
+## + credit.amount                   1   668.46 692.46
+## - guarantor                       1   672.50 692.50
+## + occupation                      1   668.56 692.56
+## + dependents                      1   668.86 692.86
+## + residence.duration              1   668.86 692.86
+## - foreign.worker                  1   673.34 693.34
+## - apartment.type                  1   673.96 693.96
+## - current.assets                  1   678.94 698.94
+## - previous.credit.payment.status  1   680.46 700.46
+## - credit.duration.months          1   683.44 703.44
+## - credit.purpose                  1   683.80 703.80
+## - savings                         1   685.13 705.13
+## - account.balance                 1   726.24 746.24
+## 
+## Step:  AIC=689.4
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker + guarantor + age + other.credits
+## 
+##                                  Df Deviance    AIC
+## + marital.status                  1   662.52 688.52
+## &lt;none&gt;                                665.40 689.40
+## + telephone                       1   663.54 689.54
+## + employment.duration             1   663.56 689.56
+## + installment.rate                1   663.60 689.60
+## + bank.credits                    1   663.93 689.93
+## + credit.amount                   1   664.86 690.86
+## - other.credits                   1   668.86 690.86
+## + occupation                      1   664.96 690.96
+## - age                             1   669.00 691.00
+## - guarantor                       1   669.27 691.27
+## + dependents                      1   665.39 691.39
+## + residence.duration              1   665.39 691.39
+## - foreign.worker                  1   670.15 692.15
+## - apartment.type                  1   671.10 693.10
+## - current.assets                  1   674.92 696.92
+## - previous.credit.payment.status  1   675.51 697.51
+## - credit.purpose                  1   678.94 700.94
+## - credit.duration.months          1   679.13 701.13
+## - savings                         1   681.77 703.77
+## - account.balance                 1   723.42 745.42
+## 
+## Step:  AIC=688.52
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker + guarantor + age + other.credits + marital.status
+## 
+##                                  Df Deviance    AIC
+## + installment.rate                1   659.86 687.86
+## &lt;none&gt;                                662.52 688.52
+## + telephone                       1   660.70 688.70
+## + bank.credits                    1   661.03 689.03
+## + employment.duration             1   661.22 689.22
+## - marital.status                  1   665.40 689.40
+## + credit.amount                   1   662.07 690.07
+## - guarantor                       1   666.10 690.10
+## + occupation                      1   662.11 690.11
+## - other.credits                   1   666.21 690.21
+## - age                             1   666.25 690.25
+## + dependents                      1   662.49 690.49
+## - apartment.type                  1   666.51 690.51
+## + residence.duration              1   662.52 690.52
+## - foreign.worker                  1   666.90 690.90
+## - current.assets                  1   671.86 695.86
+## - previous.credit.payment.status  1   671.87 695.87
+## - credit.purpose                  1   676.96 700.96
+## - credit.duration.months          1   677.03 701.03
+## - savings                         1   679.14 703.14
+## - account.balance                 1   720.47 744.47
+## 
+## Step:  AIC=687.86
+## credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+##     savings + credit.purpose + current.assets + apartment.type + 
+##     foreign.worker + guarantor + age + other.credits + marital.status + 
+##     installment.rate
+## 
+##                                  Df Deviance    AIC
+## &lt;none&gt;                                659.86 687.86
+## + credit.amount                   1   657.88 687.88
+## + telephone                       1   658.20 688.20
+## + bank.credits                    1   658.44 688.44
+## + employment.duration             1   658.44 688.44
+## - installment.rate                1   662.52 688.52
+## - guarantor                       1   663.09 689.09
+## - foreign.worker                  1   663.52 689.52
+## + occupation                      1   659.54 689.54
+## - marital.status                  1   663.60 689.60
+## - other.credits                   1   663.74 689.74
+## + dependents                      1   659.77 689.77
+## + residence.duration              1   659.85 689.85
+## - age                             1   664.07 690.07
+## - apartment.type                  1   664.22 690.22
+## - previous.credit.payment.status  1   668.62 694.62
+## - current.assets                  1   669.29 695.29
+## - credit.purpose                  1   673.93 699.93
+## - credit.duration.months          1   674.24 700.24
+## - savings                         1   676.80 702.80
+## - account.balance                 1   716.56 742.56</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="정형-데이터마이닝.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step.logistic)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = credit.rating ~ account.balance + credit.duration.months + 
+##     previous.credit.payment.status + savings + credit.purpose + 
+##     current.assets + apartment.type + foreign.worker + guarantor + 
+##     age + other.credits + marital.status + installment.rate, 
+##     family = &quot;binomial&quot;, data = train)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.4734  -0.8128   0.4436   0.7404   1.8425  
+## 
+## Coefficients:
+##                                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                    -4.453085   1.295853  -3.436 0.000589 ***
+## account.balance                 0.877274   0.120850   7.259 3.89e-13 ***
+## credit.duration.months         -0.030855   0.008188  -3.768 0.000164 ***
+## previous.credit.payment.status  0.484631   0.165356   2.931 0.003381 ** 
+## savings                         0.377087   0.095484   3.949 7.84e-05 ***
+## credit.purpose                 -0.395226   0.108290  -3.650 0.000263 ***
+## current.assets                 -0.314207   0.103329  -3.041 0.002359 ** 
+## apartment.type                  0.423587   0.202868   2.088 0.036798 *  
+## foreign.worker                  1.371175   0.809628   1.694 0.090344 .  
+## guarantor                       0.608202   0.347239   1.752 0.079853 .  
+## age                             0.019056   0.009441   2.018 0.043540 *  
+## other.credits                   0.483427   0.243663   1.984 0.047256 *  
+## marital.status                  0.181255   0.093959   1.929 0.053720 .  
+## installment.rate               -0.146927   0.090550  -1.623 0.104674    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 846.57  on 699  degrees of freedom
+## Residual deviance: 659.86  on 686  degrees of freedom
+## AIC: 687.86
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<ul>
+<li>총 20개의 독립변수 중 13개의 독립변수가 선택되었으며, *과 .은 각 유의확률에서 채택이 되는지를 알 수 있다. 로지스틱 회귀식은 아래와 같이 나타난다. <br/>
+<span class="math inline">\(P(credit.rating)=\frac{1}{1+exp[-(-1.45+0.88account.balance+...-0.15installment.rate)]}\)</span></li>
+<li>estimate가 양수이면 독립변수가 1단위 증가할 때 확률이 1에 가까워지고, estimate가 음수이면 독립변수가 1단위 증가할 때 확률이 0에 가까워진다.</li>
+</ul>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="정형-데이터마이닝.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb404-2"><a href="정형-데이터마이닝.html#cb404-2" aria-hidden="true" tabindex="-1"></a>(pred<span class="ot">&lt;-</span><span class="fu">predict</span>(step.logistic, test[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">type=</span><span class="st">&quot;response&quot;</span>)) <span class="co"># 예측값을 &quot;response&quot;로 지정하여 확률값을 출력</span></span></code></pre></div>
+<pre><code>##         1         3         4         7         9        12        15        17 
+## 0.4120408 0.6118378 0.8287752 0.9181769 0.8756254 0.6843918 0.6123956 0.7257466 
+##        18        21        22        25        27        28        32        35 
+## 0.8545862 0.6562587 0.8187122 0.9117270 0.3548313 0.8912199 0.6963481 0.5354274 
+##        42        43        44        47        50        58        60        62 
+## 0.5585623 0.8364706 0.7470300 0.7531220 0.5600975 0.8353797 0.8895306 0.7449967 
+##        63        66        70        73        75        77        82        86 
+## 0.9429548 0.9387643 0.8516873 0.8224228 0.9481515 0.9478558 0.9323424 0.6739541 
+##        92        93        97        99       101       102       103       107 
+## 0.7073080 0.2550983 0.8217615 0.6815670 0.9686422 0.2506009 0.7734371 0.9082236 
+##       109       112       114       123       126       133       140       142 
+## 0.5705113 0.5738746 0.8735354 0.6018558 0.9023466 0.9552089 0.9404364 0.9864618 
+##       144       145       146       147       149       150       154       156 
+## 0.9329562 0.7825584 0.9806404 0.7563203 0.7958647 0.7759120 0.5112201 0.8989627 
+##       157       174       176       182       183       192       194       198 
+## 0.2000154 0.6635239 0.8362179 0.7691743 0.2697873 0.7822958 0.9230847 0.7904401 
+##       202       208       213       214       215       216       227       233 
+## 0.9506486 0.8442133 0.4700817 0.9926162 0.8831600 0.9248918 0.4090421 0.8773947 
+##       245       247       248       249       253       254       257       269 
+## 0.9013957 0.8224225 0.9496794 0.7450681 0.8175941 0.6385456 0.6716667 0.8695574 
+##       272       283       285       288       293       296       300       307 
+## 0.9139702 0.9389755 0.3110148 0.9274089 0.9865352 0.7869555 0.9441139 0.7054924 
+##       312       313       314       321       325       329       335       345 
+## 0.9424433 0.9347673 0.4857308 0.9393010 0.9600646 0.9739688 0.9446268 0.8643433 
+##       350       353       354       356       359       360       361       363 
+## 0.8665074 0.7143366 0.6647453 0.9745540 0.6030884 0.9571675 0.9343947 0.9881441 
+##       366       367       368       369       370       375       380       383 
+## 0.8746333 0.8839657 0.6299201 0.1938767 0.4109438 0.9539802 0.9581369 0.8369876 
+##       385       387       400       405       408       410       411       416 
+## 0.9426122 0.7129784 0.6004036 0.7937358 0.6749529 0.8698886 0.9479245 0.7891121 
+##       423       425       432       436       439       444       449       453 
+## 0.8673777 0.8854057 0.9597774 0.9703585 0.2658115 0.9508754 0.8628265 0.6940124 
+##       454       460       462       467       469       472       474       482 
+## 0.6250801 0.9624819 0.7661106 0.9162244 0.3083106 0.8821974 0.9332950 0.7324789 
+##       484       485       486       487       488       489       491       493 
+## 0.9949158 0.9599063 0.8572638 0.8723732 0.9409401 0.8786549 0.8639081 0.1861704 
+##       495       496       497       502       506       511       513       514 
+## 0.8758798 0.8549234 0.8996813 0.8678649 0.9368716 0.9470541 0.5835893 0.7205346 
+##       515       517       518       520       521       525       529       531 
+## 0.7173306 0.5639953 0.5906169 0.7641548 0.6460617 0.8607718 0.7875209 0.9619511 
+##       536       540       542       543       546       550       551       556 
+## 0.3886664 0.4620445 0.6683025 0.7880538 0.7462993 0.9224374 0.5281521 0.6557149 
+##       563       565       568       569       572       576       579       580 
+## 0.2330092 0.8570038 0.8865552 0.9570444 0.9035184 0.4413908 0.6281038 0.3626785 
+##       582       583       584       586       587       592       594       599 
+## 0.6094103 0.8412318 0.4426206 0.6207627 0.5037450 0.4947543 0.1509256 0.6393267 
+##       607       611       616       622       628       631       635       641 
+## 0.9444137 0.4469861 0.4350562 0.6942851 0.9373949 0.4534486 0.1898027 0.6636863 
+##       642       643       652       653       654       656       664       669 
+## 0.4613032 0.6911431 0.9049479 0.8419885 0.9659676 0.8858289 0.6496323 0.8331154 
+##       674       675       683       684       689       690       693       695 
+## 0.8500149 0.7906134 0.9087419 0.9736985 0.8522894 0.3264172 0.7586834 0.8787157 
+##       699       701       708       713       715       728       730       731 
+## 0.7674790 0.7948799 0.8674318 0.9289444 0.8646000 0.7547228 0.7213844 0.5971793 
+##       735       736       737       740       743       748       749       756 
+## 0.5683151 0.9734926 0.6673813 0.6835835 0.7376732 0.8792291 0.7720190 0.1485896 
+##       758       759       763       772       773       776       786       787 
+## 0.1935449 0.2411321 0.7705442 0.3751020 0.6321914 0.1383704 0.8161353 0.5249610 
+##       790       791       793       795       796       797       799       801 
+## 0.5824022 0.3912481 0.3479640 0.8999023 0.3893990 0.9279937 0.2878022 0.5014722 
+##       806       808       825       826       827       828       829       830 
+## 0.1469686 0.2080182 0.2501811 0.7994888 0.2773739 0.6401503 0.6154802 0.4419988 
+##       833       839       848       849       850       855       856       866 
+## 0.7936517 0.4876081 0.1777989 0.6991339 0.7273259 0.9482981 0.1826371 0.9643884 
+##       868       874       875       879       884       887       892       896 
+## 0.6638910 0.6762806 0.2602226 0.3118001 0.5363162 0.2179213 0.5033415 0.7543552 
+##       897       898       901       907       909       912       914       919 
+## 0.9062067 0.5762438 0.5157371 0.2894535 0.6484000 0.5229902 0.1543145 0.2554326 
+##       921       924       929       936       939       945       946       948 
+## 0.2209400 0.3185682 0.3902414 0.7428232 0.4296006 0.6761346 0.5554851 0.9205723 
+##       950       952       956       963       964       967       970       971 
+## 0.9513133 0.9508658 0.6010311 0.1464600 0.3378311 0.6942551 0.3984775 0.4066565 
+##       972       973       977       978       983       984       985       989 
+## 0.2523158 0.9263933 0.4497004 0.4379014 0.5426059 0.1238137 0.6028227 0.2606977 
+##       993       995       997       998 
+## 0.9482636 0.2613449 0.5866442 0.9168300</code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="정형-데이터마이닝.html#cb406-1" aria-hidden="true" tabindex="-1"></a>pred1<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(pred)</span>
+<span id="cb406-2"><a href="정형-데이터마이닝.html#cb406-2" aria-hidden="true" tabindex="-1"></a>pred1<span class="sc">$</span>grade<span class="ot">&lt;-</span><span class="fu">ifelse</span>(pred1<span class="sc">$</span>pred<span class="sc">&lt;</span><span class="fl">0.5</span>, pred1<span class="sc">$</span>grade<span class="ot">&lt;-</span><span class="dv">0</span>, pred1<span class="sc">$</span>grade<span class="ot">&lt;-</span><span class="dv">1</span>)</span>
+<span id="cb406-3"><a href="정형-데이터마이닝.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(pred1<span class="sc">$</span>grade), <span class="at">reference=</span>test[,<span class="dv">1</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  43  23
+##          1  52 182
+##                                         
+##                Accuracy : 0.75          
+##                  95% CI : (0.697, 0.798)
+##     No Information Rate : 0.6833        
+##     P-Value [Acc &gt; NIR] : 0.006892      
+##                                         
+##                   Kappa : 0.3708        
+##                                         
+##  Mcnemar&#39;s Test P-Value : 0.001224      
+##                                         
+##             Sensitivity : 0.8878        
+##             Specificity : 0.4526        
+##          Pos Pred Value : 0.7778        
+##          Neg Pred Value : 0.6515        
+##              Prevalence : 0.6833        
+##          Detection Rate : 0.6067        
+##    Detection Prevalence : 0.7800        
+##       Balanced Accuracy : 0.6702        
+##                                         
+##        &#39;Positive&#39; Class : 1             
+## </code></pre>
+<ul>
+<li>구축된 로지스틱 회귀모형으로 test 데이터의 기존 credit.rating 열을 제외한 데이터로 예측을 한다. 정분류율을 확인하기 전에 예측값이 확률로 나타나기 때문에 기준이 되는 확률보다 크면 1, 작으면 0으로 범주를 추가한다.</li>
+<li>정분류율(Accuracy)은 0.75이며, 민감도는 0.8878로 높게 나타났다. 또 특이도는 0.4526이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석 분야에 따라 다양한 지표들을 활용하여 분석 모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="정형-데이터마이닝.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;ROCR&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb408-2"><a href="정형-데이터마이닝.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb408-3"><a href="정형-데이터마이닝.html#cb408-3" aria-hidden="true" tabindex="-1"></a>pred.logistic.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred1<span class="sc">$</span>grade), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb408-4"><a href="정형-데이터마이닝.html#cb408-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.logistic.roc, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb408-5"><a href="정형-데이터마이닝.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>, <span class="at">b=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="정형-데이터마이닝.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.logistic.roc,<span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.6702182</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인할 결과 0.67로 나타났다.</li>
+</ul>
+</div>
+<div id="r을-이용한-다항-로지스틱-회귀분석" class="section level4" number="4.2.1.2">
+<h4><span class="header-section-number">4.2.1.2</span> R을 이용한 다항 로지스틱 회귀분석</h4>
+<ul>
+<li>예측하고자 하는 분류가 3개 이상이 된다면 다항 로지스틱 회귀분석을 사용한다. R에서는 <b>nnet 패키지의 multinom</b> 등의 함수로 분석을 한다.</li>
+</ul>
+<pre><code>multinom(formula, data)</code></pre>
+<p><strong>Q. iris 데이터의 Species를 분류하는 다항 로지스틱 회귀분석을 실시하고 오분류표를 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="정형-데이터마이닝.html#cb412-1" aria-hidden="true" tabindex="-1"></a>idx<span class="ot">&lt;-</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris), <span class="fu">nrow</span>(iris)<span class="sc">*</span><span class="fl">0.7</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb412-2"><a href="정형-데이터마이닝.html#cb412-2" aria-hidden="true" tabindex="-1"></a>train.iris<span class="ot">&lt;-</span>iris[idx,]</span>
+<span id="cb412-3"><a href="정형-데이터마이닝.html#cb412-3" aria-hidden="true" tabindex="-1"></a>test.iris<span class="ot">&lt;-</span>iris[<span class="sc">-</span>idx,]</span>
+<span id="cb412-4"><a href="정형-데이터마이닝.html#cb412-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb412-5"><a href="정형-데이터마이닝.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb412-6"><a href="정형-데이터마이닝.html#cb412-6" aria-hidden="true" tabindex="-1"></a>mul.iris<span class="ot">&lt;-</span><span class="fu">multinom</span>(Species<span class="sc">~</span>., train.iris)</span></code></pre></div>
+<pre><code>## # weights:  21 (12 variable)
+## initial  value 115.354290 
+## iter  10 value 11.770297
+## iter  20 value 6.059059
+## iter  30 value 5.722903
+## iter  40 value 5.717299
+## iter  50 value 5.710495
+## iter  60 value 5.709390
+## iter  70 value 5.708363
+## iter  80 value 5.706817
+## iter  90 value 5.706767
+## iter 100 value 5.706668
+## final  value 5.706668 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="정형-데이터마이닝.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측을 통한 정분류율 확인</span></span>
+<span id="cb414-2"><a href="정형-데이터마이닝.html#cb414-2" aria-hidden="true" tabindex="-1"></a>pred.mul<span class="ot">&lt;-</span><span class="fu">predict</span>(mul.iris, test.iris[,<span class="sc">-</span><span class="dv">5</span>])</span>
+<span id="cb414-3"><a href="정형-데이터마이닝.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(pred.mul, test.iris[,<span class="dv">5</span>])</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         10         0
+##   virginica       0          0        20
+## 
+## Overall Statistics
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.9213, 1)
+##     No Information Rate : 0.4444     
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16  
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar&#39;s Test P-Value : NA         
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            1.0000           1.0000
+## Specificity                 1.0000            1.0000           1.0000
+## Pos Pred Value              1.0000            1.0000           1.0000
+## Neg Pred Value              1.0000            1.0000           1.0000
+## Prevalence                  0.3333            0.2222           0.4444
+## Detection Rate              0.3333            0.2222           0.4444
+## Detection Prevalence        0.3333            0.2222           0.4444
+## Balanced Accuracy           1.0000            1.0000           1.0000</code></pre>
+</div>
+</div>
+<div id="의사결정나무" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> 의사결정나무</h3>
+<ul>
+<li>의사결정나무는 분류함수를 의사결정 규칙으로 이뤄진 나무 모양으로 그리는 방법이다. 계산 결과가 의사결정나무에 직접 나타나기 때문에 해석이 간편하다.</li>
+<li>의사결정나무는 주어진 입력값에 대하여 출력값을 예측하는 모형으로 분류나무와 회귀나무 모형이 있다.</li>
+</ul>
+<div id="의사결정나무의-분석-과정" class="section level4" number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> 의사결정나무의 분석 과정</h4>
+<ul>
+<li>의사결정나무의 형성과정은 크게 성장, 가지치기, 타당성 평가, 해석 및 예측으로 이루어진다.</li>
+</ul>
+<div id="성장단계" class="section level5" number="4.2.2.1.1">
+<h5><span class="header-section-number">4.2.2.1.1</span> 성장단계</h5>
+<ul>
+<li><p>각 마디에서 적절한 최적의 분류규칙을 찾아서 나무를 성장시키는 과정으로 적절한 정지규칙을 만족하면 중단한다.</p></li>
+<li><p>분리 규칙을 설정하는 분리 기준은 이산형 목표변수, 연속형 목표변수에 따라 나뉘며 아래와 같은 기준값을 사용한다.</p></li>
+<li><p>이산형 목표변수</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>기준값</th>
+<th>분리기준</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>카이제곱 통계량 p값</td>
+<td>p값이 가장 작은 예측변수와 그때의 최적분리에 의해서 자식마디를 형성</td>
+</tr>
+<tr class="even">
+<td>지니 지수</td>
+<td>지니 지수를 감소시켜주는 예측변수와 그 때의 최적 분리에 의해서 자식 마디를 형성</td>
+</tr>
+<tr class="odd">
+<td>엔트로피 지수</td>
+<td>엔트로피 지수가 가장 작은 예측 변수와 이 때의 최적분리에 의해 자식 마디를 형성</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>연속형 목표변수</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>기준값</th>
+<th>분리기준</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>분산분석에서 F통계량</td>
+<td>p값이 가장 작은 예측변수와 그때의 최적분리에 의해서 자식마디를 형성</td>
+</tr>
+<tr class="even">
+<td>분산의 감소량</td>
+<td>분산의 감소량을 최대화 하는 기준의 최적분리에 의해서 자식마디를 형성</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>정지규칙은 더 이상 분리가 일어나지 않고, 현재의 마디가 끝마디가 되도록 하는 규칙이며, 의사결정나무의 깊이를 지정하거나 끝마디의 레코드 수의 최소 개수를 지정한다.</li>
+</ul>
+</div>
+<div id="가지치기-단계" class="section level5" number="4.2.2.1.2">
+<h5><span class="header-section-number">4.2.2.1.2</span> 가지치기 단계</h5>
+<ul>
+<li>오차를 크게 할 위험이 높거나 부적절한 추론 규칙을 가지고 있는 가지 또는 불필요한 가지를 제거하는 단계이다.</li>
+<li>나무의 크기를 모형의 복잡도로 볼 수 있으며, 최적의 나무 크기는 자료로부터 추정하게 된다. 일반적으로 사용되는 방법은 마디에 속하는 자료가 일정수 이하일 때 분할을 정지하고 비용-복잡도 가지치기를 이용하여 성장시킨 나무를 가지치기하게 된다.</li>
+</ul>
+</div>
+<div id="타당성-평가-단계" class="section level5" number="4.2.2.1.3">
+<h5><span class="header-section-number">4.2.2.1.3</span> 타당성 평가 단계</h5>
+<ul>
+<li>이익도표, 위험도표 혹은 시험자료를 이용하여 의사결정나무를 평가하는 단계이다.</li>
+</ul>
+</div>
+<div id="해설-및-예측-단계" class="section level5" number="4.2.2.1.4">
+<h5><span class="header-section-number">4.2.2.1.4</span> 해설 및 예측 단계</h5>
+<ul>
+<li>구축된 나무모형을 해석하고 예측모형을 설정한 후 예측에 적용하는 단계이다.</li>
+</ul>
+</div>
+</div>
+<div id="의사결정나무-알고리즘" class="section level4" number="4.2.2.2">
+<h4><span class="header-section-number">4.2.2.2</span> 의사결정나무 알고리즘</h4>
+<div id="cart-classification-and-regression-tree" class="section level5" number="4.2.2.2.1">
+<h5><span class="header-section-number">4.2.2.2.1</span> CART (Classification and Regression Tree)</h5>
+</div>
+<div id="c4.5와-c5.0" class="section level5" number="4.2.2.2.2">
+<h5><span class="header-section-number">4.2.2.2.2</span> C4.5와 C5.0</h5>
+</div>
+<div id="chaid-shi-squared-automatic-interaction-detection" class="section level5" number="4.2.2.2.3">
+<h5><span class="header-section-number">4.2.2.2.3</span> CHAID (SHi-squared Automatic Interaction Detection)</h5>
+</div>
+</div>
+<div id="r을-이용한-의사결정나무-분석" class="section level4" number="4.2.2.3">
+<h4><span class="header-section-number">4.2.2.3</span> R을 이용한 의사결정나무 분석</h4>
+<p><b>[함수사용법]</b></p>
+<pre><code>rpart(formula, data, method, control=rpart.control(), ...)</code></pre>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 의사결정나무 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="정형-데이터마이닝.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb417-2"><a href="정형-데이터마이닝.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb417-3"><a href="정형-데이터마이닝.html#cb417-3" aria-hidden="true" tabindex="-1"></a>dt.model<span class="ot">&lt;-</span><span class="fu">rpart</span>(credit.rating<span class="sc">~</span>., <span class="at">method=</span><span class="st">&quot;class&quot;</span>, <span class="at">data=</span>train, <span class="at">control=</span><span class="fu">rpart.control</span>(<span class="at">maxdepth=</span><span class="dv">5</span>, <span class="at">minsplit=</span><span class="dv">15</span>))</span>
+<span id="cb417-4"><a href="정형-데이터마이닝.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="fu">prp</span>(dt.model, <span class="at">type=</span><span class="dv">4</span>, <span class="at">extra=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<ul>
+<li>총 700개의 관측치 중 495개의 관측치를 1로 분류했으며, account.balance &gt;= 3인 325개의 노드 중 288이 1로 분류되었음을 의미한다. prp 함수는 rpart.plot 패키지에 속한 함수이며, type, extra 등의 인자를 사용하여 그래프의 모양을 바꿀 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="정형-데이터마이닝.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rpart 함수를 활용하여 의사결정나무분석 실시 (최적 나무 선정)</span></span>
+<span id="cb418-2"><a href="정형-데이터마이닝.html#cb418-2" aria-hidden="true" tabindex="-1"></a>dt.model<span class="sc">$</span>cptable</span></code></pre></div>
+<pre><code>##           CP nsplit rel error    xerror       xstd
+## 1 0.05365854      0 1.0000000 1.0000000 0.05873225
+## 2 0.04390244      3 0.8341463 0.9853659 0.05847732
+## 3 0.03414634      4 0.7902439 0.9804878 0.05839093
+## 4 0.01000000      5 0.7560976 0.9756098 0.05830383</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="정형-데이터마이닝.html#cb420-1" aria-hidden="true" tabindex="-1"></a>(opt<span class="ot">&lt;-</span><span class="fu">which.min</span>(dt.model<span class="sc">$</span>cptable[,<span class="st">&quot;xerror&quot;</span>]))</span></code></pre></div>
+<pre><code>## 4 
+## 4</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="정형-데이터마이닝.html#cb422-1" aria-hidden="true" tabindex="-1"></a>(cp<span class="ot">&lt;-</span>dt.model<span class="sc">$</span>cptable[opt, <span class="st">&quot;CP&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 0.01</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="정형-데이터마이닝.html#cb424-1" aria-hidden="true" tabindex="-1"></a>(prune.c<span class="ot">&lt;-</span><span class="fu">prune</span>(dt.model, <span class="at">cp=</span>cp))</span></code></pre></div>
+<pre><code>## n= 700 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+##  1) root 700 205 1 (0.2928571 0.7071429)  
+##    2) account.balance&lt; 2.5 375 168 1 (0.4480000 0.5520000)  
+##      4) credit.duration.months&gt;=22.5 160  69 0 (0.5687500 0.4312500)  
+##        8) savings&lt; 2.5 128  47 0 (0.6328125 0.3671875)  
+##         16) credit.purpose&gt;=1.5 111  35 0 (0.6846847 0.3153153) *
+##         17) credit.purpose&lt; 1.5 17   5 1 (0.2941176 0.7058824) *
+##        9) savings&gt;=2.5 32  10 1 (0.3125000 0.6875000) *
+##      5) credit.duration.months&lt; 22.5 215  77 1 (0.3581395 0.6418605)  
+##       10) previous.credit.payment.status&lt; 1.5 15   3 0 (0.8000000 0.2000000) *
+##       11) previous.credit.payment.status&gt;=1.5 200  65 1 (0.3250000 0.6750000) *
+##    3) account.balance&gt;=2.5 325  37 1 (0.1138462 0.8861538) *</code></pre>
+<ul>
+<li><p>cptable 인자를 통해서 교차타당성 오차를 제공하여 의사결정나무 모델의 가지치기, 트리의 최대 크기조절에 사용한다. nsplit은 분할횟수, xerror는 해당 CP에서 cross validation 했을 때 오류율, xstd는 해당 CP에서 cross validation 했을 때 편차를 나타낸다. cptable에서 xerror가 가장 낮은 split 개수를 선택한다.</p></li>
+<li><p>위 결과를 확인했을 때, xerror가 가장 낮을 때 nsplit은 5이며, 앞선 모형의 그래프를 봤을 때 의사 결정나무 모델이 분할을 5번까지 한다고 할 수 있다.</p></li>
+</ul>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="정형-데이터마이닝.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(dt.model)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<ul>
+<li>plotcp의 결과에서도 xerror가 가장 낮을 때 결과에 따라 교차타당성오차를 최소로 하는 트리를 형성한다. 결과적으로 나무의 크기가 6일 때 최적의 나무라고 할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="정형-데이터마이닝.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;caret&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb427-2"><a href="정형-데이터마이닝.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb427-3"><a href="정형-데이터마이닝.html#cb427-3" aria-hidden="true" tabindex="-1"></a>pred.dt<span class="ot">&lt;-</span><span class="fu">predict</span>(dt.model, test[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb427-4"><a href="정형-데이터마이닝.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.dt, <span class="at">reference=</span>test[,<span class="dv">1</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  42  21
+##          1  53 184
+##                                           
+##                Accuracy : 0.7533          
+##                  95% CI : (0.7005, 0.8011)
+##     No Information Rate : 0.6833          
+##     P-Value [Acc &gt; NIR] : 0.0047614       
+##                                           
+##                   Kappa : 0.3734          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.0003137       
+##                                           
+##             Sensitivity : 0.8976          
+##             Specificity : 0.4421          
+##          Pos Pred Value : 0.7764          
+##          Neg Pred Value : 0.6667          
+##              Prevalence : 0.6833          
+##          Detection Rate : 0.6133          
+##    Detection Prevalence : 0.7900          
+##       Balanced Accuracy : 0.6698          
+##                                           
+##        &#39;Positive&#39; Class : 1               
+## </code></pre>
+<ul>
+<li>정분류율(Accuracy)은 0.7533며, 민감도는 0.8976로 높게 나타났다. 또, 특이도는 0.4421이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석 분야에 따라 다양한 지표들을 활용하여 분석모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="정형-데이터마이닝.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ROC 커브 그리기 및 AUC 산출</span></span>
+<span id="cb429-2"><a href="정형-데이터마이닝.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;ROCR&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb429-3"><a href="정형-데이터마이닝.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb429-4"><a href="정형-데이터마이닝.html#cb429-4" aria-hidden="true" tabindex="-1"></a>pred.dt.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.dt), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb429-5"><a href="정형-데이터마이닝.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.dt.roc,<span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb429-6"><a href="정형-데이터마이닝.html#cb429-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="정형-데이터마이닝.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.dt.roc,<span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.6698331</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인한 결과 0.6698로 나타났다.</li>
+</ul>
+<p><strong>Q. 앞서 분리한 iris 데이터의 Species를 분류하는 의사결정나무분석을 실시하고 오분류표를 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="정형-데이터마이닝.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;rpart&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb432-2"><a href="정형-데이터마이닝.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb432-3"><a href="정형-데이터마이닝.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb432-4"><a href="정형-데이터마이닝.html#cb432-4" aria-hidden="true" tabindex="-1"></a>dt.model2<span class="ot">&lt;-</span><span class="fu">rpart</span>(Species<span class="sc">~</span>., <span class="at">data=</span>train.iris)</span>
+<span id="cb432-5"><a href="정형-데이터마이닝.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="fu">prp</span>(dt.model2, <span class="at">type=</span><span class="dv">4</span>, <span class="at">extra=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="정형-데이터마이닝.html#cb433-1" aria-hidden="true" tabindex="-1"></a>pred.dt2<span class="ot">&lt;-</span><span class="fu">predict</span>(dt.model2, test.iris[,<span class="sc">-</span><span class="dv">5</span>], <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb433-2"><a href="정형-데이터마이닝.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.dt2, <span class="at">reference=</span>test.iris[,<span class="dv">5</span>])</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         10         1
+##   virginica       0          0        19
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.4444          
+##     P-Value [Acc &gt; NIR] : 8.12e-15        
+##                                           
+##                   Kappa : 0.9656          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            1.0000           0.9500
+## Specificity                 1.0000            0.9714           1.0000
+## Pos Pred Value              1.0000            0.9091           1.0000
+## Neg Pred Value              1.0000            1.0000           0.9615
+## Prevalence                  0.3333            0.2222           0.4444
+## Detection Rate              0.3333            0.2222           0.4222
+## Detection Prevalence        0.3333            0.2444           0.4222
+## Balanced Accuracy           1.0000            0.9857           0.9750</code></pre>
+</div>
+</div>
+<div id="앙상블-기법" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> 앙상블 기법</h3>
+<ul>
+<li>앙상블 기법은 주어진 자료로부터 여러개의 예측모형들을 만든 후 예측모형들을 조합하여 하나의 최종 예측모형을 만드는 방법이다. 학습방법이 가장 불안전한 의사결정나무에 주로 사용한다.</li>
+</ul>
+<div id="배깅-bagging" class="section level4" number="4.2.3.1">
+<h4><span class="header-section-number">4.2.3.1</span> 배깅 (Bagging)</h4>
+<div id="개념-3" class="section level5" number="4.2.3.1.1">
+<h5><span class="header-section-number">4.2.3.1.1</span> 개념</h5>
+<ul>
+<li>주어진 자료에서 여러개의 부트스트랩 자료를 생성하고 각 부트스트랩 자료에 예측모형을 만든후 결합하여 최종 예측모형을 만드는 방법이다.</li>
+<li>보팅은 여러개의 모형으로부터 산출된 결과 중 다수결에 의해서 최종 결과를 선정하는 과정이다.</li>
+<li>최적의 의사결정나무를 구축할 때 가장 어려운 부분이 가지치기이지만 배깅에서는 가지치기를 하지 않고 최대로 성정한 의사결정나무들을 활용한다.</li>
+<li>훈련자료의 모집단의 분포를 모르기 때문에 실제 문제에서는 평균예측모형을 구할 수 없다. 배깅은 이러한 문제를 해결하기 위해 훈련자료를 모집단으로 생각하고 평균예측모형을 구하여 분산을 줄이고 예측력을 향상시킬 수 있다.</li>
+</ul>
+</div>
+<div id="r을-이용한-bagging-분석" class="section level5" number="4.2.3.1.2">
+<h5><span class="header-section-number">4.2.3.1.2</span> R을 이용한 Bagging 분석</h5>
+<pre><code>bagging(formula, data, mfinal, control=, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>mfinal</td>
+<td>반복수 또는 사용할 트리의 수 (default=100)</td>
+</tr>
+<tr class="even">
+<td>control</td>
+<td>의사결정나무를 만들 때 사용할 option을 설정</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 Bagging 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="정형-데이터마이닝.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;adabag&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb436-2"><a href="정형-데이터마이닝.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adabag)</span></code></pre></div>
+<pre><code>## Loading required package: foreach</code></pre>
+<pre><code>## Loading required package: doParallel</code></pre>
+<pre><code>## Loading required package: iterators</code></pre>
+<pre><code>## Loading required package: parallel</code></pre>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="정형-데이터마이닝.html#cb441-1" aria-hidden="true" tabindex="-1"></a>bag<span class="ot">&lt;-</span><span class="fu">bagging</span>(credit.rating<span class="sc">~</span>., <span class="at">data=</span>train, <span class="at">mfinal=</span><span class="dv">15</span>)</span>
+<span id="cb441-2"><a href="정형-데이터마이닝.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(bag)</span></code></pre></div>
+<pre><code>## [1] &quot;formula&quot;    &quot;trees&quot;      &quot;votes&quot;      &quot;prob&quot;       &quot;class&quot;     
+## [6] &quot;samples&quot;    &quot;importance&quot; &quot;terms&quot;      &quot;call&quot;</code></pre>
+<ul>
+<li>names 함수를 통해 bagging 함수로 생성된 결과들에 어떤 것들이 있는지 확인이 가능하다. 주로 사용하는 인자들에 대한 설명은 아래와 같다.
+<ul>
+<li>trees: bagging을 통해 생성된 의사결정나무들을 확인할 수 있다.</li>
+<li>votes: 각 의사결정나무들이 1행 데이터에 대해 1 또는 2열의 분류를 가진다는 것에 대한 투표를 진행한 것이다.</li>
+<li>prob: 각 행에 대해 1 또는 2열의 특징으로 분류되는 확률을 나타내는 것이다.</li>
+<li>class: bagging 기법을 활용해 각 행의 분류를 예측한 것이다.</li>
+<li>samples: 각 의사결정나무에 사용된 부트스트랩 데이터의 레코드 번호를 나타낸다.</li>
+<li>importance: 변수의 상대적인 중요도를 나타내며, 지니지수의 gain을 고려한 측도이다.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="정형-데이터마이닝.html#cb443-1" aria-hidden="true" tabindex="-1"></a>bag<span class="sc">$</span>importance</span></code></pre></div>
+<pre><code>##                account.balance                            age 
+##                     32.1612585                      9.6931394 
+##                 apartment.type                   bank.credits 
+##                      0.5240433                      0.7862148 
+##                  credit.amount         credit.duration.months 
+##                      9.5477783                      9.9671607 
+##                 credit.purpose                 current.assets 
+##                      4.7106811                      4.0205891 
+##                     dependents            employment.duration 
+##                      0.0000000                      2.6329518 
+##                 foreign.worker                      guarantor 
+##                      0.3666136                      3.3424176 
+##               installment.rate                 marital.status 
+##                      1.8668982                      1.7141508 
+##                     occupation                  other.credits 
+##                      1.5483235                      1.0551176 
+## previous.credit.payment.status             residence.duration 
+##                      6.2876622                      3.1676583 
+##                        savings                      telephone 
+##                      5.1833824                      1.4239586</code></pre>
+<ul>
+<li>importance 인자에서 변수의 상대적 중요도를 봤을 때, account.balance, credit.duration.months, age 순서로 변수 중요도가 크다는 것을 파악할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="정형-데이터마이닝.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb445-2"><a href="정형-데이터마이닝.html#cb445-2" aria-hidden="true" tabindex="-1"></a>pred.bg<span class="ot">&lt;-</span><span class="fu">predict</span>(bag, test, <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb445-3"><a href="정형-데이터마이닝.html#cb445-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(pred.bg<span class="sc">$</span>class), <span class="at">reference=</span>test<span class="sc">$</span>credit.rating, <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  50  31
+##          1  45 174
+##                                           
+##                Accuracy : 0.7467          
+##                  95% CI : (0.6935, 0.7949)
+##     No Information Rate : 0.6833          
+##     P-Value [Acc &gt; NIR] : 0.009816        
+##                                           
+##                   Kappa : 0.3905          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.135908        
+##                                           
+##             Sensitivity : 0.8488          
+##             Specificity : 0.5263          
+##          Pos Pred Value : 0.7945          
+##          Neg Pred Value : 0.6173          
+##              Prevalence : 0.6833          
+##          Detection Rate : 0.5800          
+##    Detection Prevalence : 0.7300          
+##       Balanced Accuracy : 0.6875          
+##                                           
+##        &#39;Positive&#39; Class : 1               
+## </code></pre>
+<ul>
+<li>로지스틱 회귀모형, 의사결정나무 모형과 동일한 형태로 정분류율을 확인할 수 있으며, 분석 결과에서 예측한 값의 class가 numeric형이므로 as.factor 함수를 이용하여 factor로 변형을 해야 한다.</li>
+<li>정분류율은 0.7467이며, 민감도는 0.8488로 높게 나타났다. 또, 특이도는 0.5263이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석 분야에 따라 다양한 지표들을 활용하여 분석모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="정형-데이터마이닝.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb447-2"><a href="정형-데이터마이닝.html#cb447-2" aria-hidden="true" tabindex="-1"></a>pred.bg.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.bg<span class="sc">$</span>class), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb447-3"><a href="정형-데이터마이닝.html#cb447-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.bg.roc, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb447-4"><a href="정형-데이터마이닝.html#cb447-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>, <span class="at">b=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="정형-데이터마이닝.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.bg.roc, <span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.6875481</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인한 결과 0.6875로 나타났다.</li>
+</ul>
+</div>
+</div>
+<div id="부스팅-boosting" class="section level4" number="4.2.3.2">
+<h4><span class="header-section-number">4.2.3.2</span> 부스팅 (Boosting)</h4>
+<div id="개념-4" class="section level5" number="4.2.3.2.1">
+<h5><span class="header-section-number">4.2.3.2.1</span> 개념</h5>
+<ul>
+<li>예측력이 약한 모형들을 결합하여 강한 예측모형을 만드는 방법으로 Adaboost는 이진분류 문제에서 랜덤 분류기보다 조금 더 좋은 분류기 n개에 각각 가중치를 설정하고 n개의 분류기를 결합하여 최종 분류기를 만드는 방법을 제안하였다.</li>
+<li>훈련오차를 빨리, 쉽게 줄일 수 있고 배깅에 비해 많은 경우 예측오차가 향상되어 Adaboost의 성능이 배깅보다 뛰어난 경우가 많다.</li>
+</ul>
+</div>
+<div id="r을-이용한-boosting-분석" class="section level5" number="4.2.3.2.2">
+<h5><span class="header-section-number">4.2.3.2.2</span> R을 이용한 Boosting 분석</h5>
+<p><b>[함수사용법]</b></p>
+<pre><code>boosting(formula, data, boos=TRUE/FALSE, control=, ...)</code></pre>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 Boosting 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="정형-데이터마이닝.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adabag)</span>
+<span id="cb451-2"><a href="정형-데이터마이닝.html#cb451-2" aria-hidden="true" tabindex="-1"></a>boost<span class="ot">&lt;-</span><span class="fu">boosting</span>(credit.rating <span class="sc">~</span> ., <span class="at">data=</span>train, <span class="at">boos=</span><span class="cn">TRUE</span>, <span class="at">mfinal=</span><span class="dv">80</span>)</span>
+<span id="cb451-3"><a href="정형-데이터마이닝.html#cb451-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(boost)</span></code></pre></div>
+<pre><code>## [1] &quot;formula&quot;    &quot;trees&quot;      &quot;weights&quot;    &quot;votes&quot;      &quot;prob&quot;      
+## [6] &quot;class&quot;      &quot;importance&quot; &quot;terms&quot;      &quot;call&quot;</code></pre>
+<ul>
+<li>names 함수를 통해 boosting 함수로 생성된 결과들에 어떤 것들이 있는지 확인이 가능하다. 주로 사용하는 인자들에 대한 설명은 아래와 같다.
+<ul>
+<li>trees: boosting을 통해 생성된 의사결정나무들을 확인할 수 있다. (80개)</li>
+<li>weitgts: 각 의사결정나무에 부여된 가중치값을 확인할 수 있다.</li>
+<li>votes: 각 의사결정나무들이 1행 데이터에 대해 1 또는 2열의 분류를 가진다는 것에 대한 투표를 진행한 것이다.</li>
+<li>prob: 각 행에 대해 1 또는 2열의 특징으로 분류되는 확률을 나타내는 것이다.</li>
+<li>class: boosting 기법을 활용해 각 행의 분류를 예측한 것이다.</li>
+<li>importance: 변수의 상대적인 중요도를 나타내며, 지니지수의 gain을 고려한 측도이다.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="정형-데이터마이닝.html#cb453-1" aria-hidden="true" tabindex="-1"></a>boost<span class="sc">$</span>importance</span></code></pre></div>
+<pre><code>##                account.balance                            age 
+##                      5.0653036                     14.7869602 
+##                 apartment.type                   bank.credits 
+##                      1.8398062                      1.5915217 
+##                  credit.amount         credit.duration.months 
+##                     23.0980549                     10.0939561 
+##                 credit.purpose                 current.assets 
+##                      4.3067863                      4.6719210 
+##                     dependents            employment.duration 
+##                      1.3666935                      5.2701945 
+##                 foreign.worker                      guarantor 
+##                      0.3727978                      1.4688110 
+##               installment.rate                 marital.status 
+##                      3.6999734                      2.2674559 
+##                     occupation                  other.credits 
+##                      4.7645403                      1.6476463 
+## previous.credit.payment.status             residence.duration 
+##                      3.0414926                      4.7966697 
+##                        savings                      telephone 
+##                      4.2742639                      1.5751511</code></pre>
+<ul>
+<li>importance 인자에서 변수의 상대적 중요도를 봤을 때, credit.amount, age, credit.duration.months 순서로 변수 중요도가 크다는 것을 파악할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="정형-데이터마이닝.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb455-2"><a href="정형-데이터마이닝.html#cb455-2" aria-hidden="true" tabindex="-1"></a>pred.boos<span class="ot">&lt;-</span><span class="fu">predict</span>(boost, test, <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb455-3"><a href="정형-데이터마이닝.html#cb455-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(pred.boos<span class="sc">$</span>class), <span class="at">reference=</span>test<span class="sc">$</span>credit.rating, <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  48  39
+##          1  47 166
+##                                           
+##                Accuracy : 0.7133          
+##                  95% CI : (0.6586, 0.7638)
+##     No Information Rate : 0.6833          
+##     P-Value [Acc &gt; NIR] : 0.1455          
+##                                           
+##                   Kappa : 0.3223          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.4504          
+##                                           
+##             Sensitivity : 0.8098          
+##             Specificity : 0.5053          
+##          Pos Pred Value : 0.7793          
+##          Neg Pred Value : 0.5517          
+##              Prevalence : 0.6833          
+##          Detection Rate : 0.5533          
+##    Detection Prevalence : 0.7100          
+##       Balanced Accuracy : 0.6575          
+##                                           
+##        &#39;Positive&#39; Class : 1               
+## </code></pre>
+<ul>
+<li>로지스틱 회귀모형, 의사결정나무 모형과 동일한 형태로 정분류율을 확인할 수 있으며, 분석 결과에서 예측한 값의 class가 numeric형이므로 as.factor 함수를 이용하여 factor로 변형을 해야 한다.</li>
+<li>정분류율은 0.7133이며, 민감도는 0.8098로 높게 나타났다. 또, 특이도는 0.5053이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석분야에 따라 다양한 지표들을 활용하여 분석모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="정형-데이터마이닝.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb457-2"><a href="정형-데이터마이닝.html#cb457-2" aria-hidden="true" tabindex="-1"></a>pred.boos.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.boos<span class="sc">$</span>class), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb457-3"><a href="정형-데이터마이닝.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.boos.roc, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb457-4"><a href="정형-데이터마이닝.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>, <span class="at">b=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="정형-데이터마이닝.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.boos.roc,<span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.6575096</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인한 결과 0.6575로 나타났다.</li>
+</ul>
+</div>
+</div>
+<div id="랜덤포레스트-random-forest" class="section level4" number="4.2.3.3">
+<h4><span class="header-section-number">4.2.3.3</span> 랜덤포레스트 (Random Forest)</h4>
+<div id="개념-5" class="section level5" number="4.2.3.3.1">
+<h5><span class="header-section-number">4.2.3.3.1</span> 개념</h5>
+<ul>
+<li>의사결정나무의 특징인 분산이 크다는 점을 고려하여 배깅과 부스팅보다 더 많은 무작위성을 주어 약한 학습기들을 생성한 후 이를 선형 결합하여 최종 학습기를 만드는 방법이다.</li>
+<li>R프로그램에서는 randomForest 패키지로 구현이 가능하다. randomForest 함수를 사용하고 random input에 따른 forest of tree를 생성하여 이를 이용한 분류를 한다.</li>
+<li>수천개의 변수를 통해 변수 제거없이 실행되므로 정확도 측면에서 좋은 성과를 보인다.</li>
+<li>이론적 설명이나 최종 결과에 대한 해석이 어렵다는 단점이 있지만 예측력이 매우 높은 것으로 알려져 있다. 특히 입력변수가 많은 경우, 배깅/부스팅과 비슷하거나 좋은 예측력을 보인다.</li>
+</ul>
+</div>
+<div id="r을-이용한-randomforest-분석" class="section level5" number="4.2.3.3.2">
+<h5><span class="header-section-number">4.2.3.3.2</span> R을 이용한 RandomForest 분석</h5>
+<ul>
+<li>R에서 RandomForest 분석을 수행할 수 있는 함수는 randomForest 패키지의 randomForest 함수이며, 이를 이용하여 분류분석을 실시한다.</li>
+</ul>
+<p><b>[함수사용법]</b></p>
+<pre><code>randomForest(formula, data, ntree, mtry, ...)</code></pre>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식(종속변수 ~ 독립변수)</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>ntree</td>
+<td>사용할 트리의 수, 너무 작은 숫자를 입력하면 예측 불가</td>
+</tr>
+<tr class="even">
+<td>mtry</td>
+<td>각 분할에서 랜덤으로 뽑힌 변수의 개수<br/>보통 classification은 sqrt(변수 개수), regression은 (변수 개수/3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 randomforest 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="정형-데이터마이닝.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code></pre></div>
+<pre><code>## randomForest 4.6-14</code></pre>
+<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;randomForest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     margin</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="정형-데이터마이닝.html#cb467-1" aria-hidden="true" tabindex="-1"></a>(rf.model<span class="ot">&lt;-</span><span class="fu">randomForest</span>(credit.rating <span class="sc">~</span> ., </span>
+<span id="cb467-2"><a href="정형-데이터마이닝.html#cb467-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>train, </span>
+<span id="cb467-3"><a href="정형-데이터마이닝.html#cb467-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ntree=</span><span class="dv">50</span>, <span class="co"># 나무 50개 사용</span></span>
+<span id="cb467-4"><a href="정형-데이터마이닝.html#cb467-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mtry=</span><span class="fu">sqrt</span>(<span class="dv">20</span>), <span class="co"># 사용할 변수의 개수 (classification이므로 sqrt(20)개)</span></span>
+<span id="cb467-5"><a href="정형-데이터마이닝.html#cb467-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">importance=</span><span class="cn">TRUE</span>) <span class="co"># 변수중요도를 결과를 확인</span></span>
+<span id="cb467-6"><a href="정형-데이터마이닝.html#cb467-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 
+## Call:
+##  randomForest(formula = credit.rating ~ ., data = train, ntree = 50,      mtry = sqrt(20), importance = TRUE) 
+##                Type of random forest: classification
+##                      Number of trees: 50
+## No. of variables tried at each split: 4
+## 
+##         OOB estimate of  error rate: 25.43%
+## Confusion matrix:
+##    0   1 class.error
+## 0 88 117   0.5707317
+## 1 61 434   0.1232323</code></pre>
+<ul>
+<li>랜덤포레스트 분석 결과에서 “OOB estimate of error rate”의 값은 에러 추정치로서 값이 낮을수록 분류모델의 성능이 좋다고 판단할 수 있다. Confusion matrix의 결과에서 class.error값으로 분류 에러를 통해 모델 성능을 확인할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="정형-데이터마이닝.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rf.model)</span></code></pre></div>
+<pre><code>##  [1] &quot;call&quot;            &quot;type&quot;            &quot;predicted&quot;       &quot;err.rate&quot;       
+##  [5] &quot;confusion&quot;       &quot;votes&quot;           &quot;oob.times&quot;       &quot;classes&quot;        
+##  [9] &quot;importance&quot;      &quot;importanceSD&quot;    &quot;localImportance&quot; &quot;proximity&quot;      
+## [13] &quot;ntree&quot;           &quot;mtry&quot;            &quot;forest&quot;          &quot;y&quot;              
+## [17] &quot;test&quot;            &quot;inbag&quot;           &quot;terms&quot;</code></pre>
+<ul>
+<li>names 함수를 통해 randomForest 함수로 생성된 결과들에 어떤 것들이 있는지 확인이 가능하다. 주로 사용하는 인자들에 대한 설명은 아래와 같다.
+<ul>
+<li>predicted: Out-of-bag samples에 기초한 예측값을 확인할 수 있다.</li>
+<li>err.rate: 입력데이터 각각에 대한 예측 오류율을 확인할 수 있다.</li>
+<li>importance: 변수 중요도를 나타내며 Gini값을 기준으로 한다. MeanDecreaseAccuracy와 MeanDecreaseGini 모두 값이 클수록 중요도가 높다고 해석할 수 있다.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="정형-데이터마이닝.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(rf.model)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<ul>
+<li>varImpPlot 함수로 importance 인자 결과를 시각화할 수 있다. 변수의 상대적 중요도를 Mean DecreaseGini를 기준으로 봤을 때, credit.amout, age, account.balance 순서로 변수 중요도가 크다는 것을 파악할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="정형-데이터마이닝.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb472-2"><a href="정형-데이터마이닝.html#cb472-2" aria-hidden="true" tabindex="-1"></a>pred.rf<span class="ot">&lt;-</span><span class="fu">predict</span>(rf.model, test[,<span class="sc">-</span><span class="dv">1</span>], <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb472-3"><a href="정형-데이터마이닝.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.rf, <span class="at">reference=</span>test[,<span class="dv">1</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  44  21
+##          1  51 184
+##                                           
+##                Accuracy : 0.76            
+##                  95% CI : (0.7076, 0.8072)
+##     No Information Rate : 0.6833          
+##     P-Value [Acc &gt; NIR] : 0.0021620       
+##                                           
+##                   Kappa : 0.3941          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.0006316       
+##                                           
+##             Sensitivity : 0.8976          
+##             Specificity : 0.4632          
+##          Pos Pred Value : 0.7830          
+##          Neg Pred Value : 0.6769          
+##              Prevalence : 0.6833          
+##          Detection Rate : 0.6133          
+##    Detection Prevalence : 0.7833          
+##       Balanced Accuracy : 0.6804          
+##                                           
+##        &#39;Positive&#39; Class : 1               
+## </code></pre>
+<ul>
+<li>정분류율은 0.76이며, 민감도는 0.8976으로 높게 나타났다. 또 특이도는 0.4632이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석분야에 따라 다양한 지표들을 활용하여 분석 모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="정형-데이터마이닝.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb474-2"><a href="정형-데이터마이닝.html#cb474-2" aria-hidden="true" tabindex="-1"></a>pred.rf.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.rf), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb474-3"><a href="정형-데이터마이닝.html#cb474-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.rf.roc,<span class="st">&quot;tpr&quot;</span>,<span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb474-4"><a href="정형-데이터마이닝.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="정형-데이터마이닝.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.rf.roc, <span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] 0.6803594</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인한 결과 0.6804로 나타났다.</li>
+</ul>
+<p><strong>Q. 앞서 분리한 iris 데이터의 Species를 분류하는 랜덤포레스트분석을 실시하고 오분류표를 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="정형-데이터마이닝.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb477-2"><a href="정형-데이터마이닝.html#cb477-2" aria-hidden="true" tabindex="-1"></a>(rf.model2<span class="ot">&lt;-</span><span class="fu">randomForest</span>(Species <span class="sc">~</span> ., <span class="at">data=</span>train.iris, <span class="at">ntree=</span><span class="dv">50</span>, <span class="at">mtry=</span><span class="fu">sqrt</span>(<span class="dv">4</span>), <span class="at">importance=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## 
+## Call:
+##  randomForest(formula = Species ~ ., data = train.iris, ntree = 50,      mtry = sqrt(4), importance = TRUE) 
+##                Type of random forest: classification
+##                      Number of trees: 50
+## No. of variables tried at each split: 2
+## 
+##         OOB estimate of  error rate: 7.62%
+## Confusion matrix:
+##            setosa versicolor virginica class.error
+## setosa         35          0         0   0.0000000
+## versicolor      0         36         4   0.1000000
+## virginica       0          4        26   0.1333333</code></pre>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="정형-데이터마이닝.html#cb479-1" aria-hidden="true" tabindex="-1"></a>pred.rf2<span class="ot">&lt;-</span><span class="fu">predict</span>(rf.model2, test.iris[,<span class="sc">-</span><span class="dv">5</span>], <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb479-2"><a href="정형-데이터마이닝.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.rf2, <span class="at">reference=</span>test.iris[,<span class="dv">5</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         10         1
+##   virginica       0          0        19
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.4444          
+##     P-Value [Acc &gt; NIR] : 8.12e-15        
+##                                           
+##                   Kappa : 0.9656          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            1.0000           0.9500
+## Specificity                 1.0000            0.9714           1.0000
+## Pos Pred Value              1.0000            0.9091           1.0000
+## Neg Pred Value              1.0000            1.0000           0.9615
+## Prevalence                  0.3333            0.2222           0.4444
+## Detection Rate              0.3333            0.2222           0.4222
+## Detection Prevalence        0.3333            0.2444           0.4222
+## Balanced Accuracy           1.0000            0.9857           0.9750</code></pre>
+</div>
+</div>
+</div>
+<div id="svm-support-vector-machine" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> SVM (Support Vector Machine)</h3>
+<ul>
+<li>서포트 벡터 머신은 기계학습 분야 중 하나로 패턴인식, 자료 분석 등을 위한 지도학습 모델이며 주로 회귀와 분류 문제 해결에 사용된다.</li>
+<li>서포트 벡터 머신 알고리즘은 주어진 데이터 집합을 바탕으로 하여 새로운 데이터가 어떤 범주에 속할 것인지를 판단하는 <b>비확률적 이진 선형 분류 모델을 생성</b>한다.</li>
+</ul>
+<div id="작동-원리" class="section level4" number="4.2.4.1">
+<h4><span class="header-section-number">4.2.4.1</span> 작동 원리</h4>
+<ul>
+<li>데이터의 각 그룹을 구분하는 분류자를 <b>결정 초평면</b>, 각 그룹에 속한 데이터들 중에서도 초평면에 가장 가까이에 붙어 있는 최정방 데이터들을 <b>서포트 벡터</b>, 서포트 벡터와 초평면 사이의 수직거리를 <b>마진</b>이라고 한다.</li>
+<li>SVM은 고차원 혹은 무한 차원의 공간에서 <b>마진을 최대화하는 초평면 (MMH, Maximum Margin Hyperplane: 최대마진 초평면) 을 찾아 분류와 회귀를 수행</b>한다.</li>
+<li>SVM 모형은 선형 분류뿐만 아니라 <b>비선형 분류</b>에서도 사용되는데, 비선형 분류에서는 입력자료를 다차원 공간상으로 매핑할 때 <b>커널 트릭</b>을 사용하기도 한다.</li>
+</ul>
+</div>
+<div id="r을-이용한-svm-분석" class="section level4" number="4.2.4.2">
+<h4><span class="header-section-number">4.2.4.2</span> R을 이용한 SVM 분석</h4>
+<p><b>[함수사용법]</b></p>
+<pre><code>svm(formula, data, kernel, gamma, cost, ...)</code></pre>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식(종속변수 ~ 독립변수)</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>kernel</td>
+<td>훈련과 예측에 사용되는 커널<br/>“radial”,“linear”,“polynomial”,“sigmoid”가 있음.<br/>실제 문제에서 커널의 선택이 결과의 정확도에 큰 영향을 주지 않음.</td>
+</tr>
+<tr class="even">
+<td>gamma</td>
+<td>초평면의 기울기, default=1/(데이터차원)</td>
+</tr>
+<tr class="odd">
+<td>cost</td>
+<td>과적합을 막는 정도, default=1</td>
+</tr>
+</tbody>
+</table>
+<pre><code>tune.svm(formula, data, kernel, gamma, cost, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식(종속변수 ~ 독립변수)</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>gamma</td>
+<td>초평면의 기울기</td>
+</tr>
+<tr class="even">
+<td>cost</td>
+<td>과적합을 막는 정도</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터를 이용하여 tune.svm 함수로 최적의 파라미터를 찾고 SVM 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="정형-데이터마이닝.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;e1071&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb483-2"><a href="정형-데이터마이닝.html#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb483-3"><a href="정형-데이터마이닝.html#cb483-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tune.svm</span>(credit.rating <span class="sc">~</span> ., <span class="at">data=</span>credit, <span class="at">gamma =</span> <span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">6</span><span class="sc">:-</span><span class="dv">1</span>), <span class="at">cost =</span> <span class="dv">10</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## 
+## Parameter tuning of &#39;svm&#39;:
+## 
+## - sampling method: 10-fold cross validation 
+## 
+## - best parameters:
+##  gamma cost
+##   0.01   10
+## 
+## - best performance: 0.235</code></pre>
+<ul>
+<li>tune.svm 함수에서 gamma와 cost의 주어진 범위 내에서 최적값을 찾아준다. 여기서는 gamma 6개, cost 2개, 즉 6 * 12개의 조합에서 모수조율이 이루어진다. 분석결과에서 best parameters를 통해 gamma는 0.01, cost는 10이 최적의 파라미터임을 확인할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="정형-데이터마이닝.html#cb485-1" aria-hidden="true" tabindex="-1"></a>svm.model<span class="ot">&lt;-</span><span class="fu">svm</span>(credit.rating<span class="sc">~</span>., <span class="at">data=</span>train, <span class="at">kernel=</span><span class="st">&quot;radial&quot;</span>, <span class="at">gamma=</span><span class="fl">0.01</span>, <span class="at">cost=</span><span class="dv">10</span>)</span>
+<span id="cb485-2"><a href="정형-데이터마이닝.html#cb485-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(svm.model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## svm(formula = credit.rating ~ ., data = train, kernel = &quot;radial&quot;, 
+##     gamma = 0.01, cost = 10)
+## 
+## 
+## Parameters:
+##    SVM-Type:  C-classification 
+##  SVM-Kernel:  radial 
+##        cost:  10 
+## 
+## Number of Support Vectors:  389
+## 
+##  ( 212 177 )
+## 
+## 
+## Number of Classes:  2 
+## 
+## Levels: 
+##  0 1</code></pre>
+<ul>
+<li>svm 함수에서 gamma와 cost를 설정하고, kernel을 “radial”으로 지정한다. kernel은 radial (가우시안 RBF)이 default로 되어 있다. summary 함수로 svm 모델의 cost값과 Support Vectors의 수(train 데이터 수)를 확인할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="정형-데이터마이닝.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측을 통한 정분류를 확인</span></span>
+<span id="cb487-2"><a href="정형-데이터마이닝.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;caret&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb487-3"><a href="정형-데이터마이닝.html#cb487-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb487-4"><a href="정형-데이터마이닝.html#cb487-4" aria-hidden="true" tabindex="-1"></a>pred.svm<span class="ot">&lt;-</span><span class="fu">predict</span>(svm.model, test, <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb487-5"><a href="정형-데이터마이닝.html#cb487-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.svm, <span class="at">reference=</span>test[,<span class="dv">1</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0  52  31
+##          1  43 174
+##                                           
+##                Accuracy : 0.7533          
+##                  95% CI : (0.7005, 0.8011)
+##     No Information Rate : 0.6833          
+##     P-Value [Acc &gt; NIR] : 0.004761        
+##                                           
+##                   Kappa : 0.41            
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.200994        
+##                                           
+##             Sensitivity : 0.8488          
+##             Specificity : 0.5474          
+##          Pos Pred Value : 0.8018          
+##          Neg Pred Value : 0.6265          
+##              Prevalence : 0.6833          
+##          Detection Rate : 0.5800          
+##    Detection Prevalence : 0.7233          
+##       Balanced Accuracy : 0.6981          
+##                                           
+##        &#39;Positive&#39; Class : 1               
+## </code></pre>
+<ul>
+<li>정분류율을 0.7533이며, 민감도는 0.8488로 높게 나타났다. 또, 특이도는 0.5474이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석 분야에 따라 다양한 지표들을 활용하여 분석모형을 선택할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="정형-데이터마이닝.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;ROCR&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb489-2"><a href="정형-데이터마이닝.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb489-3"><a href="정형-데이터마이닝.html#cb489-3" aria-hidden="true" tabindex="-1"></a>pred.svm.roc<span class="ot">&lt;-</span><span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.svm), <span class="fu">as.numeric</span>(test[,<span class="dv">1</span>]))</span>
+<span id="cb489-4"><a href="정형-데이터마이닝.html#cb489-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.svm.roc, <span class="st">&quot;tpr&quot;</span>, <span class="st">&quot;fpr&quot;</span>))</span>
+<span id="cb489-5"><a href="정형-데이터마이닝.html#cb489-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>, <span class="at">b=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="정형-데이터마이닝.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.svm.roc, <span class="st">&quot;auc&quot;</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.6980745</code></pre>
+<ul>
+<li>prediction 함수와 performance 함수로 값을 구하여 plot함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values</span> 값으로 확인한 결과 0.6981로 나타났다.</li>
+</ul>
+<p><strong>Q. 앞서 분리한 iris 데이터의 Species를 분류하는 SVM 분석을 실시하고 오분류표를 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="정형-데이터마이닝.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;e1071&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb492-2"><a href="정형-데이터마이닝.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb492-3"><a href="정형-데이터마이닝.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tune.svm</span>(Species <span class="sc">~</span> ., <span class="at">data=</span>iris, <span class="at">gamma=</span><span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>), <span class="at">cost=</span><span class="dv">2</span><span class="sc">^</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## 
+## Parameter tuning of &#39;svm&#39;:
+## 
+## - sampling method: 10-fold cross validation 
+## 
+## - best parameters:
+##  gamma cost
+##    0.5    4
+## 
+## - best performance: 0.03333333</code></pre>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="정형-데이터마이닝.html#cb494-1" aria-hidden="true" tabindex="-1"></a>svm.model2<span class="ot">&lt;-</span><span class="fu">svm</span>(Species<span class="sc">~</span>., <span class="at">data=</span>train.iris, <span class="at">kernel=</span><span class="st">&quot;radial&quot;</span>, <span class="at">gamma=</span><span class="fl">0.5</span>, <span class="at">cost=</span><span class="dv">16</span>)</span>
+<span id="cb494-2"><a href="정형-데이터마이닝.html#cb494-2" aria-hidden="true" tabindex="-1"></a>pred.svm2<span class="ot">&lt;-</span><span class="fu">predict</span>(svm.model2, test.iris, <span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb494-3"><a href="정형-데이터마이닝.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.svm2, <span class="at">reference=</span>test.iris[,<span class="dv">5</span>], <span class="at">positive=</span><span class="st">&#39;1&#39;</span>)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor virginica
+##   setosa         15          0         0
+##   versicolor      0         10         1
+##   virginica       0          0        19
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9778          
+##                  95% CI : (0.8823, 0.9994)
+##     No Information Rate : 0.4444          
+##     P-Value [Acc &gt; NIR] : 8.12e-15        
+##                                           
+##                   Kappa : 0.9656          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: setosa Class: versicolor Class: virginica
+## Sensitivity                 1.0000            1.0000           0.9500
+## Specificity                 1.0000            0.9714           1.0000
+## Pos Pred Value              1.0000            0.9091           1.0000
+## Neg Pred Value              1.0000            1.0000           0.9615
+## Prevalence                  0.3333            0.2222           0.4444
+## Detection Rate              0.3333            0.2222           0.4222
+## Detection Prevalence        0.3333            0.2444           0.4222
+## Balanced Accuracy           1.0000            0.9857           0.9750</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="통계분석.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
