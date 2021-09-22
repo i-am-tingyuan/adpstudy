@@ -210,3 +210,4 @@ r을-이용한-randomforest-분석
 svm-support-vector-machine
 작동-원리
 r을-이용한-svm-분석
+나이브-베이즈-분류
