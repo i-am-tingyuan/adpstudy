@@ -632,3 +632,55 @@ confusionMatrix(data=pred.svm2, reference=test.iris[,5], positive='1')
 - 나이브 베이즈 분류는 데이터에서 변수들에 대한 조건부 독립을 가정하는 알고리즘으로 클래스에 대한 사전 정보와 데이터로부터 추출된 정보를 결합하고, 베이즈 정리를 이용하여 특정 데이터가 어떤 클래스에 속하는지를 분류하는 알고리즘이다. 
 - 텍스트 분류에서 문서를 여러 범주중 하나로 판단하는 문제에 대한 솔루션으로 사용될 수 있다. 
 
+#### Bayes theorem
+
+- 나이브 베이즈 알고리즘의 기본이 되는 개념으로, 두 확률 변수의 사전 확률과 사후 확률 사이의 관계를 나타내는 정리이다. 
+- 사건 A와 B가 있을 때, 사건 B가 일어난 것을 전제로 한 사건 A의 조건부 확률을 구하고자 한다. 하지만 현재 가지고 있는 정보는 사건 A가 일어난 것을 전제로 한 사건 B의 조건부 확률, A의 확률, B의 확률뿐이다. 이때, 원래 구하고자 했던 '사건 B가 일어난 것을 전제로 한 사건 A의 조건부 확률'을 다음과 같이 구할 수 있다는 것이 베이즈 정리이다. <br />
+$P(A|B) = \frac{P(B \cap A)}{P(B)} = \frac{P(A)P(B|A)}{P(B)}=\frac{P(A)P(B|A)}{P(A)P(B|A)+P(A^{C}P(B|A^{C}))}$
+
+- $P(A|B)$ : 사건 B가 발생했을 때 사건 A가 발생할 확률 -> 사후확률 (posterior)
+- $P(B|A)$ : 사건 A가 발생했을 때 사건 B가 발생할 확률 -> 우도 (likelihood)
+- $P(A \cap B)$ : 사건 A와 B가 동시에 발생할 확률
+- $P(A)$ : 사건 A가 발생할 확률 -> 사전확률 (prior)
+- $P(B)$ : 사건 B가 발생할 화률 -> 관찰값 (evidence)
+- 위 식을 다음과 같은 식으로도 표현이 가능하다. <br />$posterior = \frac{prior\times likelihood}{evidence}$
+
+#### 나이브 베이즈 분류
+- 나이브 베이즈 분류는 하나의 속성값을 기준으로 다른 속성이 독립적이라 전제했을 때 해당 속성 값이 클래스 분류에 미치는 영향을 측정한다. 
+- 속성값에 대해 다른 속성이 독립적이라는 가정은<b>클래스 조건 독립성</b>이라 한다. 
+
+#### R을 이용한 나이브 베이즈 분류 분석
+
+<b>함수사용법</b>
+```{}
+naiveBayes(formula, data, laplace=0, ...)
+```
+
+__Q. 앞서 분할한 credit 데이터의 train 데이터로 나이브 베이즈 분류 모델을 만들어 보자.__
+```{r}
+library(e1071)
+nb.model<-naiveBayes(credit.rating~., data=train, laplace=0)
+nb.model
+```
+
+- 분석 결과에서 A-priori probabilities는 사전확률을 나타내고 있으며, Conditional probabilities로 각 변수에 대해 조건부 확률을 표로 제공하고 있다. 수치형 변수의 경우 평균, 표준편차를 제공한다. 
+
+```{r}
+# 예측을 통한 정분류율 확인
+library(caret)
+pred.nb<-predict(nb.model, test[, -1], type="class")
+confusionMatrix(data=pred.nb, reference=test[,1], positive='1')
+```
+
+- 정분류율(Accuracy)은 0.7233이며, 민감도(Sensitivity)는 0.7415로 높게 나타났다. 또, 특이도 (Specificity)는 0.6842이다. 정확도가 높다고 해서 무조건 좋은 모형은 아니며, 분석 분야에 따라 다양한 지표들을 활용하여 분석 모형을 선택할 수 있다. 
+
+```{r}
+install.packages(setdiff("ROCR", rownames(installed.packages())))
+library(ROCR)
+pred.nb.roc<-prediction(as.numeric(pred.nb), as.numeric(test[,1]))
+plot(performance(pred.nb.roc, "tpr", "fpr"))
+abline(a=0, b=1, lty=2, col="black")
+performance(pred.nb.roc, "auc")@y.values
+```
+
+- prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC  커브를 그렸으며, AUC값은 @y.values값으로 확인한 결과 0.7128로 나타났다. 

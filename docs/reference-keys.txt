@@ -211,3 +211,6 @@ svm-support-vector-machine
 작동-원리
 r을-이용한-svm-분석
 나이브-베이즈-분류
+bayes-theorem
+나이브-베이즈-분류-1
+r을-이용한-나이브-베이즈-분류-분석
