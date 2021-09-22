@@ -214,3 +214,15 @@ r을-이용한-svm-분석
 bayes-theorem
 나이브-베이즈-분류-1
 r을-이용한-나이브-베이즈-분류-분석
+k-nn-k-nearest-neighbor
+k-nn-알고리즘의-원리
+k의-선택
+r을-이용한-k-nn-분석
+인공신경망-모형-artificial-neural-network
+특징
+구조
+뉴런의-계산
+뉴런의-활성화-함수
+단일-뉴런의-학습-단층-퍼셉트론
+r을-이용한-인공신경망-분석
+nnet

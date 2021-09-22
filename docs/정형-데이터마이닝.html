@@ -225,6 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.3" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#앙상블-기법"><i class="fa fa-check"></i><b>4.2.3</b> 앙상블 기법</a></li>
 <li class="chapter" data-level="4.2.4" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#svm-support-vector-machine"><i class="fa fa-check"></i><b>4.2.4</b> SVM (Support Vector Machine)</a></li>
 <li class="chapter" data-level="4.2.5" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#나이브-베이즈-분류"><i class="fa fa-check"></i><b>4.2.5</b> 나이브 베이즈 분류</a></li>
+<li class="chapter" data-level="4.2.6" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#k-nn-k-nearest-neighbor"><i class="fa fa-check"></i><b>4.2.6</b> K-NN (K-Nearest Neighbor)</a></li>
+<li class="chapter" data-level="4.2.7" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#인공신경망-모형-artificial-neural-network"><i class="fa fa-check"></i><b>4.2.7</b> 인공신경망 모형 (Artificial Neural Network)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2250,7 +2252,321 @@ FN (False Negative)</li>
 <ul>
 <li>prediction 함수와 performance 함수로 값을 구하여 plot 함수로 ROC 커브를 그렸으며, AUC값은 <span class="citation">@y.values값으로</span> 확인한 결과 0.7128로 나타났다.</li>
 </ul>
+</div>
+</div>
+<div id="k-nn-k-nearest-neighbor" class="section level3" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> K-NN (K-Nearest Neighbor)</h3>
+<ul>
+<li>K-NN은 어떤 범주로 나누어져 있는 데이터셋이 있을 때, 새로운 데이터가 추가된다면 이를 어떤 범주로 분류할 것인지를 결정할 때 사용할 수 있는 분류 알고리즘으로 지도학습 (Supervised Learning)의 한 종류이다.</li>
+</ul>
+<div id="k-nn-알고리즘의-원리" class="section level4" number="4.2.6.1">
+<h4><span class="header-section-number">4.2.6.1</span> K-NN 알고리즘의 원리</h4>
+<ul>
+<li>K-NN 알고리즘에서는 새로운 데이터의 클래스를 해당 데이터와 가장 가까운 K개 데이터들의 클래스(범주)로 결정한다.</li>
+<li>K-NN 알고리즘에서는 최근접 이웃 간의 거리를 계산할 때 유클리디안 거리, 맨하탄 거리, 민코우스키 거리 등을 사용할 수 있으며, 대표적으로 유클리디안 거리를 사용한다.</li>
+</ul>
+</div>
+<div id="k의-선택" class="section level4" number="4.2.6.2">
+<h4><span class="header-section-number">4.2.6.2</span> K의 선택</h4>
+<ul>
+<li>K의 선택은 학습의 난이도와 데이터의 개수에 따라 결정될 수 있으며, 일반적으로는 훈련 데이터 개수의 제곱근으로 설정한다. 그리고 k를 짝수로 했을 때, 인접객체의 범주가 동률일 경우가 나오므로 반드시 홀수의 값으로 k를 선택하는 것이 중요하다.</li>
+<li>K를 너무 크게 설정할 경우 주변에 있는 데이터와 근접성이 떨어져 클러스터링이 잘 이루어지지 않고, 너무 작게 설정할 경우 이상치 혹은 잡음 데이터와 이웃이 될 가능성이 있으므로 적절한 k를 선택하는 것이 중요하다.</li>
+</ul>
+</div>
+<div id="r을-이용한-k-nn-분석" class="section level4" number="4.2.6.3">
+<h4><span class="header-section-number">4.2.6.3</span> R을 이용한 K-NN 분석</h4>
+<ul>
+<li>knn 분석 이전에 훈련, 데스트 데이터의 종속변수를 제외한 뒤에 분석을 실시한다. 그리고 거리를 이용한 분석이므로 데이터의 형태가 범주형 변수가 아닌 수치형으로 변환되어야 한다.</li>
+</ul>
+<p><b>함수사용법</b></p>
+<pre><code>knn(train, test, cl, k, ...)</code></pre>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 K-NN 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="정형-데이터마이닝.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
+<span id="cb142-2"><a href="정형-데이터마이닝.html#cb142-2" aria-hidden="true" tabindex="-1"></a>train.data<span class="ot">&lt;-</span>train[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb142-3"><a href="정형-데이터마이닝.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train.data)</span></code></pre></div>
+<pre><code>##     account.balance credit.duration.months previous.credit.payment.status
+## 415               3                     12                              3
+## 463               3                     15                              2
+## 179               3                     18                              2
+## 526               3                     36                              3
+## 195               3                     12                              2
+## 938               2                     18                              3
+##     credit.purpose credit.amount savings employment.duration installment.rate
+## 415              3           522       3                   4                4
+## 463              1          3812       2                   1                1
+## 179              4          1950       1                   3                4
+## 526              3          9566       1                   2                2
+## 195              3          1262       1                   2                3
+## 938              4           884       1                   4                4
+##     marital.status guarantor residence.duration current.assets age
+## 415              3         1                  4              2  42
+## 463              1         1                  4              3  23
+## 179              3         1                  1              3  34
+## 526              1         1                  2              3  31
+## 195              3         1                  2              3  25
+## 938              3         1                  4              3  36
+##     other.credits apartment.type bank.credits occupation dependents telephone
+## 415             2              2            2          3          2         2
+## 463             2              2            1          3          1         2
+## 179             1              2            2          3          1         2
+## 526             1              2            2          3          1         1
+## 195             2              2            1          3          1         1
+## 938             2              2            1          3          2         2
+##     foreign.worker
+## 415              1
+## 463              1
+## 179              1
+## 526              1
+## 195              1
+## 938              1</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="정형-데이터마이닝.html#cb144-1" aria-hidden="true" tabindex="-1"></a>test.data<span class="ot">&lt;-</span>test[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb144-2"><a href="정형-데이터마이닝.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test.data)</span></code></pre></div>
+<pre><code>##    account.balance credit.duration.months previous.credit.payment.status
+## 1                1                     18                              3
+## 3                2                     12                              2
+## 4                1                     12                              3
+## 7                1                      8                              3
+## 9                3                     18                              3
+## 12               1                     30                              3
+##    credit.purpose credit.amount savings employment.duration installment.rate
+## 1               2          1049       1                   1                4
+## 3               4           841       2                   3                2
+## 4               4          2122       1                   2                3
+## 7               4          3398       1                   3                1
+## 9               3          1098       1                   1                4
+## 12              1          6187       2                   3                1
+##    marital.status guarantor residence.duration current.assets age other.credits
+## 1               1         1                  4              2  21             2
+## 3               1         1                  4              1  23             2
+## 4               3         1                  2              1  39             2
+## 7               3         1                  4              1  39             2
+## 9               1         1                  4              3  65             2
+## 12              4         1                  4              3  24             2
+##    apartment.type bank.credits occupation dependents telephone foreign.worker
+## 1               1            1          3          1         1              1
+## 3               1            1          2          1         1              1
+## 4               1            2          2          2         1              2
+## 7               2            2          2          1         1              2
+## 9               2            2          1          1         1              1
+## 12              1            2          3          1         1              1</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="정형-데이터마이닝.html#cb146-1" aria-hidden="true" tabindex="-1"></a>class<span class="ot">&lt;-</span>train[,<span class="dv">1</span>]</span>
+<span id="cb146-2"><a href="정형-데이터마이닝.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(class)</span></code></pre></div>
+<pre><code>## [1] 1 1 1 1 1 0
+## Levels: 0 1</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="정형-데이터마이닝.html#cb148-1" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.3</span><span class="ot">&lt;-</span><span class="fu">knn</span>(train.data, test.data, class, <span class="at">k=</span><span class="dv">3</span>)</span>
+<span id="cb148-2"><a href="정형-데이터마이닝.html#cb148-2" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.7</span><span class="ot">&lt;-</span><span class="fu">knn</span>(train.data, test.data, class, <span class="at">k=</span><span class="dv">7</span>)</span>
+<span id="cb148-3"><a href="정형-데이터마이닝.html#cb148-3" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.10</span><span class="ot">&lt;-</span><span class="fu">knn</span>(train.data, test.data, class, <span class="at">k=</span><span class="dv">10</span>)</span>
+<span id="cb148-4"><a href="정형-데이터마이닝.html#cb148-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-5"><a href="정형-데이터마이닝.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 각각의 k에 대해 분류 table 작성과 분류 정확도 확인</span></span>
+<span id="cb148-6"><a href="정형-데이터마이닝.html#cb148-6" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">table</span>(knn<span class="fl">.3</span>, test<span class="sc">$</span>credit.rating))</span></code></pre></div>
+<pre><code>##      
+## knn.3   0   1
+##     0  27  51
+##     1  68 154</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="정형-데이터마이닝.html#cb150-1" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.1</span>[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>t<span class="fl">.1</span>[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sum</span>(t<span class="fl">.1</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6033333</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="정형-데이터마이닝.html#cb152-1" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">table</span>(knn<span class="fl">.7</span>, test<span class="sc">$</span>credit.rating))</span></code></pre></div>
+<pre><code>##      
+## knn.7   0   1
+##     0  18  26
+##     1  77 179</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="정형-데이터마이닝.html#cb154-1" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.2</span>[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>t<span class="fl">.2</span>[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sum</span>(t<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6566667</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="정형-데이터마이닝.html#cb156-1" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.3</span><span class="ot">&lt;-</span><span class="fu">table</span>(knn<span class="fl">.10</span>, test<span class="sc">$</span>credit.rating))</span></code></pre></div>
+<pre><code>##       
+## knn.10   0   1
+##      0  12  17
+##      1  83 188</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="정형-데이터마이닝.html#cb158-1" aria-hidden="true" tabindex="-1"></a>(t<span class="fl">.3</span>[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>t<span class="fl">.3</span>[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sum</span>(t<span class="fl">.3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6666667</code></pre>
+<ul>
+<li>분석 이전에 종속변수(credit.rating)을 제외한 데이터를 train.data와 test.data에 저장하고 class에 훈련 데이터의 종속변수를 저장한다 .그리고 k가 3, 7, 10일 때 각각 모델을 knn 함수를 사용하여 만든다.</li>
+<li>분석 결과를 확인하기 위해서 각각의 k에 대해 분류 table과 정분류율을 계산하여 가장 정분류율이 높은 모델을 찾는다. 위의 결과에서 k를 10으로 했을 때 정분류율이 67%로 가장 높게 나타났다.</li>
+</ul>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="정형-데이터마이닝.html#cb160-1" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">numeric</span>()</span>
+<span id="cb160-2"><a href="정형-데이터마이닝.html#cb160-2" aria-hidden="true" tabindex="-1"></a>k<span class="ot">=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">22</span></span>
+<span id="cb160-3"><a href="정형-데이터마이닝.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> k) {</span>
+<span id="cb160-4"><a href="정형-데이터마이닝.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  pred<span class="ot">&lt;-</span><span class="fu">knn</span>(train.data, test.data, class, <span class="at">k=</span>i<span class="dv">-2</span>)</span>
+<span id="cb160-5"><a href="정형-데이터마이닝.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  t<span class="ot">&lt;-</span><span class="fu">table</span>(pred, test<span class="sc">$</span>credit.rating)</span>
+<span id="cb160-6"><a href="정형-데이터마이닝.html#cb160-6" aria-hidden="true" tabindex="-1"></a>  result[i<span class="dv">-2</span>]<span class="ot">&lt;-</span>(t[<span class="dv">1</span>,<span class="dv">1</span>] <span class="sc">+</span> t[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">sum</span>(t)</span>
+<span id="cb160-7"><a href="정형-데이터마이닝.html#cb160-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb160-8"><a href="정형-데이터마이닝.html#cb160-8" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>##  [1] 0.5966667 0.5666667 0.6033333 0.6000000 0.6300000 0.6500000 0.6566667
+##  [8] 0.6633333 0.6766667 0.6500000 0.6700000 0.6700000 0.6800000 0.6766667
+## [15] 0.6733333 0.6833333 0.6900000 0.6766667 0.6900000 0.6866667</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="정형-데이터마이닝.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(result, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.6900000 0.6900000 0.6866667 0.6833333 0.6800000 0.6766667 0.6766667
+##  [8] 0.6766667 0.6733333 0.6700000 0.6700000 0.6633333 0.6566667 0.6500000
+## [15] 0.6500000 0.6300000 0.6033333 0.6000000 0.5966667 0.5666667</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="정형-데이터마이닝.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(result<span class="sc">==</span><span class="fu">max</span>(result))</span></code></pre></div>
+<pre><code>## [1] 17 19</code></pre>
+<ul>
+<li>K-NN에서 최적의 K를 선정하는 것이 중요하다. 그렇기 때문에 최적의 k의 값을 선정해야 하며, 여기에서는 정분류율이 가장 높은 k가 최적의 k값이라고 선정하여 함수를 구현했다.</li>
+<li>위의 결과에서 k가 17, 19일 때 분류 정확도가 가장 좋다고 나타나며, 정분류율은 69%이다.</li>
+</ul>
+</div>
+</div>
+<div id="인공신경망-모형-artificial-neural-network" class="section level3" number="4.2.7">
+<h3><span class="header-section-number">4.2.7</span> 인공신경망 모형 (Artificial Neural Network)</h3>
+<ul>
+<li>인공신경망 모형은 동물의 뇌신경계를 모방하여 분류 또는 예측하기 위해 만들어진 모형이다. 신경망에서는 입력은 인간의 뇌의 시냅스에 해당하며 개별 신호의 강도에 따라 가중되며, 활성 함수는 인공신경망의 출력을 계산한다.</li>
+<li>인공신경망은 가중치를 반복적으로 조정하여 학습하며 뉴런들은 링크로 연결되어 있고, 각 링크에는 수치적인 가중치가 있다. 인공신경망은 신경망의 가중치를 초기화하고 훈련 데이터를 통해 가중치를 갱신하여 신경망의 구조를 선택하고, 활용할 학습 알고리즘을 결정한 후 신경망을 훈련 시킨다.</li>
+</ul>
+<div id="특징" class="section level4" number="4.2.7.1">
+<h4><span class="header-section-number">4.2.7.1</span> 특징</h4>
+<div id="구조" class="section level5" number="4.2.7.1.1">
+<h5><span class="header-section-number">4.2.7.1.1</span> 구조</h5>
+<ul>
+<li>입력 링크에서 여러 신호를 받아서 새로운 활성화 수준을 계산하고, 출력 링크로 출력 신호를 보낸다.</li>
+<li>입력신호는 미가공 데이터 또는 다른 뉴런으로부터의 출력이며, 출력신호는 문제의 최종해 (Solution)이 되거나 다른 뉴런의 입력이 될 수 있다.</li>
+</ul>
+</div>
+<div id="뉴런의-계산" class="section level5" number="4.2.7.1.2">
+<h5><span class="header-section-number">4.2.7.1.2</span> 뉴런의 계산</h5>
+<ul>
+<li>뉴런은 전이함수, 즉 활성화 함수 (activation function)를 사용하며, 활성화 함수를 이용해 출력을 결정하며 입력신호의 가중치 합을 계산하여 임계값과 비교한다.</li>
+<li>가중치 합이 임계값보다 작으면 뉴런의 출력은 -1 혹은 0, 같거나 크면 +1 혹은 x의 값을 출력한다.</li>
+</ul>
+</div>
+<div id="뉴런의-활성화-함수" class="section level5" number="4.2.7.1.3">
+<h5><span class="header-section-number">4.2.7.1.3</span> 뉴런의 활성화 함수</h5>
+<ul>
+<li>시그모이드 함수</li>
+<li>softmax 함수</li>
+<li>Relu 함수</li>
+</ul>
+</div>
+<div id="단일-뉴런의-학습-단층-퍼셉트론" class="section level5" number="4.2.7.1.4">
+<h5><span class="header-section-number">4.2.7.1.4</span> 단일 뉴런의 학습 (단층 퍼셉트론)</h5>
+<ul>
+<li>퍼셉트론은 선형 결합기와 하드 리미터로 구성되며, 초평면은 n차원 공간을 두 개의 영역으로 나눈다.</li>
+<li>초평면을 선형 분리함수로 정의한다. <span class="math display">\[\sum_{i=1}^n x_iw_i-\theta=0\]</span></li>
+</ul>
+</div>
+</div>
+<div id="r을-이용한-인공신경망-분석" class="section level4" number="4.2.7.2">
+<h4><span class="header-section-number">4.2.7.2</span> R을 이용한 인공신경망 분석</h4>
+<ul>
+<li>R에서 인공신경망 분석을 수행할 수 있는 패키지는 nnet와 neuralnet이 있으며 각각 nnet 함수와 neuralnet 함수를 제공한다.</li>
+</ul>
+<div id="nnet" class="section level5" number="4.2.7.2.1">
+<h5><span class="header-section-number">4.2.7.2.1</span> nnet</h5>
+<ul>
+<li>nnet 패키지는 전통적인 역전파를 가지고 feed-forward 신경망을 훈련하는 알고리즘을 제공한다. 그리고 신경망의 매개변수는 엔트로피와 SSE로 최적화되며, 출력결과를 softmax 함수를 사용해 확률 형태로 변환이 가능하고 과적합을 막기 위해 가중치 감소를 제공한다.</li>
+<li>nnet 함수는 size, maxit, decay 인자 외에도 가중치를 설정하는 weights, 초기 가중치 값을 설정하는 wts 등의 인자가 있다.</li>
+<li>nnet 함수로 생성된 모델의 변수 중요도를 파악하기 위해서는 NeuralNetTools 패키지의 garson 함수를 사용하여 확인한다.</li>
+</ul>
+<p><b>함수사용법</b></p>
+<pre><code>nnet(formula, data, size, maxit, decay=5e-04 ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>수식(종속변수 ~ 독립변수)</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>hidden node의 개수</td>
+</tr>
+<tr class="even">
+<td>maxit</td>
+<td>학습 반복횟수, 반복 중 가장 좋은 모델을 선정함.</td>
+</tr>
+<tr class="odd">
+<td>decay</td>
+<td>가중치 감소의 모수, 보통 5e-04 채택</td>
+</tr>
+</tbody>
+</table>
+<p><b>함수사용법</b></p>
+<pre><code>garson(mod_in)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mod_in</td>
+<td>생성된 인공신경망 모델</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 nnet 함수를 활용한 인공신경망 모델을 만들어 보자.</strong></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="정형-데이터마이닝.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb168-2"><a href="정형-데이터마이닝.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1231</span>)</span>
+<span id="cb168-3"><a href="정형-데이터마이닝.html#cb168-3" aria-hidden="true" tabindex="-1"></a>nn.model<span class="ot">&lt;-</span><span class="fu">nnet</span>(credit.rating <span class="sc">~</span> ., <span class="at">data=</span>train, <span class="at">size=</span><span class="dv">2</span>, <span class="at">maxit=</span><span class="dv">200</span>, <span class="at">decay=</span><span class="fl">5e-04</span>)</span></code></pre></div>
+<pre><code>## # weights:  45
+## initial  value 431.435559 
+## iter  10 value 423.284097
+## iter  20 value 423.069450
+## iter  30 value 412.275788
+## iter  40 value 379.171871
+## iter  50 value 343.935787
+## iter  60 value 338.439394
+## iter  70 value 334.864491
+## iter  80 value 331.713287
+## iter  90 value 331.330445
+## iter 100 value 330.202215
+## iter 110 value 328.168809
+## iter 120 value 320.901862
+## iter 130 value 316.684662
+## iter 140 value 313.512983
+## iter 150 value 312.780486
+## iter 160 value 312.686319
+## iter 170 value 312.614992
+## iter 180 value 312.507704
+## iter 190 value 312.286285
+## iter 200 value 312.204529
+## final  value 312.204529 
+## stopped after 200 iterations</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="정형-데이터마이닝.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nn.model)</span></code></pre></div>
+<pre><code>## a 20-2-1 network with 45 weights
+## options were - entropy fitting  decay=5e-04
+##   b-&gt;h1  i1-&gt;h1  i2-&gt;h1  i3-&gt;h1  i4-&gt;h1  i5-&gt;h1  i6-&gt;h1  i7-&gt;h1  i8-&gt;h1  i9-&gt;h1 
+##  -11.03   35.33   -1.77   14.85   -6.62    0.00   26.54   -2.95   -1.53    4.76 
+## i10-&gt;h1 i11-&gt;h1 i12-&gt;h1 i13-&gt;h1 i14-&gt;h1 i15-&gt;h1 i16-&gt;h1 i17-&gt;h1 i18-&gt;h1 i19-&gt;h1 
+##   -6.35    0.83  -23.34    1.32    3.49    8.71   -3.97  -24.77   -9.60    6.63 
+## i20-&gt;h1 
+##   -5.47 
+##   b-&gt;h2  i1-&gt;h2  i2-&gt;h2  i3-&gt;h2  i4-&gt;h2  i5-&gt;h2  i6-&gt;h2  i7-&gt;h2  i8-&gt;h2  i9-&gt;h2 
+##   -3.17   10.72  -10.34    7.07    0.76   -0.02    1.81    7.05   -2.46   13.33 
+## i10-&gt;h2 i11-&gt;h2 i12-&gt;h2 i13-&gt;h2 i14-&gt;h2 i15-&gt;h2 i16-&gt;h2 i17-&gt;h2 i18-&gt;h2 i19-&gt;h2 
+##    1.54   -0.92   -7.43    1.62    1.62    1.12   -6.78    1.57  -11.20   11.62 
+## i20-&gt;h2 
+##   -1.12 
+##   b-&gt;o  h1-&gt;o  h2-&gt;o 
+##  -0.71   2.34   3.51</code></pre>
+<ul>
+<li>분석 결과를 확인하면 총 45개의 가중치가 주어졌음을 #weights: 45에서 확인할 수 있으며, iteration이 반복될수록 error이 줄어들고 있음을 확인할 수 있다. 그리고 200번째 반복 후에 학습을 멈췄으며, 최종 error값이 312.204529임을 final value를 보고 확인할 수 있다.</li>
+<li>summary 함수로 분석결과를 확인하면 “a 20-2-1 network with 45 weights”는 입력노드 20개, 은닉노드 2개, 출력노드 1개를 의미하고 가중치는 총 45개임을 알 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="정형-데이터마이닝.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;devtools&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb172-2"><a href="정형-데이터마이닝.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb172-3"><a href="정형-데이터마이닝.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">&#39;https://gist.githubusercontent.com/Peque/41a9e20d6687f2f3108d/raw/85e14f3a292e126f1454864427e3a189c2fe33f3/nnet_plot_update.r&#39;</span>)</span>
+<span id="cb172-4"><a href="정형-데이터마이닝.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb172-5"><a href="정형-데이터마이닝.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.nnet</span>(nn.model)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+- summary의 결과에서 나타난 것처럼 20개의 입력노드, 2개의 은닉노드, 1개의 출력노드, 2개의 상수항을 확인할 수 있다. 그림에서 선의 굵기는 연결선의 가중치에 비례한다.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="정형-데이터마이닝.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;NeuralNetTools&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb173-2"><a href="정형-데이터마이닝.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NeuralNetTools)</span>
+<span id="cb173-3"><a href="정형-데이터마이닝.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb173-4"><a href="정형-데이터마이닝.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="fu">garson</span>(nn.model)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 
+</div>
 </div>
 </div>
 </div>
