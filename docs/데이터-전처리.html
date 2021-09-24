@@ -1644,7 +1644,7 @@ na.omit(데이터명)</code></pre>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="데이터-전처리.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(today)</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="데이터-전처리.html#cb223-1" aria-hidden="true" tabindex="-1"></a>(time<span class="ot">&lt;-</span><span class="fu">Sys.time</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-24 18:09:13 KST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-24 18:22:04 KST&quot;</code></pre>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="데이터-전처리.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(time)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="데이터-전처리.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># today 내부의 값 확인: 1970년 1월 1일 이후로 경과한 일 수를 의미함. </span></span>
@@ -1652,12 +1652,12 @@ na.omit(데이터명)</code></pre>
 <pre><code>## [1] 18894</code></pre>
 <div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="데이터-전처리.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time 내부의 값 확인: 1970년 1월 1일 00:00:00 이후로 경과한 초 수를 의미함.</span></span>
 <span id="cb229-2"><a href="데이터-전처리.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(time)</span></code></pre></div>
-<pre><code>## [1] 1632474554</code></pre>
+<pre><code>## [1] 1632475325</code></pre>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="데이터-전처리.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unclass를 적용한 time값을 다시 원래 날짜 형식으로 변환하기</span></span>
 <span id="cb231-2"><a href="데이터-전처리.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unclass(time)은 1970년 1월 1일 이후로 경과한 초수를 의미하므로, </span></span>
 <span id="cb231-3"><a href="데이터-전처리.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="co"># origin 인자값으로 &#39;1970-01-01&#39;을 지정</span></span>
 <span id="cb231-4"><a href="데이터-전처리.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="fu">unclass</span>(time), <span class="at">origin=</span><span class="st">&quot;1970-01-01&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-24 18:09:13 KST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-24 18:22:04 KST&quot;</code></pre>
 </div>
 <div id="날짜-표시형식-변경" class="section level4" number="2.7.1.2">
 <h4><span class="header-section-number">2.7.1.2</span> 날짜 표시형식 변경</h4>
@@ -1666,7 +1666,7 @@ na.omit(데이터명)</code></pre>
 <span id="cb233-2"><a href="데이터-전처리.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(now)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="데이터-전처리.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(now, <span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-09-24 18:09:13&quot;</code></pre>
+<pre><code>## [1] &quot;2021-09-24 18:22:04&quot;</code></pre>
 <div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="데이터-전처리.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">format</span>(now, <span class="st">&quot;%y-%m-%d %H:%M:%S&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p><strong>Q2. “20200101”이라는 문자열을 Date 형식으로 변환한 후, date 변수에 저장하여 class를 확인해 보자.</strong></p>
