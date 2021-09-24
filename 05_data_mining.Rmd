@@ -889,6 +889,7 @@ train.infert<-infert[parts,]
 test.infert<-infert[-parts,]
 nn.model2<-neuralnet(case~age+parity+induced+spontaneous, data=train.infert,
                      hidden=c(2,2), algorithm="rprop+", threshold=0.01, stepmax=1e+5)
+X11()
 plot(nn.model2)
 ```
 

@@ -2688,7 +2688,8 @@ FN (False Negative)</li>
 <span id="cb545-3"><a href="정형-데이터마이닝.html#cb545-3" aria-hidden="true" tabindex="-1"></a>test.infert<span class="ot">&lt;-</span>infert[<span class="sc">-</span>parts,]</span>
 <span id="cb545-4"><a href="정형-데이터마이닝.html#cb545-4" aria-hidden="true" tabindex="-1"></a>nn.model2<span class="ot">&lt;-</span><span class="fu">neuralnet</span>(case<span class="sc">~</span>age<span class="sc">+</span>parity<span class="sc">+</span>induced<span class="sc">+</span>spontaneous, <span class="at">data=</span>train.infert,</span>
 <span id="cb545-5"><a href="정형-데이터마이닝.html#cb545-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">hidden=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">algorithm=</span><span class="st">&quot;rprop+&quot;</span>, <span class="at">threshold=</span><span class="fl">0.01</span>, <span class="at">stepmax=</span><span class="fl">1e+5</span>)</span>
-<span id="cb545-6"><a href="정형-데이터마이닝.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nn.model2)</span></code></pre></div>
+<span id="cb545-6"><a href="정형-데이터마이닝.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb545-7"><a href="정형-데이터마이닝.html#cb545-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nn.model2)</span></code></pre></div>
 <ul>
 <li>plot으로 나타냈을 때, hidden layer 2개에 hidden node도 2개가 나타남을 확인할 수 있으며, nnet의 그래프와 다르게 가중치가 선의 굵기로 나타나지 않고 수치로 나타남을 확인할 수 있다.</li>
 </ul>
