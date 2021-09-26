@@ -24,7 +24,7 @@
 <meta name="author" content="tingyuan" />
 
 
-<meta name="date" content="2021-09-24" />
+<meta name="date" content="2021-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -232,6 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#군집분석-1"><i class="fa fa-check"></i><b>4.3.1</b> 군집분석</a></li>
 <li class="chapter" data-level="4.3.2" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#계층적-군집분석"><i class="fa fa-check"></i><b>4.3.2</b> 계층적 군집분석</a></li>
+<li class="chapter" data-level="4.3.3" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#비계층적-군집분석"><i class="fa fa-check"></i><b>4.3.3</b> 비계층적 군집분석</a></li>
+<li class="chapter" data-level="4.3.4" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#혼합-분포-군집"><i class="fa fa-check"></i><b>4.3.4</b> 혼합 분포 군집</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#연관분석"><i class="fa fa-check"></i><b>4.4</b> 연관분석</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="정형-데이터마이닝.html"><a href="정형-데이터마이닝.html#연관규칙"><i class="fa fa-check"></i><b>4.4.1</b> 연관규칙</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2569,13 +2575,13 @@ FN (False Negative)</li>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="정형-데이터마이닝.html#cb535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;devtools&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
 <span id="cb535-2"><a href="정형-데이터마이닝.html#cb535-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb535-3"><a href="정형-데이터마이닝.html#cb535-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">&#39;https://gist.githubusercontent.com/Peque/41a9e20d6687f2f3108d/raw/85e14f3a292e126f1454864427e3a189c2fe33f3/nnet_plot_update.r&#39;</span>)</span>
-<span id="cb535-4"><a href="정형-데이터마이닝.html#cb535-4" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb535-4"><a href="정형-데이터마이닝.html#cb535-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X11()</span></span>
 <span id="cb535-5"><a href="정형-데이터마이닝.html#cb535-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.nnet</span>(nn.model)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-142-1.png" width="672" />
 - summary의 결과에서 나타난 것처럼 20개의 입력노드, 2개의 은닉노드, 1개의 출력노드, 2개의 상수항을 확인할 수 있다. 그림에서 선의 굵기는 연결선의 가중치에 비례한다.</p>
 <div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="정형-데이터마이닝.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;NeuralNetTools&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
 <span id="cb536-2"><a href="정형-데이터마이닝.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NeuralNetTools)</span>
-<span id="cb536-3"><a href="정형-데이터마이닝.html#cb536-3" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb536-3"><a href="정형-데이터마이닝.html#cb536-3" aria-hidden="true" tabindex="-1"></a><span class="co"># X11()</span></span>
 <span id="cb536-4"><a href="정형-데이터마이닝.html#cb536-4" aria-hidden="true" tabindex="-1"></a><span class="fu">garson</span>(nn.model)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 <ul>
@@ -2688,7 +2694,7 @@ FN (False Negative)</li>
 <span id="cb545-3"><a href="정형-데이터마이닝.html#cb545-3" aria-hidden="true" tabindex="-1"></a>test.infert<span class="ot">&lt;-</span>infert[<span class="sc">-</span>parts,]</span>
 <span id="cb545-4"><a href="정형-데이터마이닝.html#cb545-4" aria-hidden="true" tabindex="-1"></a>nn.model2<span class="ot">&lt;-</span><span class="fu">neuralnet</span>(case<span class="sc">~</span>age<span class="sc">+</span>parity<span class="sc">+</span>induced<span class="sc">+</span>spontaneous, <span class="at">data=</span>train.infert,</span>
 <span id="cb545-5"><a href="정형-데이터마이닝.html#cb545-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">hidden=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">algorithm=</span><span class="st">&quot;rprop+&quot;</span>, <span class="at">threshold=</span><span class="fl">0.01</span>, <span class="at">stepmax=</span><span class="fl">1e+5</span>)</span>
-<span id="cb545-6"><a href="정형-데이터마이닝.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="fu">X11</span>()</span>
+<span id="cb545-6"><a href="정형-데이터마이닝.html#cb545-6" aria-hidden="true" tabindex="-1"></a><span class="co"># X11()</span></span>
 <span id="cb545-7"><a href="정형-데이터마이닝.html#cb545-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nn.model2)</span></code></pre></div>
 <ul>
 <li>plot으로 나타냈을 때, hidden layer 2개에 hidden node도 2개가 나타남을 확인할 수 있으며, nnet의 그래프와 다르게 가중치가 선의 굵기로 나타나지 않고 수치로 나타남을 확인할 수 있다.</li>
@@ -2870,525 +2876,24 @@ FN (False Negative)</li>
 </table>
 <p><strong>Q. USArrests 데이터는 미국 주(State)별 강력 범죄율 정보를 담고 있다. USArrests 데이터의 정보로 거리를 구하고 최단, 최장, 평균연결법을 실시해보자. </strong></p>
 <div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="정형-데이터마이닝.html#cb554-1" aria-hidden="true" tabindex="-1"></a>US<span class="ot">&lt;-</span>USArrests</span>
-<span id="cb554-2"><a href="정형-데이터마이닝.html#cb554-2" aria-hidden="true" tabindex="-1"></a>US.dist<span class="ot">&lt;-</span><span class="fu">dist</span>(US, <span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb554-3"><a href="정형-데이터마이닝.html#cb554-3" aria-hidden="true" tabindex="-1"></a>US.dist</span></code></pre></div>
-<pre><code>##                   Alabama     Alaska    Arizona   Arkansas California
-## Alaska          37.177009                                            
-## Arizona         63.008333  46.592489                                 
-## Arkansas        46.928137  77.197409 108.851918                      
-## California      55.524769  45.102217  23.194180  97.582017           
-## Colorado        41.932565  66.475935  90.351148  36.734861  73.197131
-## Connecticut    128.206942 159.406556 185.159526  85.028289 169.277110
-## Delaware        16.806249  45.182961  58.616380  53.010376  49.291480
-## Florida        102.001618  79.974496  41.654532 148.735739  60.980735
-## Georgia         25.841827  57.030255  86.037957  25.586129  73.997297
-## Hawaii         191.803050 221.193535 248.268967 147.775979 231.071093
-## Idaho          116.761980 146.484982 176.817674  70.587038 162.612792
-## Illinois        28.454877  42.911653  45.697812  67.770274  32.718802
-## Indiana        123.345207 152.804090 181.897801  78.478086 166.229961
-## Iowa           180.610105 209.983523 239.991458 134.594948 224.634659
-## Kansas         121.519875 151.480197 180.028914  76.753436 164.516747
-## Kentucky       127.284170 156.612037 187.690303  81.092848 173.207910
-## Louisiana       15.454449  32.348879  48.494639  61.545512  41.635562
-## Maine          154.145289 183.897526 214.327413 107.850730 199.931113
-## Maryland        64.993615  44.839492  15.015991 111.642913  36.347352
-## Massachusetts   91.648513 123.254209 145.875906  54.181178 129.524708
-## Michigan        28.485435  28.857755  39.872422  71.100281  27.746351
-## Minnesota      164.650964 194.253571 223.088256 119.324641 207.222537
-## Mississippi     27.390144  28.635118  52.708728  69.685364  55.683570
-## Missouri        59.788293  89.306719 116.467377  24.894377 100.988910
-## Montana        127.392621 156.673578 187.540849  81.163107 172.996069
-## Nebraska       134.436974 164.114259 193.423602  88.978930 178.100814
-## Nevada          37.430469  34.886817  44.797433  74.288694  26.746962
-## New Hampshire  179.736196 209.254415 239.255616 133.678308 224.055395
-## New Jersey      83.243018 114.735566 135.850396  49.844257 119.041169
-## New Mexico      51.643489  33.521933  13.896043  97.931200  24.495102
-## New York        33.710829  43.182983  40.853519  73.762118  26.900929
-## North Carolina 101.961022  79.376067  57.619615 147.184238  80.332123
-## North Dakota   192.416138 221.378590 252.808188 145.855545 238.214462
-## Ohio           117.387606 147.373335 174.338177  74.369752 157.998513
-## Oklahoma        85.848704 116.429421 143.931407  43.012673 128.779346
-## Oregon          78.386861 106.930117 135.672879  36.895122 120.039577
-## Pennsylvania   131.085087 161.600897 188.866222  86.990862 172.999364
-## Rhode Island    70.338112 103.903802 122.418871  42.185305 107.213106
-## South Carolina  44.182915  27.556487  36.890920  89.248866  47.061343
-## South Dakota   151.089113 179.948131 211.751576 104.455206 197.524378
-## Tennessee       48.347596  77.884530 108.258117  12.614278  94.727662
-## Texas           41.566092  72.362214  93.275988  32.744618  77.380230
-## Utah           118.502700 148.276094 174.257338  76.438995 157.492635
-## Vermont        190.370691 218.290472 251.489264 143.528569 237.435465
-## Virginia        80.295330 110.646690 139.424711  36.421560 124.820912
-## Washington      92.820472 122.147002 149.297857  51.204785 133.106574
-## West Virginia  156.792411 185.640863 218.006078 110.071113 204.253715
-## Wisconsin      183.775733 213.575397 242.312381 138.344245 226.457502
-## Wyoming         75.507086 106.740105 135.380390  30.987255 121.720335
-##                  Colorado Connecticut   Delaware    Florida    Georgia
-## Alaska                                                                
-## Arizona                                                               
-## Arkansas                                                              
-## California                                                            
-## Colorado                                                              
-## Connecticut     98.081191                                             
-## Delaware        41.477825  128.210179                                 
-## Florida        131.405822  226.303005  99.108325                      
-## Georgia         25.093027  104.426529  33.245300 125.766490           
-## Hawaii         159.179176   64.952367 192.366109 289.428575 167.128005
-## Idaho           90.886413   25.280427 119.421313 217.665179  93.116057
-## Illinois        47.669068  139.906469  18.151859  86.558708  45.002667
-## Indiana         93.615063   16.316250 125.310534 222.923866  98.772871
-## Iowa           152.079749   57.595573 182.709989 281.013523 156.445805
-## Kansas          92.179716   14.173920 123.165945 221.082722  97.174071
-## Kentucky       101.024749   26.343880 130.597435 228.332762 103.041448
-## Louisiana       49.974994  140.398077  16.976749  87.670348  38.690567
-## Maine          127.900156   37.647443 156.666652 255.152307 130.472564
-## Maryland        97.300411  191.161947  63.577984  37.783859  89.505363
-## Massachusetts   59.900000   40.165284  89.958324 187.043738  68.762272
-## Michigan        51.454835  147.266561  26.531679  80.356269  47.398101
-## Minnesota      134.764535   39.746698 166.141656 264.225831 140.327830
-## Mississippi     68.664401  153.263955  36.479172  85.390456  51.355428
-## Missouri        29.179788   70.695827  61.378905 157.491746  35.571337
-## Montana        100.751675   24.746313 130.393136 228.327856 103.302081
-## Nebraska       105.668349   17.865050 136.378334 234.464006 110.195735
-## Nevada          48.834209  146.551083  35.053245  84.255860  50.567579
-## New Hampshire  151.589182   57.043843 181.854695 280.247480 155.665603
-## New Jersey      50.420829   51.196680  80.877995 176.897174  60.778286
-## New Mexico      81.736222  176.580322  50.089320  51.147238  75.177723
-## New York        52.278102  145.268166  24.189461  81.542198  50.643657
-## North Carolina 138.977588  229.504009 102.861557  38.527912 127.335973
-## North Dakota   165.750928   73.038962 195.272271 293.622751 168.611417
-## Ohio            85.817539   15.036289 118.179186 215.466610  92.883637
-## Oklahoma        57.099737   43.036031  87.195929 184.983918  61.759858
-## Oregon          47.364121   53.242840  80.307223 176.810661  54.050902
-## Pennsylvania   101.039596    8.027453 132.003674 229.949581 106.822376
-## Rhode Island    43.879494   64.837104  66.208006 163.312461  50.992647
-## South Carolina  82.641939  172.206765  48.725148  65.187115  69.194581
-## South Dakota   125.302115   40.039231 154.422829 252.438844 127.294776
-## Tennessee       28.005892   82.192761  53.343228 148.592867  23.427548
-## Texas           14.501034   92.659160  39.665224 134.179917  22.851258
-## Utah            85.625522   15.755951 118.514556 215.533849  94.292364
-## Vermont        165.047690   76.617361 194.254601 292.020085 166.724923
-## Virginia        53.416851   49.307200  82.678716 180.286023  56.028743
-## Washington      60.642065   38.334058  93.604327 190.555635  68.590962
-## West Virginia  132.360115   47.895720 160.562418 258.460539 133.229651
-## Wisconsin      154.115217   58.056696 185.194195 283.423799 159.511880
-## Wyoming         52.036718   54.060152  77.934909 176.112606  52.119094
-##                    Hawaii      Idaho   Illinois    Indiana       Iowa
-## Alaska                                                               
-## Arizona                                                              
-## Arkansas                                                             
-## California                                                           
-## Colorado                                                             
-## Connecticut                                                          
-## Delaware                                                             
-## Florida                                                              
-## Georgia                                                              
-## Hawaii                                                               
-## Idaho           79.751426                                            
-## Illinois       203.099606 132.811445                                 
-## Indiana         69.406412  15.407790 137.256111                      
-## Iowa            29.407822  64.137119 195.329286  58.584042           
-## Kansas          71.100844  13.964240 135.278823   3.929377  60.177487
-## Kentucky        70.459705  13.409698 143.599373  14.606163  53.993055
-## Louisiana      203.970611 130.433278  17.811232 136.255936 193.966621
-## Maine           50.566788  37.672404 170.033320  36.003472  27.879383
-## Maryland       254.687573 181.189542  53.593376 187.179192 244.930725
-## Massachusetts  103.097139  42.539981 100.495224  41.544314  97.277130
-## Michigan       209.833863 138.390968  15.591664 143.065789 201.381355
-## Minnesota       31.620405  49.482320 178.213636  41.706834  18.713899
-## Mississippi    216.832308 140.041637  41.244394 147.822258 203.972670
-## Missouri       132.931148  62.104428  72.315973  65.613108 124.035680
-## Montana         69.885120  11.764353 143.447273  13.512957  53.529898
-## Nebraska        59.930710  19.904271 148.806787  12.596031  46.609548
-## Nevada         207.733603 138.767431  22.366046 142.221658 200.738860
-## New Hampshire   31.220666  63.208702 194.607657  58.096988   2.291288
-## New Jersey     113.187323  52.822344  90.399336  51.931493 108.241813
-## New Mexico     239.726553 166.969608  39.135789 172.481448 230.493557
-## New York       208.186095 138.541907   6.236986 142.699755 200.856292
-## North Carolina 293.600238 217.443717  96.214188 225.019221 281.504316
-## North Dakota    41.335941  75.999013 208.585834  72.757474  17.548789
-## Ohio            74.467711  22.692069 129.311136  12.213517  67.439009
-## Oklahoma       106.074172  34.736724  99.294713  38.136072  96.130380
-## Oregon         114.490043  43.855444  91.729712  46.842075 105.072784
-## Pennsylvania    61.237978  23.112334 143.769329  11.662761  52.485903
-## Rhode Island   128.628224  63.564534  77.048621  66.187083 121.796716
-## South Carolina 235.800975 159.765860  46.295248 167.030207 223.795174
-## South Dakota    55.686713  35.219313 167.874953  34.753417  32.385336
-## Tennessee      144.385941  70.161599  65.675338  75.708718 133.388005
-## Texas          155.296008  86.410069  48.171984  89.551661 147.871194
-## Utah            74.139733  27.423530 129.240280  17.135052  68.996812
-## Vermont         51.919264  75.346931 207.925660  73.722724  26.249000
-## Virginia       111.850302  38.132139  95.202416  43.067157 100.816913
-## Washington      99.692979  33.644613 104.698615  33.545193  91.663788
-## West Virginia   57.271022  42.185543 174.350738  42.885196  31.068473
-## Wisconsin       20.824265  68.151009 197.332410  61.042608   9.508417
-## Wyoming        117.377212  41.672533  91.414003  48.562537 105.231412
-##                    Kansas   Kentucky  Louisiana      Maine   Maryland
-## Alaska                                                               
-## Arizona                                                              
-## Arkansas                                                             
-## California                                                           
-## Colorado                                                             
-## Connecticut                                                          
-## Delaware                                                             
-## Florida                                                              
-## Georgia                                                              
-## Hawaii                                                               
-## Idaho                                                                
-## Illinois                                                             
-## Indiana                                                              
-## Iowa                                                                 
-## Kansas                                                               
-## Kentucky        15.766420                                            
-## Louisiana      134.394940 140.937220                                 
-## Maine           36.989863  28.407921 167.825058                      
-## Maryland       185.337881 191.939600  51.479802 218.699886           
-## Massachusetts   39.018585  52.125713 102.551499  74.763226 152.659294
-## Michigan       141.398798 148.859665  16.652327 175.949680  46.129492
-## Minnesota       43.237715  40.199005 177.605124  19.919086 228.528707
-## Mississippi    146.023354 150.351588  24.708298 176.939227  48.451316
-## Missouri        64.015936  72.298686  71.651657  99.246007 122.059207
-## Montana         14.406943   3.834058 141.035457  27.733914 191.924595
-## Nebraska        13.789126  13.349157 147.582858  23.717715 198.508665
-## Nevada         140.770878 148.923940  28.472443 176.131343  53.217009
-## New Hampshire   59.594127  53.141321 193.137723  26.530925 244.109668
-## New Jersey      49.674943  62.293980  93.298231  85.843404 143.042686
-## New Mexico     170.716051 177.630318  37.762548 204.553123  15.890249
-## New York       140.757309 149.261515  21.417283 175.732439  49.798896
-## North Carolina 223.108964 228.131388  90.708158 254.439973  44.640565
-## North Dakota    74.333909  65.728304 206.240563  38.664454 257.069057
-## Ohio            10.920165  26.110726 129.569479  46.443514 180.335687
-## Oklahoma        36.115924  45.202876  98.439220  71.288779 149.281379
-## Oregon          45.452173  54.009629  90.893674  80.635538 141.153144
-## Pennsylvania    11.256109  20.555291 143.600487  32.218783 194.556958
-## Rhode Island    63.425941  74.523084  80.020060  97.872059 129.300657
-## South Carolina 165.259826 170.224939  35.001286 196.957813  28.977578
-## South Dakota    36.247483  25.001200 165.023998   8.537564 215.780560
-## Tennessee       74.222975  80.091260  61.619234 107.596561 112.305031
-## Texas           87.710547  96.652160  50.181471 123.250355  99.886185
-## Utah            15.901258  31.477135 130.331616  49.388460 180.716961
-## Vermont         75.535952  64.832554 204.578200  39.969613 255.122265
-## Virginia        41.273963  48.485049  93.315915  75.368229 144.257582
-## Washington      31.941196  43.214581 104.933122  68.338642 155.296008
-## West Virginia   44.280696  31.906112 170.919572  12.775367 221.627187
-## Wisconsin       62.509199  58.417977 196.748062  33.678628 247.739157
-## Wyoming         46.458584  52.696300  88.867992  79.043849 139.782295
-##                Massachusetts   Michigan  Minnesota Mississippi   Missouri
-## Alaska                                                                   
-## Arizona                                                                  
-## Arkansas                                                                 
-## California                                                               
-## Colorado                                                                 
-## Connecticut                                                              
-## Delaware                                                                 
-## Florida                                                                  
-## Georgia                                                                  
-## Hawaii                                                                   
-## Idaho                                                                    
-## Illinois                                                                 
-## Indiana                                                                  
-## Iowa                                                                     
-## Kansas                                                                   
-## Kentucky                                                                 
-## Louisiana                                                                
-## Maine                                                                    
-## Maryland                                                                 
-## Massachusetts                                                            
-## Michigan          108.488386                                             
-## Minnesota          79.340091 184.524795                                  
-## Mississippi       117.976820  35.440090 188.778706                       
-## Missouri           35.053816  77.473996 107.091456   86.084958           
-## Montana            51.250073 148.808266  39.384515  150.610425  72.098821
-## Nebraska           52.326380 154.789535  30.349959  158.469555  77.453083
-## Nevada            107.554312  13.297368 183.527818   47.627933  76.968045
-## New Hampshire      96.729158 200.707150  18.828701  202.982167 123.427307
-## New Jersey         11.456439  98.634578  90.195898  110.016272  28.511752
-## New Mexico        137.911711  30.421867 213.907760   39.988623 107.097946
-## New York          105.673696  15.066519 183.630063   43.531598  77.722712
-## North Carolina    192.400624  89.032634 266.032949   78.074388 161.457146
-## North Dakota      112.209447 214.244090  35.698319  214.769947 137.364661
-## Ohio               31.231715 135.781921  49.481411  142.751287  58.635569
-## Oklahoma           17.650212 105.405218  79.285686  111.079521  28.390139
-## Oregon             24.356724  96.697880  88.216778  103.938828  19.698223
-## Pennsylvania       44.984108 150.488139  34.712534  155.864942  73.295157
-## Rhode Island       26.343880  86.740590 104.350611   96.502487  27.062335
-## South Carolina    135.674021  37.630440 208.249010   21.167192 103.666050
-## South Dakota       74.710173 173.113200  25.349951  173.492882  96.711943
-## Tennessee          48.854887  69.155260 117.299829   73.283354  15.502580
-## Texas              53.689198  55.177169 130.573198   68.863053  25.494705
-## Utah               30.182777 135.974446  50.638424  144.281149  59.377858
-## Vermont           114.196541 212.796194  41.784447  211.879730 136.672016
-## Virginia           23.857284 100.709086  84.452827  105.074830  24.279621
-## Washington         16.067669 110.660833  74.211724  118.601096  33.570821
-## West Virginia      82.405643 179.464760  29.160933  178.544112 103.624804
-## Wisconsin          98.033107 203.835080  19.437592  207.706379 126.430692
-## Wyoming            27.843312  97.161412  89.298936   99.743371  23.507446
-##                   Montana   Nebraska     Nevada New Hampshire New Jersey
-## Alaska                                                                  
-## Arizona                                                                 
-## Arkansas                                                                
-## California                                                              
-## Colorado                                                                
-## Connecticut                                                             
-## Delaware                                                                
-## Florida                                                                 
-## Georgia                                                                 
-## Hawaii                                                                  
-## Idaho                                                                   
-## Illinois                                                                
-## Indiana                                                                 
-## Iowa                                                                    
-## Kansas                                                                  
-## Kentucky                                                                
-## Louisiana                                                               
-## Maine                                                                   
-## Maryland                                                                
-## Massachusetts                                                           
-## Michigan                                                                
-## Minnesota                                                               
-## Mississippi                                                             
-## Missouri                                                                
-## Montana                                                                 
-## Nebraska        11.528226                                               
-## Nevada         148.820697 154.251937                                    
-## New Hampshire   52.686051  45.987390 200.210539                         
-## New Jersey      61.674306  63.189398  97.344132    107.738480           
-## New Mexico     177.596875 183.974917  37.467986    229.732997 128.179132
-## New York       149.111032 154.332109  20.645096    200.163833  95.399057
-## North Carolina 228.247870 235.774999  97.034272    280.505561 183.462939
-## North Dakota    65.474041  60.579617 214.115973     17.161876 123.275342
-## Ohio            25.133444  22.934908 134.495985     67.071976  41.518309
-## Oklahoma        44.747290  49.543314 105.249038     95.448939  22.518437
-## Oregon          53.512802  58.636166  95.797599    104.522151  24.505102
-## Pennsylvania    19.296114  11.070682 149.663021     51.998077  55.806989
-## Rhode Island    73.846936  76.661920  87.285337    121.050114  18.848077
-## South Carolina 170.390053 177.941030  48.734895    222.863837 127.057821
-## South Dakota    24.714368  23.641912 173.276657     31.237477  85.521693
-## Tennessee       80.243941  87.134207  70.326453    132.649802  42.898135
-## Texas           96.543772 101.373369  54.977268    147.242521  43.794749
-## Utah            30.001500  26.271087 134.311615     68.744236  40.453059
-## Vermont         64.834250  62.036280 212.903828     25.688519 125.119143
-## Virginia        48.308798  54.334888 100.964251    100.081966  26.264425
-## Washington      42.379712  45.433248 109.417914     91.189363  22.766642
-## West Virginia   32.101402  31.996875 179.983721     29.631065  93.151167
-## Wisconsin       57.861213  49.521510 202.872374     10.860018 108.867075
-## Wyoming         52.481235  59.093654  98.363205    104.361391  29.250641
-##                New Mexico   New York North Carolina North Dakota       Ohio
-## Alaska                                                                     
-## Arizona                                                                    
-## Arkansas                                                                   
-## California                                                                 
-## Colorado                                                                   
-## Connecticut                                                                
-## Delaware                                                                   
-## Florida                                                                    
-## Georgia                                                                    
-## Hawaii                                                                     
-## Idaho                                                                      
-## Illinois                                                                   
-## Indiana                                                                    
-## Iowa                                                                       
-## Kansas                                                                     
-## Kentucky                                                                   
-## Louisiana                                                                  
-## Maine                                                                      
-## Maryland                                                                   
-## Massachusetts                                                              
-## Michigan                                                                   
-## Minnesota                                                                  
-## Mississippi                                                                
-## Missouri                                                                   
-## Montana                                                                    
-## Nebraska                                                                   
-## Nevada                                                                     
-## New Hampshire                                                              
-## New Jersey                                                                 
-## New Mexico                                                                 
-## New York        35.399011                                                  
-## North Carolina  59.896244  93.132218                                       
-## North Dakota   242.906155 214.253425     292.388919                        
-## Ohio           165.472959 134.586515     219.202144    82.626025           
-## Oklahoma       134.645646 104.835395     187.566442   109.576138  31.819019
-## Oregon         126.234266  97.132281     180.021804   118.430613  40.659193
-## Pennsylvania   179.907893 149.159244     232.672151    67.771749  15.755951
-## Rhode Island   115.067111  82.323326     168.777961   136.006470  56.980874
-## South Carolina  24.923082  45.747678      58.445872   234.921263 161.436117
-## South Dakota   201.633951 173.594873     251.190227    41.487950  46.284015
-## Tennessee       97.776684  71.344586     150.045593   145.643125  70.321121
-## Texas           84.860179  53.365907     140.746048   161.569954  81.436908
-## Utah           165.761515 134.404799     220.127872    84.676561   6.637771
-## Vermont        241.110867 213.666141     289.535231    13.044922  84.634804
-## Virginia       129.724207 100.841063     182.006621   113.669917  37.972753
-## Washington     140.351594 110.001909     194.501954   105.869967  25.747427
-## West Virginia  207.676022 180.137170     256.264570    36.728871  54.460720
-## Wisconsin      233.176178 202.749451     285.014473    23.737944  68.588993
-## Wyoming        125.576311  97.230345     176.747532   117.545268  44.044182
-##                  Oklahoma     Oregon Pennsylvania Rhode Island South Carolina
-## Alaska                                                                       
-## Arizona                                                                      
-## Arkansas                                                                     
-## California                                                                   
-## Colorado                                                                     
-## Connecticut                                                                  
-## Delaware                                                                     
-## Florida                                                                      
-## Georgia                                                                      
-## Hawaii                                                                       
-## Idaho                                                                        
-## Illinois                                                                     
-## Indiana                                                                      
-## Iowa                                                                         
-## Kansas                                                                       
-## Kentucky                                                                     
-## Louisiana                                                                    
-## Maine                                                                        
-## Maryland                                                                     
-## Massachusetts                                                                
-## Michigan                                                                     
-## Minnesota                                                                    
-## Mississippi                                                                  
-## Missouri                                                                     
-## Montana                                                                      
-## Nebraska                                                                     
-## Nevada                                                                       
-## New Hampshire                                                                
-## New Jersey                                                                   
-## New Mexico                                                                   
-## New York                                                                     
-## North Carolina                                                               
-## North Dakota                                                                 
-## Ohio                                                                         
-## Oklahoma                                                                     
-## Oregon          12.424975                                                    
-## Pennsylvania    45.465371  55.166294                                         
-## Rhode Island    32.204503  32.684094    70.006928                            
-## South Carolina 129.811748 122.055274   175.009628   113.440028               
-## South Dakota    69.380689  78.015768    33.758851    97.613575     193.557356
-## Tennessee       39.257738  31.299361    84.170125    37.709415      91.775814
-## Texas           52.071681  44.813837    96.136986    34.063617      84.379441
-## Utah            33.540572  41.639524    18.264994    56.375527     162.574906
-## Vermont        109.552727 117.817231    70.671777   137.516726     232.149801
-## Virginia         7.355270  10.579225    51.180856    32.859854     124.064701
-## Washington      10.305338  15.569843    40.681445    36.847931     136.758364
-## West Virginia   76.526466  85.256319    41.781814   104.686628     198.833926
-## Wisconsin       98.532431 107.631501    53.623689   122.836843     227.323844
-## Wyoming         13.542526  15.630099    56.300444    31.029824     119.051963
-##                South Dakota  Tennessee      Texas       Utah    Vermont
-## Alaska                                                                 
-## Arizona                                                                
-## Arkansas                                                               
-## California                                                             
-## Colorado                                                               
-## Connecticut                                                            
-## Delaware                                                               
-## Florida                                                                
-## Georgia                                                                
-## Hawaii                                                                 
-## Idaho                                                                  
-## Illinois                                                               
-## Indiana                                                                
-## Iowa                                                                   
-## Kansas                                                                 
-## Kentucky                                                               
-## Louisiana                                                              
-## Maine                                                                  
-## Maryland                                                               
-## Massachusetts                                                          
-## Michigan                                                               
-## Minnesota                                                              
-## Mississippi                                                            
-## Missouri                                                               
-## Montana                                                                
-## Nebraska                                                               
-## Nevada                                                                 
-## New Hampshire                                                          
-## New Jersey                                                             
-## New Mexico                                                             
-## New York                                                               
-## North Carolina                                                         
-## North Dakota                                                           
-## Ohio                                                                   
-## Oklahoma                                                               
-## Oregon                                                                 
-## Pennsylvania                                                           
-## Rhode Island                                                           
-## South Carolina                                                         
-## South Dakota                                                           
-## Tennessee        104.341602                                            
-## Texas            121.204373  24.742878                                 
-## Utah              49.833423  71.979164  81.596630                      
-## Vermont           40.225862 143.862747 161.331150  87.326342           
-## Virginia          72.859454  33.174237  48.525045  40.223501 112.937770
-## Washington        66.667833  46.153331  57.106742  26.182628 106.387217
-## West Virginia      8.766984 110.521536 128.032965  58.251266  33.968515
-## Wisconsin         39.184691 136.548782 149.726751  69.510934  34.370336
-## Wyoming           76.595300  29.977492  46.182464  46.338429 116.591252
-##                  Virginia Washington West Virginia  Wisconsin
-## Alaska                                                       
-## Arizona                                                      
-## Arkansas                                                     
-## California                                                   
-## Colorado                                                     
-## Connecticut                                                  
-## Delaware                                                     
-## Florida                                                      
-## Georgia                                                      
-## Hawaii                                                       
-## Idaho                                                        
-## Illinois                                                     
-## Indiana                                                      
-## Iowa                                                         
-## Kansas                                                       
-## Kentucky                                                     
-## Louisiana                                                    
-## Maine                                                        
-## Maryland                                                     
-## Massachusetts                                                
-## Michigan                                                     
-## Minnesota                                                    
-## Mississippi                                                  
-## Missouri                                                     
-## Montana                                                      
-## Nebraska                                                     
-## Nevada                                                       
-## New Hampshire                                                
-## New Jersey                                                   
-## New Mexico                                                   
-## New York                                                     
-## North Carolina                                               
-## North Dakota                                                 
-## Ohio                                                         
-## Oklahoma                                                     
-## Oregon                                                       
-## Pennsylvania                                                 
-## Rhode Island                                                 
-## South Carolina                                               
-## South Dakota                                                 
-## Tennessee                                                    
-## Texas                                                        
-## Utah                                                         
-## Vermont                                                      
-## Virginia                                                     
-## Washington      16.477257                                    
-## West Virginia   79.616581  74.434535                         
-## Wisconsin      103.686161  93.552766     39.049456           
-## Wyoming          7.930952  23.349518     82.957218 108.354418</code></pre>
+<span id="cb554-2"><a href="정형-데이터마이닝.html#cb554-2" aria-hidden="true" tabindex="-1"></a>US.dist<span class="ot">&lt;-</span><span class="fu">dist</span>(US, <span class="st">&quot;euclidean&quot;</span>)</span></code></pre></div>
 <ul>
 <li>USArrests 데이터를 US라는 변수에 저장하고, dist 함수로 유클리디안 거리를 구한 뒤 US.dist 변수에 저장하여 데이터를 확인하면 위와 같다.</li>
 </ul>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="정형-데이터마이닝.html#cb556-1" aria-hidden="true" tabindex="-1"></a>US.single<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;single&quot;</span>)</span>
-<span id="cb556-2"><a href="정형-데이터마이닝.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span>
-<span id="cb556-3"><a href="정형-데이터마이닝.html#cb556-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb556-4"><a href="정형-데이터마이닝.html#cb556-4" aria-hidden="true" tabindex="-1"></a>US.complete<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb556-5"><a href="정형-데이터마이닝.html#cb556-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="정형-데이터마이닝.html#cb555-1" aria-hidden="true" tabindex="-1"></a>US.single<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;single&quot;</span>)</span>
+<span id="cb555-2"><a href="정형-데이터마이닝.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span>
+<span id="cb555-3"><a href="정형-데이터마이닝.html#cb555-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-4"><a href="정형-데이터마이닝.html#cb555-4" aria-hidden="true" tabindex="-1"></a>US.complete<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb555-5"><a href="정형-데이터마이닝.html#cb555-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="정형-데이터마이닝.html#cb557-1" aria-hidden="true" tabindex="-1"></a>US.average<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;average&quot;</span>)</span>
-<span id="cb557-2"><a href="정형-데이터마이닝.html#cb557-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="정형-데이터마이닝.html#cb556-1" aria-hidden="true" tabindex="-1"></a>US.average<span class="ot">&lt;-</span><span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>, <span class="at">method=</span><span class="st">&quot;average&quot;</span>)</span>
+<span id="cb556-2"><a href="정형-데이터마이닝.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span></code></pre></div>
 <ul>
 <li>US.dist 데이터를 hclust 함수를 활용하여 최단, 최장, 평균 거리법으로 군집화하고 덴드로그램을 그려보자. hclust 함수 안의 US.dist 데이터를 제곱한 이유는 거리의 차이를 많이 두어 군집이 나니ㅜ는 것을 쉽게 확인하기 위해서이다. method를 “single”, “complete”, “average”로 지정하여 최단, 최장, 평균 거리법을 실행할 수 있다. 그리고 해당 결과를 plot 함수로 덴드로그램을 그릴 수 있다.</li>
 <li>덴드로그램에서 Height 값에 따라 선을 그어 적절한 군집수를 선정할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="정형-데이터마이닝.html#cb558-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">&lt;-</span><span class="fu">cutree</span>(US.average, <span class="at">k=</span><span class="dv">6</span>)</span>
-<span id="cb558-2"><a href="정형-데이터마이닝.html#cb558-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="정형-데이터마이닝.html#cb557-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">&lt;-</span><span class="fu">cutree</span>(US.average, <span class="at">k=</span><span class="dv">6</span>)</span>
+<span id="cb557-2"><a href="정형-데이터마이닝.html#cb557-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
 <pre><code>##        Alabama         Alaska        Arizona       Arkansas     California 
 ##              1              1              1              2              1 
 ##       Colorado    Connecticut       Delaware        Florida        Georgia 
@@ -3412,12 +2917,604 @@ FN (False Negative)</li>
 <ul>
 <li>cutree함수로 계층적 군집의 결과를 이용하여 tree의 높이나 그룹의 수를 옵션으로 지정하여 원하는 수의 그룹으로 나눌 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="정형-데이터마이닝.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.average)</span>
-<span id="cb560-2"><a href="정형-데이터마이닝.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(US.average, <span class="at">k=</span><span class="dv">6</span>, <span class="at">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="정형-데이터마이닝.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.average)</span>
+<span id="cb559-2"><a href="정형-데이터마이닝.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(US.average, <span class="at">k=</span><span class="dv">6</span>, <span class="at">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <ul>
 <li>덴드로그램은 plot함수와 rect.hclust 함수를 이용하여 각각의 그룹을 사각형으로 구분지어 나타낼 수 있다.</li>
 </ul>
+</div>
+</div>
+</div>
+<div id="비계층적-군집분석" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> 비계층적 군집분석</h3>
+<div id="개요-1" class="section level4" number="4.3.3.1">
+<h4><span class="header-section-number">4.3.3.1</span> 개요</h4>
+<ul>
+<li>n개의 개체를 k개의 군집으로 나눌 수 있는 모든 가능한 방법을 점검해 최적화한 군집을 형성하는 것이다.</li>
+</ul>
+</div>
+<div id="k-평균-군집분석" class="section level4" number="4.3.3.2">
+<h4><span class="header-section-number">4.3.3.2</span> K-평균 군집분석</h4>
+<ul>
+<li>주어진 데이터를 k개의 클러스터로 묶는 알고리즘으로, 각 클러스터와 거리 차이의 분산을 최소화하는 방식으로 동작한다.</li>
+</ul>
+<div id="k-평균-군집분석-과정" class="section level5" number="4.3.3.2.1">
+<h5><span class="header-section-number">4.3.3.2.1</span> K-평균 군집분석 과정</h5>
+<ul>
+<li>원하는 군집의 개수와 초기값들을 정해 seed 중심으로 군집을 형성한다.</li>
+<li>각 데이터를 거리가 가장 가까운 seed가 있는 군집으로 분류한다.</li>
+<li>각 군집의 seed값을 다시 계산한다.</li>
+</ul>
+</div>
+<div id="k-평균-군집분석의-특징" class="section level5" number="4.3.3.2.2">
+<h5><span class="header-section-number">4.3.3.2.2</span> K-평균 군집분석의 특징</h5>
+<ul>
+<li><p>거리 계산을 통해 군집화가 이루어지므로 연속형 변수에 활용이 가능하다.</p></li>
+<li><p>K개의 초기 중심값은 임의로 선택이 가능하며 가급적이면 멀리 떨어지는 것이 바람직하다.</p></li>
+<li><p>초기 중심값을 임의로 선택할 때 일렬(위아래, 좌우)로 선택하면 군집이 혼합되지 ㅇ낳고 층으로 나누어질 수 있어 주의하여야 한다. 초기 중심값의 선정에 따라 결과가 달라질 수 있다.</p></li>
+<li><p>초기 중심으로부터의 오차 제곱합을 최소화하는 방향으로 군집이 형성되는 탐욕적(greedy) 알고리즘이므로 안정된 군집은 보장하나 최적이라는 보장은 없다.</p></li>
+<li><p>장점</p>
+<ul>
+<li>알고리즘이 단순하며, 빠르게 수행되어 분석방법 적용이 용이하다.</li>
+<li>계층적 군집분석에 비해 많은 양의 데이터를 다룰 수 있다.</li>
+<li>내부 구조에 대한 사전정보가 없어도 의미있는 자료구조를 찾을 수 있다.</li>
+<li>다양한 형태의 데이터에 적용이 가능하다.</li>
+</ul></li>
+<li><p>단점</p>
+<ul>
+<li>군집의 수, 가중치와 거리 정의가 어렵다.</li>
+<li>사전에 주어진 목적이 없으므로 결과해석이 어렵다.</li>
+<li>잡음이나 이상값의 영향을 많이 받는다.</li>
+<li>블록한 형태가 아닌 군집이 존재할 경우에는 성능이 떨어진다.</li>
+<li>초기 군집 수 결정에 어려움이 있다.</li>
+</ul></li>
+</ul>
+</div>
+<div id="r을-활용한-k-means-군집분석" class="section level5" number="4.3.3.2.3">
+<h5><span class="header-section-number">4.3.3.2.3</span> R을 활용한 K-means 군집분석</h5>
+<p><b>함수사용법</b></p>
+<pre><code>kmeans(data, centers, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="even">
+<td>centers</td>
+<td>군집의 개수를 설정</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Nbclust(data, min.nc, max.nc, method, ...)</code></pre>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>분석하고자 하는 데이터</td>
+</tr>
+<tr class="even">
+<td>min.nc</td>
+<td>최소군집의 수</td>
+</tr>
+<tr class="odd">
+<td>max.nc</td>
+<td>최대군집의 수</td>
+</tr>
+<tr class="even">
+<td>method</td>
+<td>군집분석 방법을 정함. “kmeans”, “median”, “single”, “complete”, “average” 등이 있음</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 앞서 분할한 credit 데이터의 train 데이터로 kmenas 군집분석을 해보자.</strong></p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="정형-데이터마이닝.html#cb562-1" aria-hidden="true" tabindex="-1"></a>train.data<span class="ot">&lt;-</span>train[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb562-2"><a href="정형-데이터마이닝.html#cb562-2" aria-hidden="true" tabindex="-1"></a>credit.kmeans<span class="ot">&lt;-</span><span class="fu">kmeans</span>(train.data, <span class="at">centers=</span><span class="dv">2</span>)</span></code></pre></div>
+<ul>
+<li>kmeans 군집 분석을 실시하기 전에 종속변수를 제외한 데이터로 군집분석을 실시해 원래 종속 변수와 군집분석 결과의 정분류율을 확인해 본다.</li>
+</ul>
+<details>
+<summary>
+Click for Result
+</summary>
+<pre><code>## K-means clustering with 2 clusters of sizes 117, 583
+## 
+## Cluster means:
+##   account.balance credit.duration.months previous.credit.payment.status
+## 1        2.111111               35.73504                       2.384615
+## 2        2.212693               17.52316                       2.286449
+##   credit.purpose credit.amount  savings employment.duration installment.rate
+## 1       2.752137      8369.906 2.000000            2.512821         2.495726
+## 2       2.974271      2169.919 1.830189            2.439108         3.087479
+##   marital.status guarantor residence.duration current.assets      age
+## 1       2.470085  1.102564           2.752137       2.974359 35.71795
+## 2       2.312178  1.099485           2.859348       2.228130 35.27101
+##   other.credits apartment.type bank.credits occupation dependents telephone
+## 1      1.811966       2.059829     1.401709   3.145299   1.153846  1.606838
+## 2      1.825043       1.879931     1.341338   2.838765   1.150943  1.351630
+##   foreign.worker
+## 1       1.017094
+## 2       1.039451
+## 
+## Clustering vector:
+##  415  463  179  526  195  938  818  118  299  229  244   14  374  665  602  603 
+##    2    2    2    1    2    2    2    2    2    2    2    1    2    2    2    2 
+##  768  709   91  953  348  649  355  840   26  519  426  979  766  211  932  590 
+##    2    1    2    2    2    2    2    2    2    1    2    2    2    2    2    2 
+##  593  555  871  373  844  143  544  490  621  775  905  937  842   23  923  309 
+##    1    2    2    1    1    2    2    2    1    2    2    2    2    2    2    2 
+##  135  821  954  224  166  217  290  581   72  588  575  141  722  865  859  153 
+##    2    1    1    1    2    2    2    2    2    2    1    2    2    1    2    1 
+##  294  277  999   41  431   90  316  223  528  116  606  774  747  456  598  854 
+##    2    2    1    2    2    2    2    2    2    1    2    1    2    1    2    2 
+##   39  159  752  209  988  994   34  516   13   69  895  755  409  308  278   89 
+##    2    1    2    1    2    2    2    2    2    2    2    1    2    2    2    2 
+##  537  291  424  880  286  671  121  110  158   64  483  477  480  711   67  663 
+##    2    2    2    2    2    2    2    2    1    1    2    2    2    2    2    2 
+##  847   85  165  648   51   74  178  362  236  610  330  726  127  212  686  785 
+##    2    2    2    1    2    2    2    2    2    2    1    2    2    2    2    2 
+##  814  310  744  243  862  888  792  113  619  893  151  666  614  767  160  391 
+##    2    1    1    2    2    1    2    2    2    2    2    2    2    2    2    2 
+##  155  974    5  326  784  280  800  789  567  843  238  764  339  920  822  137 
+##    2    1    2    2    2    2    2    2    1    2    2    1    2    1    1    2 
+##  455  738  560  589   83  696  867  196  769  680  900  926  500  852  344  966 
+##    2    2    2    2    1    1    2    1    2    2    2    2    2    2    2    1 
+##  459   20  996  164   52  534  177  554   84  523  633  392  302  597  706  864 
+##    2    1    2    2    2    2    2    2    2    2    2    2    2    2    2    2 
+##  837  430  710  761  712  428  672  250  429  398  928  381  545   40  522  473 
+##    2    2    1    2    2    2    2    2    2    2    2    2    2    2    1    1 
+##  200  125  265  959  186  573  252  458  152   54  538  235  289  185  765  413 
+##    2    2    2    2    1    1    1    2    2    2    2    2    2    2    2    2 
+##  627  794  981  783  205  904  564  857  908  727  346  858  468  509   57  457 
+##    2    2    2    1    2    2    2    2    2    2    2    2    1    2    2    2 
+##  617  357  279  270  646  347  129  218  618  698  337  976  539  975  861  553 
+##    1    2    2    2    1    2    2    2    2    2    2    1    2    2    2    2 
+##  724  390  498  222  899  657  421  762  660  163  846  673  578  913  878  225 
+##    1    2    2    2    2    2    2    2    2    2    2    2    2    2    1    2 
+##  389  117  771  885   55  947  811  557  658  682 1000  134  891  688  447  104 
+##    2    2    2    2    1    2    1    1    2    2    1    2    1    2    2    1 
+##  716  845  210  349  401  258  915  386  941   24  466  130  886  943  377  170 
+##    2    1    2    2    2    2    2    2    1    2    2    2    1    2    2    2 
+##  445  234  422  508  910   80  894  548  475  903  343  323  479  838  450  111 
+##    2    2    2    1    1    2    2    2    2    2    2    2    2    2    2    2 
+##  317  741  287  585  292  226  297  605  637  834  237  700  809   33  836  396 
+##    2    2    2    1    2    2    2    2    2    2    2    2    2    1    1    2 
+##  935  917   76   94   30  723  175  916  685  115  751  608  465  358  902   96 
+##    2    2    2    2    2    2    2    2    2    2    2    2    1    2    2    2 
+##  782  397  404  148  813  968  714  338  869  106   11  625  364  705  403  461 
+##    2    1    2    2    2    2    2    2    2    2    2    1    2    2    2    1 
+##  704   31  655  661   16  420  882  417  464  412  810  524  437  732  562  204 
+##    2    2    1    2    2    2    2    2    2    2    2    2    2    1    2    1 
+##  720  965  624  384  122  399  634  315  259  494  780   48  331  100  108  301 
+##    1    2    2    2    1    2    2    2    2    2    2    2    2    1    2    2 
+##   10  697  851  980  402  889  804  925  395  986    8  261  541  306  853  883 
+##    2    2    2    2    2    2    2    2    1    2    2    2    2    2    2    1 
+##  282  267  262  760  219  352  119  452   36  870  961  240  304  600  694  105 
+##    2    2    2    2    1    2    2    2    2    2    1    2    2    2    2    2 
+##  388  934  180  906  615  241  703  559   37  303   19  378  549  990  733  188 
+##    1    2    1    2    1    2    1    1    2    2    2    1    2    2    2    2 
+##  860  393  139  992  371  189  311  547  418  382   38  816  319  596  120  604 
+##    2    2    2    1    1    2    2    2    1    2    2    2    2    1    2    2 
+##  533  441  199  499  944  609   81  942  717  650    6  128   49  476  239  340 
+##    2    2    2    2    1    2    2    2    1    2    2    2    2    2    2    2 
+##  193  824  561  645  190  191  446  668  630  571  512   59  305  832   61  570 
+##    1    2    2    2    2    2    2    2    2    2    2    2    2    2    2    1 
+##  591  676  770  955  510  962   88  132  438  777  788  471  251  203  246  481 
+##    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2 
+##  574  440  435  626  492  817  131  667  478  162  322  692  168  442  276   78 
+##    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2 
+##  957  819  527  835   95  406  552  379  342  221  184  161  504  448  242  181 
+##    2    2    2    2    1    1    2    2    2    2    2    2    2    2    1    2 
+##  718  812  918  930  414  407  991  949  273  187  535  171  501  753  601  136 
+##    2    1    2    1    2    2    2    2    2    2    2    1    2    2    1    2 
+##   79  951  670  890  295  802  505  443  284  595   87  805  651  138  365  803 
+##    2    2    2    1    2    2    1    1    2    2    2    2    2    2    2    2 
+##  933  644  754  336  739  232  334  987  433  328  876  470  264  779  201  820 
+##    2    1    2    2    2    2    2    1    2    2    2    2    2    2    2    2 
+##  729  620  815  707   65  507   29  823  206  124  691  263  228   45  332  281 
+##    1    2    2    2    2    2    2    2    2    2    1    2    2    2    2    2 
+##  982  632  427  629  577  268  969  327  271  746  781  167  255  807  612   71 
+##    2    1    1    2    2    2    2    2    2    2    1    1    1    2    2    2 
+##  260  530  623  451  636  734  757  798  841  872  927   46  863  558  719   98 
+##    2    2    2    2    2    2    2    2    2    1    2    2    2    2    2    2 
+##  434  220  566  679  324  931  721  877  275  687  231  197  831  169  659  960 
+##    2    2    2    2    2    2    1    2    2    2    2    1    2    2    2    2 
+##  341  911  320  662    2  274  376  639  681  532  881  638  207   56  750  613 
+##    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2 
+##  394  958  503  647   68  725  419   53  922  230  333  677  256  742  318  940 
+##    2    2    2    2    2    2    2    2    2    2    2    2    2    2    2    1 
+##  640  745  678  173  702  351  873  266  372  172  298  778 
+##    2    2    2    2    1    2    2    2    2    2    2    2 
+## 
+## Within cluster sum of squares by cluster:
+## [1] 801760259 789310923
+##  (between_SS / total_SS =  70.2 %)
+## 
+## Available components:
+## 
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
+</details>
+<ul>
+<li>군집의 수를 2개로 분할하여 kmeans 군집분석을 실시한 결과, 117,583의 개체가 모인 군집으로 나누어졌다. 그리고 전체 변동에서 군집간 변동이 차지하는 비율인 (between_SS/total_SS)이 1에 가까울수록 군집이 잘 분류되었다고 판단할 수 있지만, 70.2%이므로 좋은 모델이라고 할 수는 없다.</li>
+</ul>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="정형-데이터마이닝.html#cb564-1" aria-hidden="true" tabindex="-1"></a>(kmeans.table<span class="ot">&lt;-</span><span class="fu">table</span>(train<span class="sc">$</span>credit.rating, credit.kmeans<span class="sc">$</span>cluster))</span></code></pre></div>
+<pre><code>##    
+##       1   2
+##   0  45 160
+##   1  72 423</code></pre>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="정형-데이터마이닝.html#cb566-1" aria-hidden="true" tabindex="-1"></a>(kmeans.table[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>kmeans.table[<span class="dv">2</span>,<span class="dv">2</span>]) <span class="sc">/</span> <span class="fu">sum</span>(kmeans.table)</span></code></pre></div>
+<pre><code>## [1] 0.6685714</code></pre>
+<ul>
+<li>정분류율은 0.67로 나타나 좋은 성능을 가지지 않았다고 판단할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="정형-데이터마이닝.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;NbClust&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb568-2"><a href="정형-데이터마이닝.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
+<span id="cb568-3"><a href="정형-데이터마이닝.html#cb568-3" aria-hidden="true" tabindex="-1"></a>nc<span class="ot">&lt;-</span><span class="fu">NbClust</span>(train.data, <span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc=</span><span class="dv">15</span>, <span class="at">method=</span><span class="st">&quot;kmeans&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
+##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
+##                 significant increase of the value of the measure i.e the significant peak in Hubert
+##                 index second differences plot. 
+## </code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-159-2.png" width="672" /></p>
+<pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
+##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
+##                 second differences plot) that corresponds to a significant increase of the value of
+##                 the measure. 
+##  
+## ******************************************************************* 
+## * Among all indices:                                                
+## * 6 proposed 2 as the best number of clusters 
+## * 3 proposed 3 as the best number of clusters 
+## * 2 proposed 4 as the best number of clusters 
+## * 4 proposed 5 as the best number of clusters 
+## * 2 proposed 8 as the best number of clusters 
+## * 1 proposed 9 as the best number of clusters 
+## * 1 proposed 10 as the best number of clusters 
+## * 1 proposed 11 as the best number of clusters 
+## * 4 proposed 15 as the best number of clusters 
+## 
+##                    ***** Conclusion *****                            
+##  
+## * According to the majority rule, the best number of clusters is  2 
+##  
+##  
+## *******************************************************************</code></pre>
+<ul>
+<li>“According to the majority rule, the best number of clusters is 2”를 통해 최적의 k는 2로 나타났음을 확인할 수 있다. 분석 전에 최적의 k를 찾고 kmeans 분석을 실시하는 것이 필요하다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="혼합-분포-군집" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> 혼합 분포 군집</h3>
+<div id="개요-2" class="section level4" number="4.3.4.1">
+<h4><span class="header-section-number">4.3.4.1</span> 개요</h4>
+<ul>
+<li>모형 기반의 군집 방법이며, 데이터가 k개의 모수적 모형의 가중합으로 표현되는 모집단 모형으로부터 나왔다는 가정하에서 모수와 함께 가중치를 자료로부터 추정하는 방법을 사용한다.</li>
+<li>K개의 각 모형은 군집을 의미하며, 각 데이터는 추정된 k개의 모형중 어느 모형으로부터 나왔을 확률이 높은지에 따라 군집의 분류가 이루어진다.</li>
+<li>흔히 혼합모형에서의 모수와 가중치의 추정(최대가능도추정)에는 EM 알고리즘이 사용된다.</li>
+</ul>
+</div>
+<div id="특징-2" class="section level4" number="4.3.4.2">
+<h4><span class="header-section-number">4.3.4.2</span> 특징</h4>
+<ul>
+<li>K-평균군집의 절차와 유사하지만 확률분포를 도입하여 군집을 수행한다.</li>
+<li>군집을 몇개의 모수로 표현할 수 있으며, 서로 다른 크기나 모양의 군집을 찾을 수 있다.</li>
+<li>EM 알고리즘을 이용한 모수 추정에서 데이터가 커지면 수렵에 시간이 걸릴 수 있다.</li>
+<li>군집의 크기가 너무 작으면 추정의 정도가 떨어지거나 어려울 수 있다.</li>
+<li>K-평균군집과 같이 이상치 자료에 민감하므로 사전에 조치가 필요하다.</li>
+</ul>
+</div>
+<div id="혼합-분포모형으로-설명할-수-있는-데이터의-형태" class="section level4" number="4.3.4.3">
+<h4><span class="header-section-number">4.3.4.3</span> 혼합 분포모형으로 설명할 수 있는 데이터의 형태</h4>
+</div>
+<div id="emexpectation-maximization-알고리즘의-진행-과정" class="section level4" number="4.3.4.4">
+<h4><span class="header-section-number">4.3.4.4</span> EM(Expectation-Maximization) 알고리즘의 진행 과정</h4>
+<ul>
+<li>E단계: 잠재변수 Z의 기대치 계산</li>
+<li>M단계: 잠재변수 Z의 기대치를 이용하여 파라미터를 추정</li>
+</ul>
+</div>
+<div id="r을-이용한-혼합-분포-군집분석" class="section level4" number="4.3.4.5">
+<h4><span class="header-section-number">4.3.4.5</span> R을 이용한 혼합 분포 군집분석</h4>
+<p><b>함수사용법</b></p>
+<pre><code>Mclust(data, G, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>분석하고자 하는 데이터(벡터, 매트릭스, 데이터프레임의 관측치). 단, 수치형 변수만 가능함</td>
+</tr>
+<tr class="even">
+<td>G</td>
+<td>BIC를 계산할 혼합분포 클러스터의 수를 지정, Default는 1:9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. iris 데이터의 Species를 제외하고 혼합 분포 군집분석을 실시해 보자.</strong></p>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="정형-데이터마이닝.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;mclust&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb572-2"><a href="정형-데이터마이닝.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mclust)</span></code></pre></div>
+<pre><code>## Package &#39;mclust&#39; version 5.4.7
+## Type &#39;citation(&quot;mclust&quot;)&#39; for citing this R package in publications.</code></pre>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="정형-데이터마이닝.html#cb574-1" aria-hidden="true" tabindex="-1"></a>mc<span class="ot">&lt;-</span><span class="fu">Mclust</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">G=</span><span class="dv">3</span>)</span>
+<span id="cb574-2"><a href="정형-데이터마이닝.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mc, <span class="at">parameters=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## ---------------------------------------------------- 
+## Gaussian finite mixture model fitted by EM algorithm 
+## ---------------------------------------------------- 
+## 
+## Mclust VEV (ellipsoidal, equal shape) model with 3 components: 
+## 
+##  log-likelihood   n df       BIC       ICL
+##        -186.074 150 38 -562.5522 -566.4673
+## 
+## Clustering table:
+##  1  2  3 
+## 50 45 55 
+## 
+## Mixing probabilities:
+##         1         2         3 
+## 0.3333333 0.3005423 0.3661243 
+## 
+## Means:
+##               [,1]     [,2]     [,3]
+## Sepal.Length 5.006 5.915044 6.546807
+## Sepal.Width  3.428 2.777451 2.949613
+## Petal.Length 1.462 4.204002 5.482252
+## Petal.Width  0.246 1.298935 1.985523
+## 
+## Variances:
+## [,,1]
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length   0.13320850  0.10938369  0.019191764 0.011585649
+## Sepal.Width    0.10938369  0.15495369  0.012096999 0.010010130
+## Petal.Length   0.01919176  0.01209700  0.028275400 0.005818274
+## Petal.Width    0.01158565  0.01001013  0.005818274 0.010695632
+## [,,2]
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length   0.22572159  0.07613348   0.14689934  0.04335826
+## Sepal.Width    0.07613348  0.08024338   0.07372331  0.03435893
+## Petal.Length   0.14689934  0.07372331   0.16613979  0.04953078
+## Petal.Width    0.04335826  0.03435893   0.04953078  0.03338619
+## [,,3]
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length   0.42943106  0.10784274   0.33452389  0.06538369
+## Sepal.Width    0.10784274  0.11596343   0.08905176  0.06134034
+## Petal.Length   0.33452389  0.08905176   0.36422115  0.08706895
+## Petal.Width    0.06538369  0.06134034   0.08706895  0.08663823</code></pre>
+<ul>
+<li>MClust 함수에서 클러스터의 수를 3으로 지정했으며, summary 함수의 parameter 인자를 True로 하여 혼합분포의 모수추정치와 함께 각 군집별 해당 자료에 대한 요약 결과를 확인할 수 있다.</li>
+</ul>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="정형-데이터마이닝.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.Mclust</span>(mc)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-161-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-161-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-161-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-161-4.png" width="672" /></p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="정형-데이터마이닝.html#cb577-1" aria-hidden="true" tabindex="-1"></a>mc<span class="sc">$</span>classification</span></code></pre></div>
+<pre><code>##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+##  [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 3 2 3 2
+##  [75] 2 2 2 3 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3
+## [112] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [149] 3 3</code></pre>
+<ul>
+<li>plot.Mclust 함수를 통해 다양한 방식으로 군집 결과를 시각화할 수 있으며, $classification 인자를 통해 각 개체가 어느 그룹으로 분류되었는지를 확인할 수 있다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="연관분석" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> 연관분석</h2>
+<p>연관 분석은 기업의 데이터베이스에 상품의 구매, 서비스 등 일련의 거래 또는 사건들 간의 규칙을 발견하여 If-Then의 구조로 분석 결과의 연관성을 파악하는 데이터마이닝 방법론이다. 연관 분석은 효율적인 상품 진열, 패키지 상품 개발, 교차판매 전략, 기획 상품의 결정 등에 사용되고 있다.</p>
+<div id="연관규칙" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> 연관규칙</h3>
+<div id="연관규칙분석의-개념" class="section level4" number="4.4.1.1">
+<h4><span class="header-section-number">4.4.1.1</span> 연관규칙분석의 개념</h4>
+<ul>
+<li>연관성 분석은 흔히 장바구니분석 또는 서열분석이라고 불린다.</li>
+<li>기업의 데이터베이스에서 상품의 구매, 서비스 등 일련의 거래 또는 사건들 간의 규칙을 발견하기 위해 적용한다.</li>
+<li>장바구니 분석 : 장바구니에 무엇이 같이 들어 있는지에 대한 분석</li>
+<li>서열분석 : A를 산 다음에 B를 산다.</li>
+</ul>
+</div>
+<div id="연관규칙의-형태" class="section level4" number="4.4.1.2">
+<h4><span class="header-section-number">4.4.1.2</span> 연관규칙의 형태</h4>
+<ul>
+<li>조건과 반응 (If-Then) 의 형태로 이루어져 있다.</li>
+</ul>
+</div>
+<div id="연관규칙의-측도" class="section level4" number="4.4.1.3">
+<h4><span class="header-section-number">4.4.1.3</span> 연관규칙의 측도</h4>
+<div id="지지도" class="section level5" number="4.4.1.3.1">
+<h5><span class="header-section-number">4.4.1.3.1</span> 지지도</h5>
+<ul>
+<li>전체 거래 중 항목 A와 항목 B를 동시에 포함하는 거래의 비율로 정의된다.</li>
+</ul>
+<p><span class="math inline">\(지지도=P(A \cap B)=\frac{A와B가 동시에 포함된 거래수}{전체거래수}=\frac{A \cap B}{전체}\)</span></p>
+</div>
+<div id="신뢰도" class="section level5" number="4.4.1.3.2">
+<h5><span class="header-section-number">4.4.1.3.2</span> 신뢰도</h5>
+<ul>
+<li>항목 A를 포함한 거래 중에서 항목 A와 항목 B가 같이 포함될 확률이다. 연광성의 정도를 파악할 수 있다.</li>
+</ul>
+<p><span class="math inline">\(신뢰도 = \frac{P(A \cap B)}{P(A)}=\frac{A와B가동시에 포함된 거래수}{A를 포함하는 거래수}=\frac{지지도}{P(A)}\)</span></p>
+</div>
+<div id="향상도" class="section level5" number="4.4.1.3.3">
+<h5><span class="header-section-number">4.4.1.3.3</span> 향상도</h5>
+<ul>
+<li>A가 구매되지 않았을 때 품목 B의 구매확률에 비해 A가 구매됐을 때 품목 B의 구매확률의 증가비이다. 연관규칙 A-&gt;B는 품목 A와 품목 B의 구매가 서로 관련이 없는 경우에 향상도가 1이 된다.</li>
+</ul>
+<p><span class="math inline">\(향상도=\frac{P(B|A)}{P(B)}=\frac{P(A\cap B)}{P(A)P(B)}=\frac{A와B가 동시에 포함된 거래수}{A를 포함하는 거래수\times B를 포함하는 거래수}=\frac{신뢰도}{P(B)}\)</span></p>
+</div>
+<div id="apriori-알고리즘" class="section level5" number="4.4.1.3.4">
+<h5><span class="header-section-number">4.4.1.3.4</span> Apriori 알고리즘</h5>
+<center>
+<img src="images/tncW2Gn.png" title="fig:" alt="Apriori알고리즘" />
+</center>
+<ul>
+<li>최소지지도보다 큰 지지도값을 갖는 품목의 집합을 빈발항목집합이라고 한다. Apriori 알고리즘은 모든 품목집합에 대한 지지도를 전부 계산하는 것이 아니라, 최소 지지도 이상의 빈발항목집합을 찾은 후 그것들에 대해서만 연관규칙을 계산하는 것이다.</li>
+<li>Apriori는 1994년에 발표된 1세대 알고리즘으로 구현과 이해가 쉽다는 장점이 있으나, 지지도가 낮은 후보 집합 생성시 아이템의 개수가 많아지면 계산 복잡도가 증가한다는 문제점을 가지고 있다.</li>
+</ul>
+</div>
+<div id="r을-이용한-연관분석" class="section level5" number="4.4.1.3.5">
+<h5><span class="header-section-number">4.4.1.3.5</span> R을 이용한 연관분석</h5>
+<ul>
+<li>R에서 연관분석을 수행할 수 있는 함수는 apriori이다. apriori함수는 arules 패키지에서 사용이 가능하며, 트랜잭션 데이터를 다루고 데이터 세트 내에서 최소 N번의 트랜잭션이 일어난 아이템 집합들을 찾아 연관규칙을 계산하는 알고리즘이다.</li>
+<li>apriori 함수를 이용해 연관분석을 수행하기 전에 as함수를 통해 데이터를 트랜잭션 형태로 변경해야 하며, apriori함수를 이용한 연관분석 결과는 arules 패키지의 inspect함수를 통해 확인할 수 있다.</li>
+</ul>
+<p><b>함수사용법</b></p>
+<pre><code>as(data, class, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>class를 변경하고자 하는 object</td>
+</tr>
+<tr class="even">
+<td>class</td>
+<td>object를 변경할 클래스 이름, 연관분석에서는 “transactions”</td>
+</tr>
+</tbody>
+</table>
+<pre><code>inspect(x, ...)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td>연관규칙 또는 트랜잭션 또는 아이템 매트릭스 데이터</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. 통신사의 고객 데이터를 입력하고 as함수로 데이터를 변형하고 inspect 함수로 데이터를 확인해 보자.</strong></p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="정형-데이터마이닝.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;arules&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb581-2"><a href="정형-데이터마이닝.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arules)</span></code></pre></div>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## 
+## Attaching package: &#39;arules&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     abbreviate, write</code></pre>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="정형-데이터마이닝.html#cb586-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb586-2"><a href="정형-데이터마이닝.html#cb586-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FEMALE&quot;</span>, <span class="st">&quot;MALE&quot;</span>, <span class="st">&quot;FEMALE&quot;</span>, <span class="st">&quot;FEMALE&quot;</span>, <span class="st">&quot;MALE&quot;</span>, <span class="st">&quot;FEMALE&quot;</span>)</span>
+<span id="cb586-3"><a href="정형-데이터마이닝.html#cb586-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;age_20&quot;</span>, <span class="st">&quot;age_20&quot;</span>, <span class="st">&quot;age_40&quot;</span>, <span class="st">&quot;age_30&quot;</span>, <span class="st">&quot;age_40&quot;</span>, <span class="st">&quot;age_30&quot;</span>)</span>
+<span id="cb586-4"><a href="정형-데이터마이닝.html#cb586-4" aria-hidden="true" tabindex="-1"></a>rank <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Gold&quot;</span>, <span class="st">&quot;Silver&quot;</span>, <span class="st">&quot;Silver&quot;</span>, <span class="st">&quot;VIP&quot;</span>, <span class="st">&quot;Gold&quot;</span>, <span class="st">&quot;Gold&quot;</span>)</span>
+<span id="cb586-5"><a href="정형-데이터마이닝.html#cb586-5" aria-hidden="true" tabindex="-1"></a>mobile_app_use <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;YES&quot;</span>, <span class="st">&quot;YES&quot;</span>, <span class="st">&quot;NO&quot;</span>, <span class="st">&quot;YES&quot;</span>, <span class="st">&quot;NO&quot;</span>, <span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb586-6"><a href="정형-데이터마이닝.html#cb586-6" aria-hidden="true" tabindex="-1"></a>re_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;YES&quot;</span>, <span class="st">&quot;NO&quot;</span>, <span class="st">&quot;NO&quot;</span>, <span class="st">&quot;YES&quot;</span>, <span class="st">&quot;NO&quot;</span>, <span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb586-7"><a href="정형-데이터마이닝.html#cb586-7" aria-hidden="true" tabindex="-1"></a>cust_tel <span class="ot">&lt;-</span> <span class="fu">cbind</span>(id, gender, age, rank, mobile_app_use, re_order)</span>
+<span id="cb586-8"><a href="정형-데이터마이닝.html#cb586-8" aria-hidden="true" tabindex="-1"></a>cust_tel <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(cust_tel)</span>
+<span id="cb586-9"><a href="정형-데이터마이닝.html#cb586-9" aria-hidden="true" tabindex="-1"></a>cust_tel_1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(cust_tel, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(id))</span></code></pre></div>
+<details>
+<summary>
+Click for Result
+</summary>
+<pre><code>##   gender    age   rank mobile_app_use re_order
+## 1 FEMALE age_20   Gold            YES      YES
+## 2   MALE age_20 Silver            YES       NO
+## 3 FEMALE age_40 Silver             NO       NO
+## 4 FEMALE age_30    VIP            YES      YES
+## 5   MALE age_40   Gold             NO       NO
+## 6 FEMALE age_30   Gold            YES      YES</code></pre>
+</details>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="정형-데이터마이닝.html#cb588-1" aria-hidden="true" tabindex="-1"></a>tran.cust<span class="ot">&lt;-</span><span class="fu">as</span>(cust_tel_1, <span class="st">&quot;transactions&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="정형-데이터마이닝.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(tran.cust)</span></code></pre></div>
+<pre><code>##     items                transactionID
+## [1] {gender=FEMALE,                   
+##      age=age_20,                      
+##      rank=Gold,                       
+##      mobile_app_use=YES,              
+##      re_order=YES}                   1
+## [2] {gender=MALE,                     
+##      age=age_20,                      
+##      rank=Silver,                     
+##      mobile_app_use=YES,              
+##      re_order=NO}                    2
+## [3] {gender=FEMALE,                   
+##      age=age_40,                      
+##      rank=Silver,                     
+##      mobile_app_use=NO,               
+##      re_order=NO}                    3
+## [4] {gender=FEMALE,                   
+##      age=age_30,                      
+##      rank=VIP,                        
+##      mobile_app_use=YES,              
+##      re_order=YES}                   4
+## [5] {gender=MALE,                     
+##      age=age_40,                      
+##      rank=Gold,                       
+##      mobile_app_use=NO,               
+##      re_order=NO}                    5
+## [6] {gender=FEMALE,                   
+##      age=age_30,                      
+##      rank=Gold,                       
+##      mobile_app_use=YES,              
+##      re_order=YES}                   6</code></pre>
+<ul>
+<li>as함수를 이용하여 데이터프레임을 transactions 형태로 변환하였으며, 변환된 데이터를 입력하면 데이터의 행과 열의 개수만 나타난다. inspect 함수로 트랜잭션데이터 변환결과를 확인할 수 있다.</li>
+</ul>
+<p><b>함수사용법</b></p>
+<pre><code>apriori(data, parameter, appearance, control)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>인자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>연관규칙 또는 트랜잭션 또는 아이템 매트릭스 데이터</td>
+</tr>
+<tr class="even">
+<td>parameter</td>
+<td>최소 지지도(supp), 신뢰도(conf), 최대아이템개수(maxlen), 최소아이템개수(minlen) 입력</td>
+</tr>
+<tr class="odd">
+<td>appearance</td>
+<td>특정 연관규칙 결과를 찾을 수 있음.</td>
+</tr>
+<tr class="even">
+<td>control</td>
+<td>결과 보여주기 등의 알고리즘의 성능을 조정할 수 있음</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q. R프로그램의 내장데이터인 Groceries 데이터셋으로 연관규칙분석을 실시해 보자.</strong></p>
 
 </div>
 </div>

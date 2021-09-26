@@ -820,7 +820,7 @@ summary(nn.model)
 install.packages(setdiff("devtools", rownames(installed.packages())))
 library(devtools)
 source_url('https://gist.githubusercontent.com/Peque/41a9e20d6687f2f3108d/raw/85e14f3a292e126f1454864427e3a189c2fe33f3/nnet_plot_update.r')
-X11()
+# X11()
 plot.nnet(nn.model)
 ```
 - summary의 결과에서 나타난 것처럼 20개의 입력노드, 2개의 은닉노드, 1개의 출력노드, 2개의 상수항을 확인할 수 있다. 그림에서 선의 굵기는 연결선의 가중치에 비례한다. 
@@ -828,7 +828,7 @@ plot.nnet(nn.model)
 ```{r}
 install.packages(setdiff("NeuralNetTools", rownames(installed.packages())))
 library(NeuralNetTools)
-X11()
+# X11()
 garson(nn.model)
 ```
 
@@ -889,7 +889,7 @@ train.infert<-infert[parts,]
 test.infert<-infert[-parts,]
 nn.model2<-neuralnet(case~age+parity+induced+spontaneous, data=train.infert,
                      hidden=c(2,2), algorithm="rprop+", threshold=0.01, stepmax=1e+5)
-X11()
+# X11()
 plot(nn.model2)
 ```
 
@@ -993,7 +993,6 @@ __Q. USArrests 데이터는 미국 주(State)별 강력 범죄율 정보를 담�
 ```{r}
 US<-USArrests
 US.dist<-dist(US, "euclidean")
-US.dist
 ```
 - USArrests 데이터를 US라는 변수에 저장하고, dist 함수로 유클리디안 거리를 구한 뒤 US.dist 변수에 저장하여 데이터를 확인하면 위와 같다. 
 
@@ -1023,3 +1022,267 @@ rect.hclust(US.average, k=6, border="red")
 ```
 
 - 덴드로그램은 plot함수와 rect.hclust 함수를 이용하여 각각의 그룹을 사각형으로 구분지어 나타낼 수 있다. 
+
+
+### 비계층적 군집분석
+
+#### 개요
+
+- n개의 개체를 k개의 군집으로 나눌 수 있는 모든 가능한 방법을 점검해 최적화한 군집을 형성하는 것이다. 
+
+#### K-평균 군집분석
+
+- 주어진 데이터를 k개의 클러스터로 묶는 알고리즘으로, 각 클러스터와 거리 차이의 분산을 최소화하는 방식으로 동작한다. 
+
+##### K-평균 군집분석 과정
+- 원하는 군집의 개수와 초기값들을 정해 seed 중심으로 군집을 형성한다. 
+- 각 데이터를 거리가 가장 가까운 seed가 있는 군집으로 분류한다. 
+- 각 군집의 seed값을 다시 계산한다. 
+
+##### K-평균 군집분석의 특징
+- 거리 계산을 통해 군집화가 이루어지므로 연속형 변수에 활용이 가능하다. 
+- K개의 초기 중심값은 임의로 선택이 가능하며 가급적이면 멀리 떨어지는 것이 바람직하다. 
+- 초기 중심값을 임의로 선택할 때 일렬(위아래, 좌우)로 선택하면 군집이 혼합되지 ㅇ낳고 층으로 나누어질 수 있어 주의하여야 한다. 초기 중심값의 선정에 따라 결과가 달라질 수 있다. 
+- 초기 중심으로부터의 오차 제곱합을 최소화하는 방향으로 군집이 형성되는 탐욕적(greedy) 알고리즘이므로 안정된 군집은 보장하나 최적이라는 보장은 없다. 
+
+- 장점
+  + 알고리즘이 단순하며, 빠르게 수행되어 분석방법 적용이 용이하다. 
+  + 계층적 군집분석에 비해 많은 양의 데이터를 다룰 수 있다. 
+  + 내부 구조에 대한 사전정보가 없어도 의미있는 자료구조를 찾을 수 있다. 
+  + 다양한 형태의 데이터에 적용이 가능하다. 
+
+- 단점
+  + 군집의 수, 가중치와 거리 정의가 어렵다. 
+  + 사전에 주어진 목적이 없으므로 결과해석이 어렵다. 
+  + 잡음이나 이상값의 영향을 많이 받는다. 
+  + 블록한 형태가 아닌 군집이 존재할 경우에는 성능이 떨어진다. 
+  + 초기 군집 수 결정에 어려움이 있다. 
+  
+##### R을 활용한 K-means 군집분석
+
+<b>함수사용법</b>
+
+```{}
+kmeans(data, centers, ...)
+```
+
+|인자|설명|
+|----|----|
+|data|분석하고자 하는 데이터|
+|centers|군집의 개수를 설정|
+
+```{}
+Nbclust(data, min.nc, max.nc, method, ...)
+```
+
+|인자|설명|
+|----|----|
+|data|분석하고자 하는 데이터|
+|min.nc|최소군집의 수|
+|max.nc|최대군집의 수|
+|method|군집분석 방법을 정함. "kmeans", "median", "single", "complete", "average" 등이 있음|
+
+__Q. 앞서 분할한 credit 데이터의 train 데이터로 kmenas 군집분석을 해보자.__
+
+```{r}
+train.data<-train[,-1]
+credit.kmeans<-kmeans(train.data, centers=2)
+```
+
+- kmeans 군집 분석을 실시하기 전에 종속변수를 제외한 데이터로 군집분석을 실시해 원래 종속 변수와 군집분석 결과의 정분류율을 확인해 본다. 
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r, echo=FALSE, eval=TRUE}
+credit.kmeans
+```
+    
+</details> 
+
+- 군집의 수를 2개로 분할하여 kmeans 군집분석을 실시한 결과, 117,583의 개체가 모인 군집으로 나누어졌다. 그리고 전체 변동에서 군집간 변동이 차지하는 비율인 (between_SS/total_SS)이 1에 가까울수록 군집이 잘 분류되었다고 판단할 수 있지만, 70.2%이므로 좋은 모델이라고 할 수는 없다. 
+
+```{r}
+(kmeans.table<-table(train$credit.rating, credit.kmeans$cluster))
+(kmeans.table[1,1]+kmeans.table[2,2]) / sum(kmeans.table)
+```
+
+- 정분류율은 0.67로 나타나 좋은 성능을 가지지 않았다고 판단할 수 있다. 
+
+```{r}
+install.packages(setdiff("NbClust", rownames(installed.packages())))
+library(NbClust)
+nc<-NbClust(train.data, min.nc=2, max.nc=15, method="kmeans")
+```
+
+- "According to the majority rule, the best number of clusters is 2"를 통해 최적의 k는 2로 나타났음을 확인할 수 있다. 분석 전에 최적의 k를 찾고 kmeans 분석을 실시하는 것이 필요하다. 
+
+### 혼합 분포 군집
+
+#### 개요
+
+- 모형 기반의 군집 방법이며, 데이터가 k개의 모수적 모형의 가중합으로 표현되는 모집단 모형으로부터 나왔다는 가정하에서 모수와 함께 가중치를 자료로부터 추정하는 방법을 사용한다. 
+- K개의 각 모형은 군집을 의미하며, 각 데이터는 추정된 k개의 모형중 어느 모형으로부터 나왔을 확률이 높은지에 따라 군집의 분류가 이루어진다. 
+- 흔히 혼합모형에서의 모수와 가중치의 추정(최대가능도추정)에는 EM 알고리즘이 사용된다. 
+
+#### 특징
+- K-평균군집의 절차와 유사하지만 확률분포를 도입하여 군집을 수행한다. 
+- 군집을 몇개의 모수로 표현할 수 있으며, 서로 다른 크기나 모양의 군집을 찾을 수 있다. 
+- EM 알고리즘을 이용한 모수 추정에서 데이터가 커지면 수렵에 시간이 걸릴 수 있다. 
+- 군집의 크기가 너무 작으면 추정의 정도가 떨어지거나 어려울 수 있다. 
+- K-평균군집과 같이 이상치 자료에 민감하므로 사전에 조치가 필요하다. 
+
+#### 혼합 분포모형으로 설명할 수 있는 데이터의 형태
+
+#### EM(Expectation-Maximization) 알고리즘의 진행 과정
+
+- E단계: 잠재변수 Z의 기대치 계산
+- M단계: 잠재변수 Z의 기대치를 이용하여 파라미터를 추정
+
+#### R을 이용한 혼합 분포 군집분석
+
+<b>함수사용법</b>
+```{}
+Mclust(data, G, ...)
+```
+
+|인자|설명|
+|----|----|
+|data|분석하고자 하는 데이터(벡터, 매트릭스, 데이터프레임의 관측치). 단, 수치형 변수만 가능함|
+|G|BIC를 계산할 혼합분포 클러스터의 수를 지정, Default는 1:9|
+
+__Q. iris 데이터의 Species를 제외하고 혼합 분포 군집분석을 실시해 보자.__
+
+```{r}
+install.packages(setdiff("mclust", rownames(installed.packages())))
+library(mclust)
+mc<-Mclust(iris[,1:4], G=3)
+summary(mc, parameters=TRUE)
+```
+
+- MClust 함수에서 클러스터의 수를 3으로 지정했으며, summary 함수의 parameter 인자를 True로 하여 혼합분포의 모수추정치와 함께 각 군집별 해당 자료에 대한 요약 결과를 확인할 수 있다. 
+
+```{r}
+plot.Mclust(mc)
+mc$classification
+```
+
+- plot.Mclust 함수를 통해 다양한 방식으로 군집 결과를 시각화할 수 있으며, $classification 인자를 통해 각 개체가 어느 그룹으로 분류되었는지를 확인할 수 있다. 
+
+## 연관분석
+
+연관 분석은 기업의 데이터베이스에 상품의 구매, 서비스 등 일련의 거래 또는 사건들 간의 규칙을 발견하여 If-Then의 구조로 분석 결과의 연관성을 파악하는 데이터마이닝 방법론이다. 연관 분석은 효율적인 상품 진열, 패키지 상품 개발, 교차판매 전략, 기획 상품의 결정 등에 사용되고 있다. 
+
+### 연관규칙
+
+#### 연관규칙분석의 개념
+
+- 연관성 분석은 흔히 장바구니분석 또는 서열분석이라고 불린다. 
+- 기업의 데이터베이스에서 상품의 구매, 서비스 등 일련의 거래 또는 사건들 간의 규칙을 발견하기 위해 적용한다. 
+- 장바구니 분석 : 장바구니에 무엇이 같이 들어 있는지에 대한 분석
+- 서열분석 : A를 산 다음에 B를 산다. 
+
+#### 연관규칙의 형태
+
+- 조건과 반응 (If-Then) 의 형태로 이루어져 있다. 
+
+#### 연관규칙의 측도
+
+##### 지지도
+- 전체 거래 중 항목 A와 항목 B를 동시에 포함하는 거래의 비율로 정의된다. 
+
+$지지도=P(A \cap B)=\frac{A와B가 동시에 포함된 거래수}{전체거래수}=\frac{A \cap B}{전체}$
+
+##### 신뢰도
+- 항목 A를 포함한 거래 중에서 항목 A와 항목 B가 같이 포함될 확률이다. 연광성의 정도를 파악할 수 있다. 
+
+$신뢰도 = \frac{P(A \cap B)}{P(A)}=\frac{A와B가동시에 포함된 거래수}{A를 포함하는 거래수}=\frac{지지도}{P(A)}$
+
+##### 향상도
+- A가 구매되지 않았을 때 품목 B의 구매확률에 비해 A가 구매됐을 때 품목 B의 구매확률의 증가비이다. 연관규칙 A->B는 품목 A와 품목 B의 구매가 서로 관련이 없는 경우에 향상도가 1이 된다. 
+
+$향상도=\frac{P(B|A)}{P(B)}=\frac{P(A\cap B)}{P(A)P(B)}=\frac{A와B가 동시에 포함된 거래수}{A를 포함하는 거래수\times B를 포함하는 거래수}=\frac{신뢰도}{P(B)}$
+
+##### Apriori 알고리즘
+
+<center>![Apriori알고리즘](./images/tncW2Gn.png)</center>
+
+- 최소지지도보다 큰 지지도값을 갖는 품목의 집합을 빈발항목집합이라고 한다. Apriori 알고리즘은 모든 품목집합에 대한 지지도를 전부 계산하는 것이 아니라, 최소 지지도 이상의 빈발항목집합을 찾은 후 그것들에 대해서만 연관규칙을 계산하는 것이다. 
+- Apriori는 1994년에 발표된 1세대 알고리즘으로 구현과 이해가 쉽다는 장점이 있으나, 지지도가 낮은 후보 집합 생성시 아이템의 개수가 많아지면 계산 복잡도가 증가한다는 문제점을 가지고 있다. 
+
+##### R을 이용한 연관분석
+
+- R에서 연관분석을 수행할 수 있는 함수는 apriori이다. apriori함수는 arules 패키지에서 사용이 가능하며, 트랜잭션 데이터를 다루고 데이터 세트 내에서 최소 N번의 트랜잭션이 일어난 아이템 집합들을 찾아 연관규칙을 계산하는 알고리즘이다. 
+- apriori 함수를 이용해 연관분석을 수행하기 전에 as함수를 통해 데이터를 트랜잭션 형태로 변경해야 하며, apriori함수를 이용한 연관분석 결과는 arules 패키지의 inspect함수를 통해 확인할 수 있다. 
+
+<b>함수사용법</b>
+```{}
+as(data, class, ...)
+```
+
+|인자|설명|
+|----|----|
+|data|class를 변경하고자 하는 object|
+|class|object를 변경할 클래스 이름, 연관분석에서는 "transactions"|
+
+```{}
+inspect(x, ...)
+```
+
+|인자|설명|
+|----|----|
+|x|연관규칙 또는 트랜잭션 또는 아이템 매트릭스 데이터|
+
+__Q. 통신사의 고객 데이터를 입력하고 as함수로 데이터를 변형하고 inspect 함수로 데이터를 확인해 보자.__
+```{r}
+install.packages(setdiff("arules", rownames(installed.packages())))
+library(arules)
+id <- c(1, 2, 3, 4, 5, 6)
+gender <- c("FEMALE", "MALE", "FEMALE", "FEMALE", "MALE", "FEMALE")
+age <- c("age_20", "age_20", "age_40", "age_30", "age_40", "age_30")
+rank <- c("Gold", "Silver", "Silver", "VIP", "Gold", "Gold")
+mobile_app_use <- c("YES", "YES", "NO", "YES", "NO", "YES")
+re_order <- c("YES", "NO", "NO", "YES", "NO", "YES")
+cust_tel <- cbind(id, gender, age, rank, mobile_app_use, re_order)
+cust_tel <- as.data.frame(cust_tel)
+cust_tel_1 <- subset(cust_tel, select = -c(id))
+```
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r, echo=FALSE, eval=TRUE}
+cust_tel_1
+```
+    
+</details> 
+
+```{r}
+tran.cust<-as(cust_tel_1, "transactions")
+```
+
+```{r}
+inspect(tran.cust)
+```
+
+- as함수를 이용하여 데이터프레임을 transactions 형태로 변환하였으며, 변환된 데이터를 입력하면 데이터의 행과 열의 개수만 나타난다. inspect 함수로 트랜잭션데이터 변환결과를 확인할 수 있다. 
+
+<b>함수사용법</b>
+
+```{}
+apriori(data, parameter, appearance, control)
+```
+
+|인자|설명|
+|----|----|
+|data|연관규칙 또는 트랜잭션 또는 아이템 매트릭스 데이터|
+|parameter|최소 지지도(supp), 신뢰도(conf), 최대아이템개수(maxlen), 최소아이템개수(minlen) 입력|
+|appearance|특정 연관규칙 결과를 찾을 수 있음.|
+|control|결과 보여주기 등의 알고리즘의 성능을 조정할 수 있음|
+
+__Q. R프로그램의 내장데이터인 Groceries 데이터셋으로 연관규칙분석을 실시해 보자.__
+
+```{r}
+
+```
+
