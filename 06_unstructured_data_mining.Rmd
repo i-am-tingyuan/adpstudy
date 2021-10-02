@@ -1,0 +1,362 @@
+---
+title: "ADPStudy"
+author: "tingyuan"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+  #bookdown::pdf_book: default
+---
+# 비정형 데이터마이닝
+## 텍스트마이닝
+텍스트마이닝은 텍스트로부터 고품질의 정보를 도출하는 분석방법으로, 입력된 텍스트를 구조화해 그 데이터에서 패턴을 도출한 후 결과를 평가 및 해석하는 일련의 과정을 의미한다. 주로 구조화된 정형 데이터 속에서 정보나 패턴을 발견하는 데이터마이닝과는 달리 텍스트마이닝은 인터넷 데이터, 소셜 미디어 데이터 등과 같은 자연어로 구성된 비정형 텍스트 데이터 속에서 정보나 관계를 발견하는 분석 기법이다. 
+
+단어들 간의 관계를 이용해 감성분석, 워드 클라우드 분석 등을 수행할 후 이 정보를 클러스터링, 분류, 사회연결망 분석 등에 활용한다. 
+
+### 데이터 전처리
+
+#### tm 패키지
+- tm 패키지는 문서를 관리하는 기본 구조인 Corpus를 생성하여 tm_map 함수를 통해 데이터들을 전처리 및 가공한다. 
+- Corpus와 VCorpus 중 VCorpus에서 에러가 적게 나타나므로 주로 VCorpus를 활용한다. 
+
+##### Corpus
+- Corpus는 데이터마이닝의 절차중 데이터의 정제, 통합, 선택, 변환의 과정을 거친 구조화된 단계로 더 이상 추가적인 절차없이 데이터마이닝 알고리즘 실험에 활용될 수 있는 상태이다.
+- R프로그램의 텍스트마이닝 패키지인 tm에서 문서를 관리하는 기본 구조이며, 텍스트 문서들의 집합을 의미한다. 
+- VCorpus: 문서를 Corpus class로 만들어 주는 함수로, 결과는 메모리에 저장되어 현재 구동중인 R메모리에서만 유지된다. 
+
+##### tm 패키지를 활용한 Corpus 만들기
+- 텍스트 마이닝을 수행하기 전에 tm패키지를 활용해 Corpus를 만들고 생성된 Corpus를 전처리하고 분석에 활용하여야 한다. 
+- 텍스트 데이터를 문서로 만들기 위해 VectorSource() 함수를 사용하고 문서로 완성된 데이터를 VCorpus()함수를 이용하여 Corpus로 만든다. 
+
+<b>함수 사용법</b>
+```{}
+VectorSource(text)
+```
+
+```{}
+VCorpus(data)
+```
+
+__Q. 아래의 내장 데이터로 Corpus를 살펴보자.__
+```{r}
+install.packages(setdiff("tm", rownames(installed.packages())))
+library(tm)
+
+data(crude)
+summary(crude)[1:6,]
+```
+- crude 데이터는 로이터 뉴스 기사 중 원유와 관련된 기사 20개가 저장된 데이터이다. summary 결과에서 class는 TextDocument 형태임을 알 수 있고, list 형태로 저장되어 있다. 
+
+```{r}
+inspect(crude[1])
+```
+
+- inspect 함수로 문서의 정보(파일형태, 글자수 등)를 파악할 수 있으며, 문서의 내용은 $content를 통해 확인이 가능하다. 
+
+##### tm 패키지를 활용한 데이터 전처리
+- tm_map 함수를 활용하여 코퍼스로 변환된 데이터에 텍스트 전처리를 수행할 수 있다. 
+- 공백 제거, 문장부호 제거, 숫자 제거, 불용어 제거 등의 전처리를 통해 텍스트마이닝을 수행할 수 있는 형태로 데이터를 전처리 한다. 
+
+<b>함수사용법</b>
+```{}
+tm_map(x, FUN, ...)
+```
+|인자|설명|
+|----|----|
+|x|코퍼스로 변환된 데이터|
+|FUN|변환에 사용할 함수를 입력|
+
+- tm_map의 function 종류는 아래와 같음
+
+|함수|기능|
+|----|----|
+|tm_map(x, tolower)|소문자로 만들기|
+|tm_map(x, stemDocument)|어근만 남기기|
+|tm_map(x, stripWhitespace)|공백제거|
+|tm_map(x, removePunctuation)|문장부호 제거|
+|tm_map(x, removeNumbers)|숫자 제거|
+|tm_map(x, removeWords, "word")|단어 제거|
+|tm_map(x, removeWords, stopWords("english"))|불용어 제거|
+|tm_map(x, PlainTextDocument)|TextDocument로 변환|
+
+__Q. 데이터 분석 전문가라는 키워드로 뉴스 기사를 검색하여 10개의 기사를 수집하였다. 수집 데이터를 Corpus로 만들고, tm_map 함수로 데이터를 전처리해 보자.__
+```{r}
+install.packages(setdiff("tm", rownames(installed.packages())))
+library(tm)
+news<-readLines(file("./data/키워드_뉴스.txt", encoding="EUC-KR"))
+```
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+news
+```
+
+</details> 
+
+```{r}
+news.corpus<-VCorpus(VectorSource(news))
+news.corpus[[1]]$content
+```
+
+- 예제 텍스트 파일을 readLines 함수로 news라는 변수에 저장한다. 텍스트 데이터를 VectorSource함수를 통해 문서를 만들고, VCorpus 함수로 Corpus 형태로 변환한다. 
+- Corpus로 변환된 데이터는 리스트 형태이고 $content를 통해 내용을 확인할 수 있다. Corpus 데이터를 전처리하기 위해 사용자 지정함수를 제작하여 데이터 전처리를 수행한다. 
+
+```{r}
+clean_txt<-function(txt){
+  txt<-tm_map(txt, removeNumbers)
+  txt<-tm_map(txt, removePunctuation)
+  txt<-tm_map(txt, stripWhitespace)
+  return(txt)
+}
+
+```
+
+- tm_map 함수를 통해 숫자 제거, 문장부호 제거, 공백 제거를 진행하고 txt에 데이터를 저장한다. 
+
+```{r}
+clean.news<-clean_txt(news.corpus)
+clean.news[[1]]$content
+txt2<-gsub("[[:punct:]]", "", clean.news[[1]])
+```
+
+- 전처리 결과에서 숫자와 구두점 등을 제거했으나, ',. 와 같은 부호는 제거되지 않아 gsub 함수를 통해 제거할 수 있다. gsub에서 [[:punct:]]와 같은 용어를 통해 전체 대체가 가능하다. 
+
+#### 자연어 처리
+
+- 자연어 처리는 기본적으로 형태소 분석을 하는 과정을 포함하고 있다. 문장의 품사를 구분하여 분석에 필요한 품사만 추출하여 활용할 수 있다. 
+- R에서 한글 자연어 분석을 하기 위해 KoNLP 패키지를 이용한다. 25개의 함수가 들어 있으며, 형태소 분석 등의 자연어 처리 및 텍스트 마이닝을 수행할 수 있다. 
+
+##### KoNLP 패키지를 활용한 한글처리
+
+<b>함수 사용법</b>
+```{}
+buildDictionary(ext_dic, data)
+```
+
+|인자|설명|
+|----|----|
+|ext_dic|단어를 추가하고자 하는 사전을 선택. "woorimalsam", "sejong", "insighter"이 있음.|
+|data|추가하고자 하는 단어와 품사가 들어간 data frame 또는 txt 파일|
+
+```{}
+extraNoun(text)
+```
+
+|인자|설명|
+|----|----|
+|text|명사를 추출하고자 하는 문장 또는 문서|
+
+```{}
+SimplePos22(text)
+```
+
+|인자|설명|
+|----|----|
+|text|형태소 분석을 하고자 하는 문장 또는 문서|
+
+__Q. 간단한 문장으로 명사추출, 사전 단어추가, 품사를 확인해 보자.__
+
+```{r eval=FALSE}
+install.packages(setdiff("KoNLP", rownames(installed.packages())))
+library(KoNLP)
+useSejongDic()
+```
+
+- KoNLP 라이브러리를 활성화하고 useSejongDic() 함수를 실행하여 사용하고자 하는 사전을 설정한다. 
+
+```{r eval=FALSE}
+setence<-'아버지가 방에 스르륵 들어가신다'
+extractNoun(sentence)
+buildDictionary(ext_dic="sejong", user_dic=data.frame(c('스르륵'), c('mag')))
+extractNoun(sentence)
+```
+
+- 명사를 추출하기 위해 예제 문장을 setence라는 데이터에 저장하고 extractNoun 함수로 명사를 추출했다. 결과에서 '스르륵'은 명사가 아니라 부사인데, '스르륵'이라는 단어가 세종사전에 포함되어 있지 않으므로 '스르륵'을 부사로 세종사전에 추가한다. 
+- 사전을 추가하고 다시 extractNoun함수를 사용해 결과를 확인하면 '스르륵'이 제외된 것을 확인할 수 있다. 
+
+```{r eval=FALSE}
+SimplePos22(sentence)
+```
+
+- SimplePos22 함수로 sentence의 문장을 형태소 분석을 하여 분리된 단어마다 품사를 확인할 수 있으며, NC은 명사, PV는 동사, PA는 형용사를 의미한다. 
+
+__Q. 위의 new 데이터에서 corpus로 변환하지 않고 전처리 및 명사추출, 사전추가, 품사확인을 하고 형용사를 추출해 보자.__
+```{r eval=FALSE}
+clean_txt2<-function(txt) {
+  txt<-removeNumbers(txt)
+  txt<-removePunctuation(txt)
+  txt<-stripWhitespace(txt)
+  txt<-gsub("[^[:alnum:]]"," ",txt)
+  return(txt)
+}
+clean.news2<-clean_txt2(news)
+Noun.news[5]
+```
+
+- tm패키지의 tm_map 함수의 인자로 사용되는 FUN을 그대로 함수로 적용하여 사용이 가능하다. 사용자 정의함수에 숫자, 문장부호, 공백 제거 함수를 사용했고 gsub 함수를 활용해 영문자/숫자를 제외한 것들을 제거하는 전처리를 한다. 
+- 전처리를 마친 데이터를 Corpus로 반환하지 않고 데이터를 확인했을 때, '푸드테크, '스타트업' 등과 같은 복합명사가 분리되어 출력되는 것을 확인할 수 있다. 
+
+```{r eval=FALSE}
+buildDictionary(ext_dic="sejong", user_dic=data.frame(c(read.table("food.txt"))))
+extractNoun(clean.news2[5])
+```
+
+- 복합명사를 명사로 인식할 수 있도록 사전에 등록하고 다시 분석 결과를 확인하면 복합명사도 하나의 명사로 추가된 것으로 확인할 수 있다. 
+- 단어사전은 txt파일 형태로도 추가가 가능하며 형태는 '단어', '품사'로 저장하여 추가할 수 있다. 
+```{r eval=FALSE}
+install.packages("stringr")
+library(stringr)
+doc1<-paste(SimplePos22(clean.news2[[2]]))
+doc1
+```
+
+- stringr 패키지는 R에서 문자열을 처리할 수 있는 패키지로, str_match 함수로 문자열 중 특정 부분이 해당하는 데이터를 선별할 수 있다. 
+- SimplePos22 함수를 실행한 결과가 리스트 형태로 나타나므로, 이를 paste 함수를 사용해 character형 벡터로 변형하여 doc1에 저장한다. str_match 함수를 활용해 품사 중 PA(형용사)인 데이터만 뽑아낸다. 
+
+```{r eval=FALSE}
+doc2<-str_match(doc1, "([가-힣]+)/PA")
+doc2
+
+doc3<-doc2[,2]
+doc3[!is.na(doc3)]
+```
+
+- doc2 데이터에서 1열은 PA를 포함한 단어가 있는 열이며, 2열은 PA를 제외한 단어만 있는 열이 생성되고 PA가 없는 행은 NA로 채워진다. doc2의 2열의 데이터를 doc3에 저장하고 is.na 함수로 NA를 제외한 데이터만 추출한다. 
+
+##### Stemming
+- 어간 추출(Stemming)은 형태학적 분석을 단순화한 버전이라고 할 수 있으며, 정해진 규칙만 보고 단어의 어미를 자르는 어림짐작의 작업이라고 할 수 있다. 즉 공통 어간을 가지는 단어를 묶는 작업을 Stemming이라고 한다. 
+- R프로그램에서는 tm패키지에서 stemDocument() 함수를 통해 공통으로 들어가지 않은 부분을 제외하고 stemCompletion() 함수를 통해 stemming된 단어와 완성을 위한 dictionary를 함께 넣으면 가장 기본적인 어휘로 완성해주는 역할을 한다. 
+
+```{}
+stemDocument(text)
+```
+
+```{}
+stemCompletion(text, dictionary)
+```
+
+__Q. analyze, analyzed, analyzing 단어의 어간을 추출하고 가장 기본단어로 만들어 보자.__
+```{r eval=FALSE}
+test<-stemDocument(c('analyze', 'analyzed', 'analyzing'))
+test
+completion<-stemCompletion(test, dictionary=c('analyze', 'analyzed', 'analyzing'))
+completion
+```
+
+- stemDocument 함수를 통해 앞 어간을 제외한 나머지 부분을 잘려 나가게 만들어 각 단어가 서로 다르지만 사실 모두 analyz-라는 어간을 가지므로 위와 같이 도출된다. 
+- stemCompletion 함수를 통해 analyz로 stemming 되었던 단어들이 dictionary에 포함된 단어중 가장 기본 어휘로 완성된 것을 확인할 수 있다. 가장 중요한 것은 stemCompletion을 할 때는 단어의 완성을 위해 반드시 dictionary가 필요하다. 
+
+### Term-Document Matrix
+- 앞선 과정을 통해 읽어 들인 문서의 빈 공간을 제거하고, 대문자를 소문자로 변환, 문장부호 제거, 불용어 처리 등의 과정을 수행했다. 이렇게 전처리된 데이터에서 각 문서와 단어 간의 사용 여부를 이용해 만들어진 matrix가 바로 TDM(Term-Document Matrix)이다. 
+- TDM을 보면 문서마다 등장한 단어의 빈도수를 쉽게 파악할 수 있다는 장점이 있다. 
+
+#### R을 활용한 TDM 구축하기
+
+<b>함수사용법</b>
+```{}
+TermDocumentMatrix(data, control)
+```
+|인자|설명|
+|----|----|
+|data|Corpus 형태의 데이터|
+|control|사전 변경, 가중치 부여 등의 옵션 추가기능 지원|
+
+__Q. 앞서 전처리가 완료된 clean.news2 데이터를 Vcorpus로 변환하여 TDM을 생성해 보자.__
+```{r eval=FALSE}
+VC.news<-VCorpus(VectorSource(clean.news2))
+VC.news[[1]]$content
+
+TDM.news<-TermDocumentMatrix(VC.news)
+dim(TDM.news)
+
+inspect(TDM.news[1:5, ])
+```
+
+- 전처리가 완료된 clean.news2 데이터를 VC.news에 Corpus 형태로 저장하고 VC.news 데이터를 TermDocumentMatrix() 함수를 활용하여 TDM을 구축하였다.
+- dim 함수를 통해 10개의 기사에서 1011개의 단어가 추출되었다는 것을 확인할 수 있으며, inspect 함수로 TDM 구축 결과를 확인할 수 있다. 
+- TDM 결과를 확인하면 10개의 문서에서 1~5번째 단어의 분포를 확인할 수 있다. 여기서 'academy는'이 4번 문서에서 1번 사용됐음을 확인할 수 있다. 대부분의 단어가 모든 문서에서 이용되지 않기 때문에 조회한 내용의 10개 문서와 5개 단어에 대해 사용된 단어는 0 이상의 숫자로 빈도를 나타내고 사용되지 않은 단어는 0으로 표시된다. 
+- sparsity는 전체 행렬에서 0이 차지하는 비중을 의미하므로, 45/50로 90%에 해당한다. 
+
+```{r eval=FALSE}
+words<-function(doc) {
+  doc<-as.character(doc)
+  extractNoun(doc)
+}
+TDM.news2<-TermDocumentMatrix(VC.news, control=list(tokenize=words))
+dim(TDM.news2)
+
+tdm2<-as.matrix(TDM.news2)
+tdm3<-rowSums(tdm2)
+tdm4<-tdm3[order(tdm3, decreasing=TRUE)]
+tdm4[1:10]
+```
+
+- 'academy는'과 같이 명사 뒤에 조사가 붙는 경우가 있다. extractNoun 함수를 통해 명사만 추출하여 TDM을 다시 구축하면 위와 같은 결과가 나타나게 된다. 모든 문서의 단어 빈도를 분석하여 상위 10개를 추출하면 '데이터', '빅데이터' 등 순서로 단어의 빈도를 확인할 수 있다. 
+
+__Q. 단어 사전을 정의하여 해당 단어들에 대해서만 분석 결과를 확인해 보자.__
+```{r eval=FALSE}
+mydict<-c("빅데이터", "스마트", "산업혁명", "인공지능", "사물인터넷", "AI", "스타트업", "머신러닝")
+my.news<-TermDocumentMatrix(VC.news, control=list(tokenize=words, dictionary=mydict))
+inspect(my.news)
+```
+
+- 빅데이터와 관련된 단어를 mydict에 저장하여 TermDocumentMatrix함수의 control 인자에 적용하여 해당 단어들에 대해서만 분석 결과를 확인할 수 있다. 
+
+#### TDM을 활용한 분석 및 시각화
+
+##### 연관성 분석
+- 작성된 TDM에서 특정 단어와의 연관성에 따라 단어를 조회할 수 있다. findAssocs 함수를 통해 TDM과 연관된 단어와의 연관성이 일정 수치 이상인 단어들만 표시할 수 있다. 
+
+<b>함수사용법</b>
+```{}
+findAssocs(data, terms, corlimit)
+```
+|인자|설명|
+|data|TDM 형태의 데이터|
+|terms|연관성을 확인할 단어|
+|corlimit|최소 연관성|
+
+__Q. VC.news 데이터를 명사만 추출하는 TDM으로 변경하여 TDM에서 '빅데이터'라는 단어와의 연관성이 0.9 이상인 단어들만 추출해 보자.__
+```{r eval=FALSE}
+words<-function(doc) {
+  doc<-as.character(doc)
+  extractNoun(doc)
+}
+TDM.news2<-TermDocumentMatrix(VC.news, control=list(tokenize=words))
+findAssocs(TDM.news2, '빅데이터', 0.9)
+```
+
+- 구축된 TDM과 '빅데이터'라는 단어와의 연관성을 파악한 결과, '가맹점', '개발자' 등의 단어들이 연관된 단어로 나타나며, 연관성에 대한 수치도 해당 단어 아래에 같이 표시됨을 확인할 수 있다. 
+
+##### 워드 클라우드
+
+- 문서에 포함되는 단어의 사용 빈도를 효과적으로 보여주기 위한 막대그래프 등의 시각화 도구가 있지만, 워드 클라우드를 이용하면 더 효과적으로 표시할 수 있다. 
+
+<b>함수사용법</b>
+```{}
+wordcloud(words, freq, min.freq, random.order, colors, ...)
+```
+
+|인자|설명|
+|words|워드클라우드를 만들고자하는 단어|
+|freq|단어의 빈도|
+|min.freq|시각화하려는 단어의 최소 빈도|
+|random.order|단어의 배치를 랜덤으로 할지 정함. F일때, 빈도순으로 그려짐.|
+|colors|빈도에 따라 단어의 색을 지정|
+
+__Q. TDM.news2 데이터를 워드 클라우드로 만들어보자.__
+
+```{r eval=FALSE}
+library(wordcloud)
+tdm2<-as.matrix(TDM.news2)
+term.freq<-sort(rowSums(tdm2), decreasing=TRUE)
+head(term.freq, 15)
+
+wordcloud(words=names(term.freq), freq=term.freq, min.freq=5, 
+          random.order=FALSE, colors=brewer.pal(8, 'Dark2'))
+```
+
+- TDM을 Matrix 형태로 변환하여 행 결합을 통해 각 단어마다 빈도를 합쳐 내림차순으로 정렬하여 term.freq 데이터에 저장하고 head 함수를 통해 확인이 가능하다.
+- wordcloud 함수로 term.freq 데이터에서 단어만 가져오고, 빈도는 term.freq의 빈도로 지정하고, 최소 빈도 5로 지정하여 워드클라우드를 그린다. 
