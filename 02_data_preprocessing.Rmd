@@ -6,14 +6,20 @@ site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::gitbook: default
-  #bookdown::pdf_book: default
+  bookdown::pdf_book: default
 ---
 # 데이터 전처리
+데이터 전처리는 로우 데이터에 대한 정제, 데이터 통합, 데이터 변환 등의 과정을 수행하여, 진행하고자 하는 분석에 최적화된 형태로 데이터를 변형하는 과정에 해당한다. 
 
 ## 제어문
-
+### 조건문
+#### if/else
+#### ifelse
+### 반복문
+#### for
+#### while
+#### repeat
 ## 데이터 변환
-
 ### 파생변수 생성
 
 ### 변수 축소
@@ -45,15 +51,28 @@ output:
 
 ##### R을 이용한 주성분 분석
 
+- R에서 주성분분석을 수행할 수 있는 기본적인 함수는 prcomp와 princomp이다. <b>prcomp</b> 함수는 자료 행렬에 <b>특이값 분해(SVD: Singular Value Decomposition)</b> 하는 방법을 사용하고, <b>princomp</b> 함수는 <b>공분산 행렬의 고유벡터</b>를 구하는 방법을 사용한다. 
+
 ```{}
 prcomp(data, center=TRUE, scale.=FALSE, ...)
 ```
+
+|인자|설명|
+|----|----|
+|data|주성분분석을 수행할 행렬 혹은 데이터 프레임|
+|center|값을 TRUE로 지정할 경우, 데이터의 중심이 0이 되게 함.|
+|scale|값을 TRUE로 지정할 경우 데이터를 표준화함.|
 
 ```{}
 princomp(data, cor=FALSE, scores=TRUE, ...)
 ```
 
-__Q. R에 내장된 USArrests 데이터는 1973년 미국 50개주 100,000명의 인구 당 체포된 세가지 강력범죄수(assault, murder, rape)와 각 주마다 도시에 거주하는 인구의 비율(%)로 구성되어 있다. 주성분 분석을 수행하여 해당 데이터이ㅡ 변수들을 가장 잘 요약하는 주성분을 구하고 해석해 보자.__  
+|인자|설명|
+|----|----|
+|data|주성분분석을 구행할 행렬 혹은 데이터 프레임|
+|cor|cor=FALSE: 공분산행렬로 주성분 분석 수행<br />cor=TRUE: |
+
+__Q. R에 내장된 USArrests 데이터는 1973년 미국 50개주 100,000명의 인구 당 체포된 세가지 강력범죄수(assault, murder, rape)와 각 주마다 도시에 거주하는 인구의 비율(%)로 구성되어 있다. 주성분 분석을 수행하여 해당 데이터의 변수들을 가장 잘 요약하는 주성분을 구하고 해석해 보자.__  
 
 - USArrests 데이터는 변수들 간의 척도 차이가 상당히 크기 때문에 상관행렬을 사용하여 분석한다. 
 - 특이치 분해를 사용하는 경우 자료 행렬 각 변수의 평균과 제곱의 합이 1로 표준화되었다고 가정할 수 있다. 
@@ -66,9 +85,21 @@ data(USArrests)
 head(USArrests)
 ```
 
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+USArrests
+```
+
+</details> 
+
+<br />
 ```{r}
 pairs(USArrests, panel=panel.smooth, main="USArrests data")
 ```
+
+- Murder와 UrbanPop 비율간의 관련성이 작아 보인다. 
 
 __(2) 주성분분석 수행__
 
@@ -82,6 +113,7 @@ summary(US.prin)
 ```{r}
 plot(US.prin, type='l')
 ```
+
 - 주성분들에 의해 설명되는 변동의 비율은 Screeplot을 통해 시각적으로도 확인이 가능하다. 그래프의 3번재 주성분에서 기울기가 급격하게 줄어드는 형태를 보이므로, 그 이전 주성분인 2번째 주성분까지 선택하는 것이 적절하다. 
 
 __(3) Loading__
@@ -113,7 +145,7 @@ biplot(US.prin, scale=0)
 ##### 개념
 
 - 여러개의 변수들로 이루어진 데이터에서 변수들 간의 상관관계를 고려하여 서로 유사한 변수들을 묶어 새로운 잠재요인들을 추출해내는 분석방법으로, 변수를 축소하고 데이터를 요약하는데 사용
-- 예를 들어, 시험성적에 대한 데이터가 '국어, 영어, 중국어, 수학, 물리, 음악, 미술'에 해당하는 7개의 변수로 이루어져 있다고 하자. 이 7개가 아닌 공통의 변수들을 파악해 국어, 영어, 중국어를 (언어능력), 수락, 물리를 (수리능력), 음악, 미술을 (예술적 재능) 등과 같이 새로운 요인들로 구성해낼 때 요인분석을 사용한다. 
+- 예를 들어, 시험성적에 대한 데이터가 '국어, 영어, 중국어, 수학, 물리, 음악, 미술'에 해당하는 7개의 변수로 이루어져 있다고 하자. 이 7개가 아닌 공통의 변수들을 파악해 국어, 영어, 중국어를 (언어능력), 수학, 물리를 (수리능력), 음악, 미술을 (예술적 재능) 등과 같이 새로운 요인들로 구성해낼 때 요인분석을 사용한다. 
 - 요인분석을 수행하기 위해서는 변수가 간격척도 혹은 비율척도로 측정되어야 하며, 표본(관측치)의 크기는 100개 이상이 바람직하며 최소 50개 이상이 되어야 한다. 
 
 ##### 주성분분석 .vs. 요인분석
@@ -160,6 +192,16 @@ data(swiss)
 str(swiss)
 ```
 
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+swiss
+```
+
+</details> 
+<br />
+
 __(2) 정규화 수행 및 실습용 데이터 생성__
 
 ```{r}
@@ -168,6 +210,16 @@ Max <- apply(swiss, 2, max)
 swiss_fa <- scale(swiss, center=Min, scale=(Max-Min))
 head(swiss_fa)
 ```
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+swiss_fa
+```
+
+</details> 
+<br />
 
 __(3) 요인분석 수행__
 
@@ -179,7 +231,7 @@ factanal(x = swiss_fa, factors=3)
 ### 표준화와 정규화
 
 #### 표준화 (standardization)
-- 각 개체들이 평균을 기준으로 얼마나 떨어져 있는지를 나타내는 값으로 변환하는 과정을 의미하여, 표준화한 후 특정 범위를 벗어난 데이터를 확인하여 이상치 판별에 활용할 수도 있다. 
+- <b>각 개체들이 평균을 기준으로 얼마나 떨어져 있는지를 나타내는 값으로 변환하는 과정</b>을 의미하여, 표준화한 후 특정 범위를 벗어난 데이터를 확인하여 이상치 판별에 활용할 수도 있다. 
 - Z-Score 표준화는 각 요소의 값에서 평균을 뺀 후 표준편차로 나누어 수행한다. 변환 후 데이터의 평균은 0, 표준편차는 1의 값을 갖게 된다. scale 함수 혹은 사용자 정의 함수를 이용하여 R에서 구현할 수 있다. 
 
 ```{}
@@ -198,9 +250,32 @@ data("mtcars")
 str(mtcars)
 test.cars <- mtcars[,c("mpg", "hp")]
 head(test.cars)
+```
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+head(test.cars, n=100)
+```
+
+</details> 
+<br />
+
+```{r}
 test.cars <- transform(test.cars, mpg_scale=scale(test.cars$mpg), hp_scale=scale(test.cars$hp))
 head(test.cars)
 ```
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r}
+head(test.cars, n=100)
+```
+
+</details> 
+<br />
 
 #### 정규화 (Normalization)
 
@@ -273,18 +348,18 @@ aggregate(cbind(Sepal.Width, Petal.Width)~Species, iris, mean)
 #### table
 __Q1. 내장 데이터 Titanic은 타이타닉호 탑승자들의 특성에 따른 생존여부를 기록해놓은 데이터이다. Titanic 데이터에서 좌석등급을 의미하는 Class 변수에 대해서 도수분포표를 생성해 보자.__
 
-__내장데이터 Titanic의 구조 확인__
+__(1) 내장데이터 Titanic의 구조 확인__
 ```{r}
 str(Titanic)
 ```
 
-__데이터프레임으로 변환한 뒤 다시 구조를 확인__
+__(2) 데이터프레임으로 변환한 뒤 다시 구조를 확인__
 ```{r}
 Titanic<-as.data.frame(Titanic)
 str(Titanic)
 ```
 
-__table 함수를 이용하여 범주형 변수 Class에 대한 도수분포표를 생성__
+__(3) table 함수를 이용하여 범주형 변수 Class에 대한 도수분포표를 생성__
 ```{r}
 table(Titanic$Class)
 ```
@@ -303,24 +378,38 @@ prop.table(table, 2)
 ```
 __Q. Titanic 데이터에서 Age 변수는 해당 승객이 어른인지 아이인지의 여부를 나타낸다. Age 변수에 따른 생존여부의 관계를 전체에 대한 비율, 행별 비율, 열별 비율로 살펴보자.__
 
+<b>(1) 전체에 대한 비율</b>
 ```{r}
 prop.table(table(Titanic$Age, Titanic$Survived))
-prop.table(table(Titanic$Age, Titanic$Survived), 1)
-prop.table(table(Titanic$Age, Titanic$Survived), 2)
 ```
 
+<b>(2) 행별 비율</b>
+```{r}
+prop.table(table(Titanic$Age, Titanic$Survived), 1)
+```
+
+<b>(3) 열별 비율</b>
+```{r}
+prop.table(table(Titanic$Age, Titanic$Survived), 2)
+```
 
 ### apply 계열 함수
 #### apply
 
-apply는 데이터의 행 혹은 열 방향으로 주어진 함수를 한번에 적용한 뒤 그 결과를 벡터, 배열, 리스트로 반환하는 함수이다. 
+- apply는 데이터의 행 혹은 열 방향으로 주어진 함수를 한번에 적용한 뒤 그 결과를 벡터, 배열, 리스트로 반환하는 함수이다. 
 
 ```{}
 apply(X, MARGIN, FUN)
 ```
 
+|인자|설명|
+|----|----|
+|X|배열 또는 행렬|
+|MARGIN|MARGIN=1: 행방향, MARGIN=2: 열방향|
+|FUN|적용할 함수|
+
 ```{r}
-a <- matrix(1:12, nrow=4, ncol=3)
+(a <- matrix(1:12, nrow=4, ncol=3))
 apply(a, 1, max)
 ```
 
@@ -329,9 +418,18 @@ apply(iris[, 1:4], 2, mean)
 ```
 
 #### lapply
+
+- lapply 함수는 벡터, 리스트, 표현식, 데이터 프레임 등에 함수를 적용하고, 그 결과를 리스트로 변환한다. lapply는 데이터프레임에 대해서는 열 방향으로 함수를 적용한다 (apply함수에서 MARGIN을 2로 지정했을 때와 동일)
+- 적용 데이터가 데이터 프레임일 경우 lapply의 결과 리스트 길이는 데이터 프레임의 변수 개수와 같고, 적용 데이터가 벡터인 경우에 결과 리스트 길이는 벡터 원소의 개수와 같다. 
+
 ```{}
 lapply(X, FUN, ...)
 ```
+
+|인자|설명|
+|----|----|
+|X|배열 또는 행렬|
+|FUN|적용할 함수|
 
 ```{r}
 a <- c(1, 2, 3)
@@ -342,9 +440,22 @@ unlist(b)
 ```
 
 #### sapply
+
+- sapply는 벡터, 리스트, 표현식, 데이터 프레임 등에 함수를 적용하고, 그 결과를 벡터 혹은 행렬로 반환한다. lapply와 마찬가지로 데이터프레임에 대해서는 열별로 함수를 적용한다. sapply의 s는 simplify를 의미한다. 즉, sapply 함수는 연산결과를 벡터로 단순화해서 반환해 준다. 그렇다면 sapply는 어떤 경우에 연산결과를 벡터, 행렬, 리스트로 나타낼까? 각 경우에 대한 설명은 아래와 같다. 
+
+|sapply 함수의 결과에 따른 반환 형태 |
+|------------------|
+|- 변수마다 함수를 적용한 결과값의 개수가 1개씩이면 벡터로 반환<br />- 변수마다 함수를 적용한 결과값의 개수가 1보다 크면 행렬로 반환<br />- 함수를 적용한 결과값의 개수가 변수마다 다르면 단순화할 수 없으므로 리스트로 반환|
+
 ```{}
 sapply(X, FUN, simplify=TRUE, ...)
 ```
+
+|인자|설명|
+|----|----|
+|X|배열 또는 행렬|
+|FUN|적용할 함수|
+|simplify|단순화에 대한 여부를 지정하기 위한 인자로 FALSE로 값을 설정하면 리스트가 반환됨|
 
 __Q1. iris 데이터에서 각 칼럼별 데이터 타입을 구해보자. __
 ```{r}
@@ -357,18 +468,27 @@ sapply(iris, summary)
 ```
 
 #### vapply
+
+- vapply는 sapply와 유사하나 출력결과의 형태를 사용자가 직접 지정할 수 있다. 
+
 ```{}
 vapply(X, FUN, FUN.VALUE, ...)
 ```
 
+|인자|설명|
+|----|----|
+|X|배열 또는 행렬|
+|FUN|적용할 함수|
+|FUN.VALUE|함수 실행 후 출력되는 값의 형태를 지정|
+
 __Q. 1~100까지의 숫자가 저장된 리스트에 fivenum 함수를 적용한 후, 각 값에 이름을 부여하여 리스트 형태로 출력해 보자.__
+
 ```{r}
 test <- c(1:100)
 fivenum(test)
 test <- list(test)
 (test2 <- vapply(test, fivenum, c("Min"=0, "Q1"=0, "Median"=0, "Q3"=0, "Max"=0)))
 ```
-
 
 #### mapply
 ```{}
@@ -382,15 +502,22 @@ mapply(rep, c(1:4), c(4:1))
 
 
 #### tapply
-tapply 함수를 이용하면 데이터를 특정 기준에 따라 그룹으로 나눈 뒤 각 그룹별로 함수를 적용하여 그 결과를 반환할 수 있다. 
+
+- tapply 함수를 이용하면 데이터를 특정 기준에 따라 그룹으로 나눈 뒤 각 그룹별로 함수를 적용하여 그 결과를 반환할 수 있다. 
 
 ```{}
 tapply(DATA, INDEX, FUN, ...)
 ```
 
+|인자|설명|
+|----|----|
+|DATA|벡터(데이터프레임의 특정열)|
+|INDEX|데이터를 그룹별로 나누기 위한 기준으로, 팩터를 지정해야 하며 팩터가 아닌 경우 팩터로 형변환이 이루어진다. 비교구문을 이용하여 그룹을 나누는 것도 가능하다.|
+|FUN|적용할 함수|
+
 __Q1. R의 googleVis 패키지에 있는 Fruits 데이터에서 과일종류별 판매량의 평균을 구해보자.__
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 install.packages(setdiff("googleVis", rownames(installed.packages())))
 library(googleVis)
 head(Fruits)
@@ -417,8 +544,8 @@ __Q. R의 iris 데이터에서 Petal.Length 변수가 1.5 미만이면서 Specie
 ```{r}
 install.packages(setdiff("plyr", rownames(installed.packages())))
 library(plyr)
-head(adply(iris, 1, 
-      function(row) {ifelse(row$Petal.Length < 1.5 & row$Species == "setosa", "1", "0")}))
+head(adply(iris, 1, function(row) {
+  ifelse(row$Petal.Length < 1.5 & row$Species == "setosa", "1", "0")}))
 ```
 
 #### ddply
@@ -447,11 +574,20 @@ ddply(iris, .(Species, Petal.Length<1.5), function(sub) {
 ```
 
 ##### transform
+
+- transform은 원본 데이터에 새로운 연산 결과를 담은 칼럼을 추가하여 함께 출력하며, 새로운 칼럼의 이름도 지정할 수 있다. 
+- 사용방법은 ddply(data, .variables, transform, 새로운 칼럼명=값 정의)이며, ddply 함수 내부에서 새로운 칼럼명과 값을 바로 지정한다. 
+
+__Q. 'g' 칼럼은 각 선수가 해당 년도에 출전한 게임 수를 나타낸다. 원본 데이터에 각 선수의 연평균 출전 횟수를 나타내는 'avgG' 칼럼을 추가해 보자. 이 문제를 해결하기 위해 먼저 데이터를 id 기준으로 그룹화한 뒤, 각 선수의 출전횟수 총합(sum(g))을 경기에 출전한 연도수로 나누어 준다. __
+
 ```{r}
 head(ddply(baseball, .(id), transform, avgG=sum(g)/length(year)))
 ```
 
 ##### mutate
+
+- mutate는 transform을 개선시킨 함수로, 원본 데이터에 새로운 연산결과를 담은 칼럼을 추가할 수 있을 뿐만 아니라, 같은 코드 내에서 앞서 추가한 칼럼을 뒤에 추가하는 칼럼에서 바로 참조할 수 있다. 
+
 ```{r}
 # avgG 칼럼과 avgG_RND 칼럼을 한번에 추가하여 출력. 
 # 이 경우, mutate가 아닌 tansform을 사용하면 에러가 발생함. 
@@ -459,24 +595,72 @@ head(ddply(baseball, .(id), mutate, avgG=sum(g)/length(year), avgG_RND=round(avg
 ```
 
 ##### summarise
+
+- summarise는 데이터의 요약 정보를 만들어주는 함수이다. transform과 mutate는 기존 데이터에 새로운 칼럼을 추가한 데이터프레임을 생성해 주지만, summarise 함수는 지정한 계산 결과만 담은 데이터프레임을 생성한다. 
+
+__Q1. 선수별로 1871~2007년 사이 기간 동안 출전한 경기 중 가장 마지막에 출전한 경기의 연도수를 구해 'year_fin' 변수에 저장하고, 관련 정보들만 뽑아서 요약해 보자. 이를 위해 먼저 데이터를 id로 그룹화한 뒤, year 변수의 최댓값을 계산하여 'year_fin' 변수에 부여한다. __
+
 ```{r}
 head(ddply(baseball, .(id), summarise, year_fin=max(year)))
+```
+
+__Q2. baseball 데이터의 team 변수는 선수의 소속팀을 의미하고, hr은 홈런의 수를 의미한다. ddply의 summarise를 활용해 팀별 홈런 수의 합을 구하고, hr_sum 변수에 출력해 보자. __
+
+```{r}
 head(ddply(baseball, .(team), summarise, hr_sum=sum(hr)))
 ```
+
+##### subset
+
+- subset은 데이터의 그룹별로 조건을 만족하는 행들만 출력해 준다. 또한 select 인자를 사용해 원하는 칼럼만 지정하여 출력할 수도 있다.
+- 사용방법은 ddply(data, .variables, subset, 조건, select=c(출력할변수1, 변수2, ..., 변수n))이다.
+
+__Q. subset을 이용하여 선수별로 마지막 경기 출전년도에 해당하는 행들의 일부열들만 추출해 보자. 아래의 R코드는 먼저 id로 데이터를 그룹화한뒤, year값이 선수별 year변수의 최댓값과 같은 행만 subset으로 추출하는 방법이다. __
+
+```{r eval=FALSE}
+ddply(baseball, .(id), subset, year==max(year),
+      select=c("id","year","stint","team","lg","g"))
+```
+
+<details>
+  <summary>Click for Result</summary>
+    
+```{r echo=FALSE}
+ddply(baseball, .(id), subset, year==max(year),
+      select=c("id","year","stint","team","lg","g"))
+```
+
+</details> 
+<br />
+
 
 ### dplyr
 #### dplyr 패키지
 #### filter
+- filter함수는 데이터에서 조건에 맞는 행들을 추출해주며, 사용방법은 아래와 같다. 
+
 ```
-dataframe name %>% filter(condition)
+dataframe-name %>% filter(condition)
 ```
 
 __Q. Cars93 데이터에서 제조사가 "Audi" 혹은 "BMW"이면서, 엔진크기가 2.4 이상인 행들만 추출해 보자.__
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 install.packages(setdiff("dplyr", rownames(installed.packages())))
 library(dplyr)
 library(MASS)
+```
+
+<details>
+  <summary>Click for Cars93 dataset</summary>
+    
+```{r echo=FALSE}
+head(Cars93, n=64)
+```
+
+</details> 
+<br />
+```{r}
 Cars93 %>% filter((Manufacturer=="Audi"|Manufacturer=="BMW") & EngineSize >= 2.4)
 ```
 
@@ -486,13 +670,13 @@ __Q1. Cars93 데이터의 모델번호, 종류, 가격 변수들만 추출해 �
 
 ```{r}
 # Cars93 %>% select(Model, Type, Price)
-# Error in select(., Model, Type, Price) : unused arguments (Model, Type, Price) Calls: <Anomymous> ...
+# Error in select(., Model, Type, Price) : 
+#     unused arguments (Model, Type, Price) Calls: <Anomymous> ...
 # withCallingHandlers -> withVisible -> eval -> eval -> %>% Execution halted
 # 에러 발생 이유 : MASS 패키지의 select()와 dplyr의 select()가 충돌하기 때문
 
 head(Cars93 %>% dplyr::select(Model, Type, Price))
 ```
-
 
 __Q2. 제조사가 "Chevrolet" 혹은 "Volkswagen" 이면서, 가격이 10 이상인 행들의 제조사, 모델, 종류, 가격 변수들만 추출해 보자.__
 
@@ -553,13 +737,11 @@ __Q. 카페에서 판매하는 메뉴 코드, 이름을 담은 데이터 'NAME'�
 ```{r}
 NAME<-data.frame(code=c("A01", "A02", "A03"), name=c("coffee", "cake", "cookie"))
 PRICE<-data.frame(code=c("A01", "A02", "A04"), price=c(3000, 4000, 3000))
-```
-```{r}
+
 (cafe_left <- left_join(NAME, PRICE, by="code"))
 (cafe_right <- right_join(NAME, PRICE, by="code"))
 (cafe_inner <- inner_join(NAME, PRICE, by="code"))
 (cafe_full <- full_join(NAME, PRICE, by="code"))
-
 ```
 
 #### bind_rows과 bind_cols
@@ -568,17 +750,38 @@ PRICE<-data.frame(code=c("A01", "A02", "A04"), price=c(3000, 4000, 3000))
 # 변수명이 다르므로 에러가 발생함
 bind_rows(NAME,PRICE)
 ```
+
 ### reshape2
 #### reshape2 패키지
 #### melt
-__Q. R의 airquality는 1973년 5월~9월 동안 뉴욕이ㅡ 일일 대기 질 측정량에 대한 데이터로, 153개의 행과 6개의 변수로 이루어져 있다. 6개의 변수 중 Month와 Day을 식별자로 두고, 나머지 변수와 변수값은 모두 데이터 내에 포함되는 형태로 변환해 보자.__
+__Q. R의 airquality는 1973년 5월~9월 동안 뉴욕의 일일 대기 질 측정량에 대한 데이터로, 153개의 행과 6개의 변수로 이루어져 있다. 6개의 변수 중 Month와 Day을 식별자로 두고, 나머지 변수와 변수값은 모두 데이터 내에 포함되는 형태로 변환해 보자.__
 ```{r}
 install.packages(setdiff("reshape2", rownames(installed.packages())))
 library(reshape2)
+```
+
+```{r}
 head(airquality)
 head(melt(airquality, id.vars=c("Month", "Day"), na.rm=TRUE))
 ```
+
 #### dcast
+
+- cast 함수는 melt함수로 녹여진 형태의 데이터를 다시 여러 칼럼을 가진 형태로 변환해주는 함수이다. 반환하는 데이터 형태가 데이터 프레임일 경우에는 dcast 함수를 사용하고, 반환할 데이터 형태가 벡터/행렬/배열일 경우 acast를 사용할 수 있다. 
+- dcast 함수를 사용하면 melt함수가 적용된 형태의 데이터를 다시 melt 함수 적용 이전의 데이터 형태로 변환할 수도 있고, 앞서 배운 ddply 함수와 같이 식별자별 특정 변수의 측정치들에 대한 통계량을 계산할 수도 있다. 
+
+<b>함수사용법</b>
+
+```{}
+dcast(data, formula, fun.aggregate=NULL)
+```
+
+|인자|설명|
+|----|----|
+|data|melt함수가 적용된 형태의 데이터 프레임|
+|formula|데이터를 변환할 포뮬러 지정<br/>-"id변수~variable변수" 형태로 입력<br />- ~앞뒤로 여러개의 변수를 나열할 경우 +기호로 각 변수를 연결<br/>-명시적으로 나열되지 않은 모든 변수를 표현할 경우에는 ...을 사용<br/>- 아무런 변수도 지정하지 않을 경우에는 .을 사용|
+|fun.aggregate|id변수를 기준으로 여러행이 존재할 경우 해당행들에 적용할 집합함수(아무런 함수도 지정하지 않을 경우 행의 수를 세는 length함수가 적용됨|
+
 ```{r}
 air_melt<-melt(airquality, id.vars=c("Month", "Day"), na.rm=TRUE)
 head(air_melt)
@@ -590,13 +793,16 @@ head(air_dcast)
 #### data.table 패키지
 #### 데이터 테이블 생성
 __Q1. __
-```{r}
+```{r message=FALSE, warning=FALSE}
 install.packages(setdiff("data.table", rownames(installed.packages())))
 library(data.table)
+```
 
+```{r}
 (mydata<-data.table(x=c(1:3), y=c("가", "나", "다")))
 class(mydata)
 ```
+
 #### 데이터 접근
 ```{r}
 iris_dt<-as.data.table(iris)
@@ -625,11 +831,11 @@ head(air)
 ```{r}
 air[, season:=ifelse(Month %in% c(12,1,2), "winter", ifelse(Month %in% c(3:5), "spring", ifelse(Month %in% c(6:8), "summer", "fall")))]
 head(air)
-air[, .(Ozone_mean=mean(Ozone, na.rm=TRUE), Solar.R_mean=mean(Solar.R, na.rm=TRUE)), 
-    by=.(season)][order(Ozone_mean, decreasing=TRUE)]
+air[, .(Ozone_mean=mean(Ozone, na.rm=TRUE), Solar.R_mean=mean(
+  Solar.R, na.rm=TRUE)), by=.(season)][order(Ozone_mean, decreasing=TRUE)]
 ```
-#### key를 활용하여 데이터 다루기
 
+#### key를 활용하여 데이터 다루기
 ```{r}
 baseball<-as.data.table(baseball)
 setkey(baseball, year)
@@ -666,7 +872,6 @@ head(air_na)
 # complete.cases 함수를 적용했을 때 TRUE를 반환하는 행들만 저장하면 됨.
 air_com <- airquality[complete.cases(airquality),]
 head(air_com)
-
 ```
 
 ### 결측치 처리
@@ -676,8 +881,7 @@ head(air_com)
 |---|---|
 |completes analysis|결측값이 존재하는 행을 삭제|
 |평균 대치법|관측 또는 실험을 통해 얻어진 데이터의 평균으로 결측치를 대치 (비조건부/조건부 평균대치법)|
-|단순확률 대치법|평균대치법에서 추정량 표준 오차이ㅡ 과소 추정문제를 보완하고자 고안된 방법으로 Hot-deck 방법, nearest neightbor 방법 등이 있다.|
-| | |
+|단순확률 대치법|평균대치법에서 추정량 표준 오차의 과소 추정문제를 보완하고자 고안된 방법으로 Hot-deck 방법, nearest neighbor 방법 등이 있다.|
 
 ##### 결측치 제거
 
@@ -694,18 +898,22 @@ na.omit(데이터명)
 ##### 평균 대치법
 __Q. airquality의 Ozone 변수값이 존재하지 않는 경우, Ozone 변수값들의 평균으로 대치해 보자.__
 ```{r}
-airquality$Ozone<-ifelse(is.na(airquality$Ozone), mean(airquality$Ozone, na.rm=TRUE), airquality$Ozone)
+airquality$Ozone<-ifelse(is.na(airquality$Ozone), 
+  mean(airquality$Ozone, na.rm=TRUE), airquality$Ozone)
 table(is.na(airquality$Ozone))
 ```
 
 #### 다중 대치법 (Multiple Imputation)
 #### 패키지 활용
 R에서 결측치를 대치하기 위해 사용될 수 있는 함수에는 DMwR 패키지의 함수들이 있다. 
-__Q. DMwR의 함수들을 이용하여 NA값을 해당 변수의 중위수로 대치하는 전처리를 수행해 보자. NA값이 대치되는 ㅗ가정을 확인하기 위해 airquality 데이터에서 NA값을 하나라도 가지고 있는 행번호들을 미리 봅아놓고, 전처리 전의 원본 데이터와 전처리 후의 데이터를 비교하여 전처리가 잘 진행되었는지 확인해 보자.__
-```{r}
+
+__Q. DMwR의 함수들을 이용하여 NA값을 해당 변수의 중위수로 대치하는 전처리를 수행해 보자. NA값이 대치되는 과정을 확인하기 위해 airquality 데이터에서 NA값을 하나라도 가지고 있는 행번호들을 미리 뽑아놓고, 전처리 전의 원본 데이터와 전처리 후의 데이터를 비교하여 전처리가 잘 진행되었는지 확인해 보자.__
+```{r message=FALSE, warning=FALSE}
 install.packages(setdiff("DMwR2", rownames(installed.packages())))
 library(DMwR2)
+```
 
+```{r}
 #airquality에서 na값을 가진 행들의 번호 추출
 na_idx<-which(!complete.cases(airquality))
 
@@ -716,15 +924,11 @@ air_after<-centralImputation(airquality)
 
 # 두 데이터에서 na_idx에 저장된 행번호에 해당하는 데이터들을 추출하여 na값이 잘 대체되었는지 비교
 head(air_before[na_idx,])
-
 head(air_after[na_idx,])
 
 median(airquality$Ozone, na.rm=TRUE)
-
 median(airquality$Solar.R, na.rm=TRUE)
 ```
-
-
 
 ## 이상치 인식
 ### 이상치란?
@@ -749,7 +953,7 @@ __Q2. lower whisker(Q1-1.5*IQR) 보다 작거나 upper whisker(Q3+1.5*IQR) 보�
 (upperOutlier<-which(airquality$Ozone > UpperQ+IQR*1.5))
 
 # 조건을 만족하는 행번호 추출
-(lowerOutlier<-which(airquality$Ozone < UpperQ-IQR*1.5))
+(lowerOutlier<-which(airquality$Ozone < LowerQ-IQR*1.5))
 airquality[upperOutlier, "Ozone"]
 airquality[lowerOutlier, "Ozone"]
 ```
@@ -761,7 +965,7 @@ airquality[lowerOutlier, "Ozone"]
 | 분류|설명 |
 |---|---|
 | Date|날짜만을 나타내는 클래스 이며, 내부적으로 1970년 1월1일 이후 경과된 날 수를 저장함. |
-|POSIXct|날짜와 시간을 나타내며, 일초 간격의 정확도로 시간을 표현함. </br >내부적으로 1970년 1월1일에서 경과된 초 수와 시간대를 저장함. |
+|POSIXct|날짜와 시간을 나타내며, 1초 간격의 정확도로 시간을 표현함. <br/>내부적으로 1970년 1월1일에서 경과된 초 수와 시간대를 저장함. |
 |POSIXlt|날짜와 시간을 나타내며 1900년에서부터 경과된 연도, 월, 일, 시, 분, 초를 포함하는 9개의 정보를 리스트에 저장|
 
 ```{r}

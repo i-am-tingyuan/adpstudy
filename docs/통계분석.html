@@ -24,7 +24,7 @@
 <meta name="author" content="tingyuan" />
 
 
-<meta name="date" content="2021-10-02" />
+<meta name="date" content="2021-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,10 +133,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R기초</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R기초</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-소개"><i class="fa fa-check"></i><b>1.1</b> R 소개</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-프로그래밍-언어"><i class="fa fa-check"></i><b>1.1.1</b> R 프로그래밍 언어</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#r-설치"><i class="fa fa-check"></i><b>1.1.2</b> R 설치</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-기본"><i class="fa fa-check"></i><b>1.2</b> R 기본</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#r-다루기"><i class="fa fa-check"></i><b>1.2.1</b> R 다루기</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#r-기초"><i class="fa fa-check"></i><b>1.2.2</b> R 기초</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#데이터-타입"><i class="fa fa-check"></i><b>1.2.3</b> 데이터 타입</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#자주-사용하는-함수"><i class="fa fa-check"></i><b>1.2.4</b> 자주 사용하는 함수</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#데이터-입출력"><i class="fa fa-check"></i><b>1.2.5</b> 데이터 입출력</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#사용자-정의-함수"><i class="fa fa-check"></i><b>1.2.6</b> 사용자 정의 함수</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="데이터-전처리.html"><a href="데이터-전처리.html"><i class="fa fa-check"></i><b>2</b> 데이터 전처리</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#제어문"><i class="fa fa-check"></i><b>2.1</b> 제어문</a></li>
+<li class="chapter" data-level="2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#제어문"><i class="fa fa-check"></i><b>2.1</b> 제어문</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#조건문"><i class="fa fa-check"></i><b>2.1.1</b> 조건문</a></li>
+<li class="chapter" data-level="2.1.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#반복문"><i class="fa fa-check"></i><b>2.1.2</b> 반복문</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-변환"><i class="fa fa-check"></i><b>2.2</b> 데이터 변환</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#파생변수-생성"><i class="fa fa-check"></i><b>2.2.1</b> 파생변수 생성</a></li>
@@ -287,28 +307,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>일반적으로 데이터를 <b>training data</b>와 <b>test data</b>로 분할할 때 가장 많이 사용하는 표본추출 방법이다.</li>
 </ul>
 <p><strong>Q. iris 데이터로 분석을 진행하기 위해 전체 데이터를 7:3의 비율로 training data와 test data를 추출한 뒤 새로운 변수에 저장해 보자. (데이터 추출 방법은 단순 임의 추출을 이용한다.)</strong></p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="통계분석.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris 데이터 행의 개수에서 70%에 해당하는 행번호를 랜덤으로 추출</span></span>
-<span id="cb247-2"><a href="통계분석.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow(): 데이터의 행 개수를 산출해 주는 함수</span></span>
-<span id="cb247-3"><a href="통계분석.html#cb247-3" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris), <span class="fu">nrow</span>(iris)<span class="sc">*</span><span class="fl">0.7</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb247-4"><a href="통계분석.html#cb247-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb247-5"><a href="통계분석.html#cb247-5" aria-hidden="true" tabindex="-1"></a>training<span class="ot">&lt;-</span>iris[idx,]</span>
-<span id="cb247-6"><a href="통계분석.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(training)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="통계분석.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris 데이터 행의 개수에서 70%에 해당하는 행번호를 랜덤으로 추출</span></span>
+<span id="cb255-2"><a href="통계분석.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow(): 데이터의 행 개수를 산출해 주는 함수</span></span>
+<span id="cb255-3"><a href="통계분석.html#cb255-3" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(iris), <span class="fu">nrow</span>(iris)<span class="sc">*</span><span class="fl">0.7</span>, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb255-4"><a href="통계분석.html#cb255-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb255-5"><a href="통계분석.html#cb255-5" aria-hidden="true" tabindex="-1"></a>training<span class="ot">&lt;-</span>iris[idx,]</span>
+<span id="cb255-6"><a href="통계분석.html#cb255-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(training)</span></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species    SL_new
-## 21           5.4         3.4          1.7         0.2     setosa 0.3055556
-## 55           6.5         2.8          4.6         1.5 versicolor 0.6111111
-## 126          7.2         3.2          6.0         1.8  virginica 0.8055556
-## 110          7.2         3.6          6.1         2.5  virginica 0.8055556
-## 11           5.4         3.7          1.5         0.2     setosa 0.3055556
-## 137          6.3         3.4          5.6         2.4  virginica 0.5555556</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="통계분석.html#cb249-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>iris[<span class="sc">-</span>idx,]</span>
-<span id="cb249-2"><a href="통계분석.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test)</span></code></pre></div>
+## 143          5.8         2.7          5.1         1.9  virginica 0.4166667
+## 131          7.4         2.8          6.1         1.9  virginica 0.8611111
+## 94           5.0         2.3          3.3         1.0 versicolor 0.1944444
+## 104          6.3         2.9          5.6         1.8  virginica 0.5555556
+## 44           5.0         3.5          1.6         0.6     setosa 0.1944444
+## 142          6.9         3.1          5.1         2.3  virginica 0.7222222</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="통계분석.html#cb257-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span>iris[<span class="sc">-</span>idx,]</span>
+<span id="cb257-2"><a href="통계분석.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test)</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species    SL_new
+## 1           5.1         3.5          1.4         0.2  setosa 0.2222222
 ## 6           5.4         3.9          1.7         0.4  setosa 0.3055556
-## 13          4.8         3.0          1.4         0.1  setosa 0.1388889
-## 18          5.1         3.5          1.4         0.3  setosa 0.2222222
-## 26          5.0         3.0          1.6         0.2  setosa 0.1944444
-## 28          5.2         3.5          1.5         0.2  setosa 0.2500000
-## 30          4.7         3.2          1.6         0.2  setosa 0.1111111</code></pre>
+## 8           5.0         3.4          1.5         0.2  setosa 0.1944444
+## 11          5.4         3.7          1.5         0.2  setosa 0.3055556
+## 14          4.3         3.0          1.1         0.1  setosa 0.0000000
+## 16          5.7         4.4          1.5         0.4  setosa 0.3888889</code></pre>
 </div>
 <div id="계통추출법-systematic-sampling" class="section level5" number="3.1.2.1.2">
 <h5><span class="header-section-number">3.1.2.1.2</span> 계통추출법 (systematic sampling)</h5>
@@ -354,35 +374,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="통계분석.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;sampling&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
-<span id="cb252-2"><a href="통계분석.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
-<span id="cb252-3"><a href="통계분석.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-4"><a href="통계분석.html#cb252-4" aria-hidden="true" tabindex="-1"></a>sample<span class="ot">&lt;-</span><span class="fu">strata</span>(<span class="at">data=</span>iris, <span class="fu">c</span>(<span class="st">&quot;Species&quot;</span>), <span class="at">size=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">15</span>), <span class="at">method=</span><span class="st">&quot;srswor&quot;</span>)</span>
-<span id="cb252-5"><a href="통계분석.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="통계분석.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;sampling&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb260-2"><a href="통계분석.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
+<span id="cb260-3"><a href="통계분석.html#cb260-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-4"><a href="통계분석.html#cb260-4" aria-hidden="true" tabindex="-1"></a>sample<span class="ot">&lt;-</span><span class="fu">strata</span>(<span class="at">data=</span>iris, <span class="fu">c</span>(<span class="st">&quot;Species&quot;</span>), <span class="at">size=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">15</span>), <span class="at">method=</span><span class="st">&quot;srswor&quot;</span>)</span>
+<span id="cb260-5"><a href="통계분석.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample)</span></code></pre></div>
 <pre><code>##    Species ID_unit Prob Stratum
 ## 1   setosa       1  0.4       1
-## 3   setosa       3  0.4       1
-## 4   setosa       4  0.4       1
-## 8   setosa       8  0.4       1
-## 10  setosa      10  0.4       1
-## 14  setosa      14  0.4       1</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="통계분석.html#cb254-1" aria-hidden="true" tabindex="-1"></a>iris_sample<span class="ot">&lt;-</span><span class="fu">getdata</span>(iris, sample)</span>
-<span id="cb254-2"><a href="통계분석.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris_sample)</span></code></pre></div>
+## 6   setosa       6  0.4       1
+## 7   setosa       7  0.4       1
+## 9   setosa       9  0.4       1
+## 11  setosa      11  0.4       1
+## 12  setosa      12  0.4       1</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="통계분석.html#cb262-1" aria-hidden="true" tabindex="-1"></a>iris_sample<span class="ot">&lt;-</span><span class="fu">getdata</span>(iris, sample)</span>
+<span id="cb262-2"><a href="통계분석.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris_sample)</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width     SL_new Species ID_unit
 ## 1           5.1         3.5          1.4         0.2 0.22222222  setosa       1
-## 3           4.7         3.2          1.3         0.2 0.11111111  setosa       3
-## 4           4.6         3.1          1.5         0.2 0.08333333  setosa       4
-## 8           5.0         3.4          1.5         0.2 0.19444444  setosa       8
-## 10          4.9         3.1          1.5         0.1 0.16666667  setosa      10
-## 14          4.3         3.0          1.1         0.1 0.00000000  setosa      14
+## 6           5.4         3.9          1.7         0.4 0.30555556  setosa       6
+## 7           4.6         3.4          1.4         0.3 0.08333333  setosa       7
+## 9           4.4         2.9          1.4         0.2 0.02777778  setosa       9
+## 11          5.4         3.7          1.5         0.2 0.30555556  setosa      11
+## 12          4.8         3.4          1.6         0.2 0.13888889  setosa      12
 ##    Prob Stratum
 ## 1   0.4       1
-## 3   0.4       1
-## 4   0.4       1
-## 8   0.4       1
-## 10  0.4       1
-## 14  0.4       1</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="통계분석.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris_sample<span class="sc">$</span>Species)</span></code></pre></div>
+## 6   0.4       1
+## 7   0.4       1
+## 9   0.4       1
+## 11  0.4       1
+## 12  0.4       1</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="통계분석.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris_sample<span class="sc">$</span>Species)</span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         20         15         15</code></pre>
@@ -464,8 +484,8 @@ wilcox.test(x, alternative=c(&quot;two.sided&quot;,&quot;less&quot;,&quot;greate
 <li><p>검정을 수행하기에 앞서 설정할 수 있는 가설은 아래와 같다. <br/>귀무가설(H<sub>0</sub>): 고양이들의 평균 몸무게는 2.6kg이다.<br/>대립가설(H<sub>1</sub>): 고양이들의 평균 몸무게는 2.6kg가 아니다.</p></li>
 <li><p>cats 데이터 확인 및 Bwt변수에 대한 정규성 검정 수행</p></li>
 </ul>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="통계분석.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb260-2"><a href="통계분석.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="통계분석.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb268-2"><a href="통계분석.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cats)</span></code></pre></div>
 <pre><code>##   Sex Bwt Hwt
 ## 1   F 2.0 7.0
 ## 2   F 2.0 7.4
@@ -473,12 +493,12 @@ wilcox.test(x, alternative=c(&quot;two.sided&quot;,&quot;less&quot;,&quot;greate
 ## 4   F 2.1 7.2
 ## 5   F 2.1 7.3
 ## 6   F 2.1 7.6</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="통계분석.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="통계분석.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    144 obs. of  3 variables:
 ##  $ Sex: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ Bwt: num  2 2 2 2.1 2.1 2.1 2.1 2.1 2.1 2.1 ...
 ##  $ Hwt: num  7 7.4 9.5 7.2 7.3 7.6 8.1 8.2 8.3 8.5 ...</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="통계분석.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cats<span class="sc">$</span>Bwt)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="통계분석.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(cats<span class="sc">$</span>Bwt)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -488,7 +508,7 @@ wilcox.test(x, alternative=c(&quot;two.sided&quot;,&quot;less&quot;,&quot;greate
 <li><p>정규성 검정의 결과 p-value가 6.731e-05로 유의수준 0.05보다 작기 때문에 ‘데이터가 정규분포를 따른다’(=정규성을 만족한다.) 라는 귀무가설을 기각한다. 즉, cats 데이터의 Bwt 변수는 정규분포를 따르지 않으므로 wilcox.test 함수를 이용해 T-검정을 수행한다.</p></li>
 <li><p>cats 데이터에 대한 일표본 T-검정 수행</p></li>
 </ul>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="통계분석.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(cats<span class="sc">$</span>Bwt, <span class="at">mu=</span><span class="fl">2.6</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="통계분석.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(cats<span class="sc">$</span>Bwt, <span class="at">mu=</span><span class="fl">2.6</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
@@ -581,7 +601,7 @@ wilcox.test(x, alternative=c(&quot;two.sided&quot;,&quot;less&quot;,&quot;greate
 <li><b>수면 영양제 복용 전 10명의 환자들의 수면시간: 7, 3, 4, 5, 2, 1, 6, 6, 5, 4</b><br/><b>수면 영양제 복용 후 10명의 환자들의 수면시간: 8, 4, 5, 6, 2, 3, 6, 8, 6, 5</b></li>
 <li>데이터 입력</li>
 </ul>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="통계분석.html#cb269-1" aria-hidden="true" tabindex="-1"></a>(data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">before=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>), <span class="at">after=</span><span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="통계분석.html#cb277-1" aria-hidden="true" tabindex="-1"></a>(data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">before=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>), <span class="at">after=</span><span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">5</span>)))</span></code></pre></div>
 <pre><code>##    before after
 ## 1       7     8
 ## 2       3     4
@@ -596,7 +616,7 @@ wilcox.test(x, alternative=c(&quot;two.sided&quot;,&quot;less&quot;,&quot;greate
 <ul>
 <li>대응표본 T-검정수행</li>
 </ul>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="통계분석.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>before, data<span class="sc">$</span>after, <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="통계분석.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>before, data<span class="sc">$</span>after, <span class="at">alternative=</span><span class="st">&quot;less&quot;</span>, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -712,9 +732,9 @@ t.test(formula, data, alternative, var.equal=FALSE)</code></pre>
 <li><p><b>검정을 수행하기에 앞서 설정할 수 있는 가설은 아래와 같다</b><br/>귀무가설: 고양이의 성별에 따른 평균 몸무게에는 통계적으로 유의한 차이가 없다.<br/>대립가설: 고양이의 성별에 따른 평균 몸무게에는 통계적으로 유의한 차이가 있다.</p></li>
 <li><p>1) 독립 t검정을 수행하기에 앞서, 범주별 데이터값의 등분산성 검정 수행</p></li>
 </ul>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="통계분석.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb275-2"><a href="통계분석.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cats&quot;</span>)</span>
-<span id="cb275-3"><a href="통계분석.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(Bwt<span class="sc">~</span>Sex, <span class="at">data=</span>cats)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="통계분석.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb283-2"><a href="통계분석.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cats&quot;</span>)</span>
+<span id="cb283-3"><a href="통계분석.html#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(Bwt<span class="sc">~</span>Sex, <span class="at">data=</span>cats)</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -730,7 +750,7 @@ t.test(formula, data, alternative, var.equal=FALSE)</code></pre>
 <li>등분산 검정의 결과 유의확률(p-value)이 0.0001157로 유의수준 0.05보다 매우 작기 때문에 귀무가설을 기각한다. 따라서 <b>A, B 두 집단의 데이터는 등분산 가정을 만족한다고 할 수 없다.</b></li>
 <li>2) <b>성별에 따른 몸무게가 등분산성을 만족하지 않는다는 조건 하에 독립 t검정을 수행</b></li>
 </ul>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="통계분석.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Bwt<span class="sc">~</span>Sex, <span class="at">data=</span>cats, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="통계분석.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Bwt<span class="sc">~</span>Sex, <span class="at">data=</span>cats, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -797,13 +817,13 @@ t.test(formula, data, alternative, var.equal=FALSE)</code></pre>
 <li>귀무가설: 전체 응답자 중 왼손잡이의 비율이 20%, 오른손잡이의 비율이 80%이다.</li>
 <li>대립가설: 전체 응답자 중 왼손잡이의 비율이 20%, 오른손잡이의 비율이 80%라고 할 수 없다.</li>
 </ul>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="통계분석.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(survey, <span class="at">package=</span><span class="st">&quot;MASS&quot;</span>)</span>
-<span id="cb280-2"><a href="통계분석.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="통계분석.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(survey, <span class="at">package=</span><span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb288-2"><a href="통계분석.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd)</span></code></pre></div>
 <pre><code>## 
 ##  Left Right 
 ##    18   218</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="통계분석.html#cb282-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd)</span>
-<span id="cb282-2"><a href="통계분석.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(data, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="통계분석.html#cb290-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd)</span>
+<span id="cb290-2"><a href="통계분석.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(data, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.8</span>))</span></code></pre></div>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -981,10 +1001,10 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 대립가설: 적어도 하나의 종에 대한 Sepal.Width의 평균값에는 차이가 있다.</li>
 <li>1) 분산분석</li>
 </ul>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="통계분석.html#cb288-1" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">aov</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris)</span>
-<span id="cb288-2"><a href="통계분석.html#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-3"><a href="통계분석.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="co">#분산분석표 확인</span></span>
-<span id="cb288-4"><a href="통계분석.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="통계분석.html#cb296-1" aria-hidden="true" tabindex="-1"></a>result<span class="ot">&lt;-</span><span class="fu">aov</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris)</span>
+<span id="cb296-2"><a href="통계분석.html#cb296-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-3"><a href="통계분석.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="co">#분산분석표 확인</span></span>
+<span id="cb296-4"><a href="통계분석.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## Species       2  11.35   5.672   49.16 &lt;2e-16 ***
 ## Residuals   147  16.96   0.115                   
@@ -996,7 +1016,7 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <li>그렇다면, 세가지 종들 중 특히 어떤 종들간에 꽃받침의 폭에 차이가 있는지를 파악하기 위해 사후검정을 수행해 보자.</li>
 <li>2) 사후검정</li>
 </ul>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="통계분석.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris))</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="통계분석.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris))</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -1144,8 +1164,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 </ul></li>
 <li>1) 데이터 확인 및 전처리</li>
 </ul>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="통계분석.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
-<span id="cb294-2"><a href="통계분석.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="통계분석.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb302-2"><a href="통계분석.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
@@ -1158,13 +1178,13 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 ##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="통계분석.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov 함수를 사용하기 위해 독립변수인 cyl, am을 팩터형으로 변환</span></span>
-<span id="cb296-2"><a href="통계분석.html#cb296-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl<span class="ot">&lt;-</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb296-3"><a href="통계분석.html#cb296-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am<span class="ot">&lt;-</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb296-4"><a href="통계분석.html#cb296-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb296-5"><a href="통계분석.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cyl, am, mpg 변수들로만 구성된 분석용 데이터셋 생성</span></span>
-<span id="cb296-6"><a href="통계분석.html#cb296-6" aria-hidden="true" tabindex="-1"></a>car<span class="ot">&lt;-</span>mtcars[,<span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;am&quot;</span>, <span class="st">&quot;mpg&quot;</span>)]</span>
-<span id="cb296-7"><a href="통계분석.html#cb296-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(car)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="통계분석.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aov 함수를 사용하기 위해 독립변수인 cyl, am을 팩터형으로 변환</span></span>
+<span id="cb304-2"><a href="통계분석.html#cb304-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl<span class="ot">&lt;-</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb304-3"><a href="통계분석.html#cb304-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am<span class="ot">&lt;-</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb304-4"><a href="통계분석.html#cb304-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-5"><a href="통계분석.html#cb304-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cyl, am, mpg 변수들로만 구성된 분석용 데이터셋 생성</span></span>
+<span id="cb304-6"><a href="통계분석.html#cb304-6" aria-hidden="true" tabindex="-1"></a>car<span class="ot">&lt;-</span>mtcars[,<span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;am&quot;</span>, <span class="st">&quot;mpg&quot;</span>)]</span>
+<span id="cb304-7"><a href="통계분석.html#cb304-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(car)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  3 variables:
 ##  $ cyl: Factor w/ 3 levels &quot;4&quot;,&quot;6&quot;,&quot;8&quot;: 2 2 1 2 3 2 3 1 1 2 ...
 ##  $ am : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 1 1 1 1 1 1 1 ...
@@ -1172,9 +1192,9 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <ul>
 <li>2) 분산분석 수행</li>
 </ul>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="통계분석.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 분산분석 수행</span></span>
-<span id="cb298-2"><a href="통계분석.html#cb298-2" aria-hidden="true" tabindex="-1"></a>car_aov<span class="ot">&lt;-</span><span class="fu">aov</span>(mpg<span class="sc">~</span>cyl<span class="sc">*</span>am, car)</span>
-<span id="cb298-3"><a href="통계분석.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(car_aov)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="통계분석.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 분산분석 수행</span></span>
+<span id="cb306-2"><a href="통계분석.html#cb306-2" aria-hidden="true" tabindex="-1"></a>car_aov<span class="ot">&lt;-</span><span class="fu">aov</span>(mpg<span class="sc">~</span>cyl<span class="sc">*</span>am, car)</span>
+<span id="cb306-3"><a href="통계분석.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(car_aov)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## cyl          2  824.8   412.4  44.852 3.73e-09 ***
 ## am           1   36.8    36.8   3.999   0.0561 .  
@@ -1188,8 +1208,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <li>cyl 변수와 am 변수간의 상호작용효과에 대한 검정결과, p-value는 0.2686으로 0.05보다 크므로 귀무가설을 기각하지 않는다. 따라서 실린더 개수와 변속기 종류 간에는 교호작용이 존재하지 않는다는 것을 알 수 있다.</li>
 </ul>
 <p><strong>Q. 실린더 개수와 변속기 종류 사이에 상호작용 효과가 있는지 없는지를 시각화 해주는 상호작용 그래프를 그린 후 이를 해석해 보자.</strong></p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="통계분석.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(car<span class="sc">$</span>cyl, car<span class="sc">$</span>am, car<span class="sc">$</span>mpg, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="통계분석.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(car<span class="sc">$</span>cyl, car<span class="sc">$</span>am, car<span class="sc">$</span>mpg, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <ul>
 <li>일반적으로 상호작용 그래프에서 두 선이 서로 교차하고 있을 시에는 x축에 있는 독립변수와 그래프에서 시각화된 독립변수 간에는 상호작용이 존재한다고 해설할 수 있다.</li>
 </ul>
@@ -1297,30 +1317,30 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <pre><code>pairs(x, labels, ...)</code></pre>
 <pre><code>corrplot(corr, method, ...)</code></pre>
 <p><strong>Q1. airquality 데이터에서 Ozone, Slar.R, Wind, Temp 만으로 이루어진 데이터프레임 air를 생성하고, 네 가지 변수에 대한 상관계수를 산출해 보자. 단, 모든 변수값에 NA가 없는 데이터들만 이용하여 피어슨, 켄달, 스피어만 상관계수를 모두 산출하자.</strong></p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="통계분석.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;airquality&quot;</span>)</span>
-<span id="cb305-2"><a href="통계분석.html#cb305-2" aria-hidden="true" tabindex="-1"></a>air<span class="ot">&lt;-</span>airquality[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
-<span id="cb305-3"><a href="통계분석.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(air)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="통계분석.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;airquality&quot;</span>)</span>
+<span id="cb313-2"><a href="통계분석.html#cb313-2" aria-hidden="true" tabindex="-1"></a>air<span class="ot">&lt;-</span>airquality[,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
+<span id="cb313-3"><a href="통계분석.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(air)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    153 obs. of  4 variables:
 ##  $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
 ##  $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
 ##  $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
 ##  $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="통계분석.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="co">#피어슨 상관계수</span></span>
-<span id="cb307-2"><a href="통계분석.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="통계분석.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="co">#피어슨 상관계수</span></span>
+<span id="cb315-2"><a href="통계분석.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>##              Ozone     Solar.R        Wind       Temp
 ## Ozone    1.0000000  0.34834169 -0.60154653  0.6983603
 ## Solar.R  0.3483417  1.00000000 -0.05679167  0.2758403
 ## Wind    -0.6015465 -0.05679167  1.00000000 -0.4579879
 ## Temp     0.6983603  0.27584027 -0.45798788  1.0000000</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="통계분석.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co">#켄달 상관계수</span></span>
-<span id="cb309-2"><a href="통계분석.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="통계분석.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="co">#켄달 상관계수</span></span>
+<span id="cb317-2"><a href="통계분석.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>##              Ozone      Solar.R          Wind       Temp
 ## Ozone    1.0000000 0.2403194214 -0.4283602915  0.5862988
 ## Solar.R  0.2403194 1.0000000000  0.0006785596  0.1442337
 ## Wind    -0.4283603 0.0006785596  1.0000000000 -0.3222418
 ## Temp     0.5862988 0.1442336719 -0.3222417514  1.0000000</code></pre>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="통계분석.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co">#스피어만 상관계수</span></span>
-<span id="cb311-2"><a href="통계분석.html#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="통계분석.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co">#스피어만 상관계수</span></span>
+<span id="cb319-2"><a href="통계분석.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>##              Ozone       Solar.R          Wind       Temp
 ## Ozone    1.0000000  0.3481864700 -0.5901551241  0.7740430
 ## Solar.R  0.3481865  1.0000000000 -0.0009773325  0.2074275
@@ -1331,17 +1351,17 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <li>반면, Solar.R과 Wind 변수간 피어슨 상관계수는 -0.056으로 절대값이 0에 가까워 상관성을 거의 가지고 있지 않음을 알 수 있다.</li>
 </ul>
 <p><strong>Q2. air 데이터 내의 네 가지 변수 조합별 피어슨 상관계를 그래프로 시각화해 보자.</strong></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="통계분석.html#cb313-1" aria-hidden="true" tabindex="-1"></a>air_cor<span class="ot">&lt;-</span><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
-<span id="cb313-2"><a href="통계분석.html#cb313-2" aria-hidden="true" tabindex="-1"></a>air_cor</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="통계분석.html#cb321-1" aria-hidden="true" tabindex="-1"></a>air_cor<span class="ot">&lt;-</span><span class="fu">cor</span>(air, <span class="at">use=</span><span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb321-2"><a href="통계분석.html#cb321-2" aria-hidden="true" tabindex="-1"></a>air_cor</span></code></pre></div>
 <pre><code>##              Ozone     Solar.R        Wind       Temp
 ## Ozone    1.0000000  0.34834169 -0.60154653  0.6983603
 ## Solar.R  0.3483417  1.00000000 -0.05679167  0.2758403
 ## Wind    -0.6015465 -0.05679167  1.00000000 -0.4579879
 ## Temp     0.6983603  0.27584027 -0.45798788  1.0000000</code></pre>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="통계분석.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(air_cor)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="통계분석.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(air_cor)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p><strong>Q3. air 데이터의 Ozone과 Wind 변수에 대한 상관분석을 실시하고, 피어슨 상관계수에 대한 검정 결과를 해석해 보자.</strong></p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="통계분석.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(air<span class="sc">$</span>Ozone, air<span class="sc">$</span>Wind, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="통계분석.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(air<span class="sc">$</span>Ozone, air<span class="sc">$</span>Wind, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -1428,9 +1448,9 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <p><b>[함수 사용법]</b></p>
 <pre><code>lm(formula, data)</code></pre>
 <p><strong>Q. Cars93 데이터의 엔진크기를 독립변수, 가격을 종속변수로 설정하여 단순 선형 회귀분석을 실기한 후, 추정된 회귀모형에 대해 해석해 보자. </strong></p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="통계분석.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb319-2"><a href="통계분석.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Cars93&quot;</span>)</span>
-<span id="cb319-3"><a href="통계분석.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="통계분석.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb327-2"><a href="통계분석.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Cars93&quot;</span>)</span>
+<span id="cb327-3"><a href="통계분석.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -1459,8 +1479,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 ##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
 ##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
 ##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="통계분석.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 단순선형 회귀모형 생성</span></span>
-<span id="cb321-2"><a href="통계분석.html#cb321-2" aria-hidden="true" tabindex="-1"></a>(Cars93_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize, Cars93))</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="통계분석.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 단순선형 회귀모형 생성</span></span>
+<span id="cb329-2"><a href="통계분석.html#cb329-2" aria-hidden="true" tabindex="-1"></a>(Cars93_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize, Cars93))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize, data = Cars93)
@@ -1468,9 +1488,9 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 ## Coefficients:
 ## (Intercept)   EngineSize  
 ##       4.669        5.563</code></pre>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="통계분석.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모형 살펴보기: summary() 이용</span></span>
-<span id="cb323-2"><a href="통계분석.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(): 주어진 인자에 대한 요약 정보 산출</span></span>
-<span id="cb323-3"><a href="통계분석.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="통계분석.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모형 살펴보기: summary() 이용</span></span>
+<span id="cb331-2"><a href="통계분석.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(): 주어진 인자에 대한 요약 정보 산출</span></span>
+<span id="cb331-3"><a href="통계분석.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Cars93_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize, data = Cars93)
@@ -1529,9 +1549,9 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <p><b>[함수 사용법]</b></p>
 <pre><code>plot.lm(x, which)</code></pre>
 <p><strong>Q. 위 예제에서 생성한 선형회귀모델 Cars93_lm을 평가할 수 있는 다양한 그래프를 생성한 후 해석해 보자.</strong></p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="통계분석.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb329-2"><a href="통계분석.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_lm, <span class="at">which=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="통계분석.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb337-2"><a href="통계분석.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93_lm, <span class="at">which=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 <ol style="list-style-type: decimal">
 <li><b>Residuals vs Fitted</b> : Residuals vs Fitted 그래프에서 x축은 회귀모형을 통해 예측된 y값이며, y축은 잔차를 나타낸다. 선형회귀모형은 오차가 정규분포를 따른다는 정규성을 가정하므로, 이 그래프에서 오차의 분포는 기울기가 0인 직선의 형태를 가지는 것이 이상적이다.</li>
 <li><b>Normal Q-Q</b> : Normal Q-Q plot은 표준화된 잔차의 확률도이다. 정규성 가정을 만족한다면 그래프의 점들은 45도 각도의 직선을 이루는 형태를 띄어야 한다.</li>
@@ -1551,27 +1571,27 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <p><b>[함수사용법]</b></p>
 <pre><code>predict.lm(object, newdata, interval=c(&quot;none&quot;,&quot;confidence&quot;,&quot;prediction&quot;), level)</code></pre>
 <p><strong>Q. Cars93 데이터의 엔진크기를 독립변수, 가격를 종속변수로 설정하여 회귀모형을 생성한 후, Cars93 데이터이ㅡ 5개 행을 랜덤으로 봅아 가격(Price)를 예측해보자. 예측시 predict 함수의 interval 인자값을 조정하여 그 결과를 비교해보자. </strong></p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="통계분석.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 회귀모형 생성</span></span>
-<span id="cb331-2"><a href="통계분석.html#cb331-2" aria-hidden="true" tabindex="-1"></a>Cars93_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize, Cars93)</span>
-<span id="cb331-3"><a href="통계분석.html#cb331-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb331-4"><a href="통계분석.html#cb331-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 실습을 위해 시드값 설정</span></span>
-<span id="cb331-5"><a href="통계분석.html#cb331-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb331-6"><a href="통계분석.html#cb331-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb331-7"><a href="통계분석.html#cb331-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cars93 데이터에서 랜덤으로 5개의 행번호를 추출하여 idx변수에 저장</span></span>
-<span id="cb331-8"><a href="통계분석.html#cb331-8" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Cars93),<span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="통계분석.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 회귀모형 생성</span></span>
+<span id="cb339-2"><a href="통계분석.html#cb339-2" aria-hidden="true" tabindex="-1"></a>Cars93_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize, Cars93)</span>
+<span id="cb339-3"><a href="통계분석.html#cb339-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-4"><a href="통계분석.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 실습을 위해 시드값 설정</span></span>
+<span id="cb339-5"><a href="통계분석.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb339-6"><a href="통계분석.html#cb339-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-7"><a href="통계분석.html#cb339-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cars93 데이터에서 랜덤으로 5개의 행번호를 추출하여 idx변수에 저장</span></span>
+<span id="cb339-8"><a href="통계분석.html#cb339-8" aria-hidden="true" tabindex="-1"></a>(idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Cars93),<span class="dv">5</span>))</span></code></pre></div>
 <pre><code>## [1] 28 80 22  9  5</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="통계분석.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측에 사용할 데이터셋 구성</span></span>
-<span id="cb333-2"><a href="통계분석.html#cb333-2" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Cars93[idx,]</span>
-<span id="cb333-3"><a href="통계분석.html#cb333-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb333-4"><a href="통계분석.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측 수행1 (점추정)</span></span>
-<span id="cb333-5"><a href="통계분석.html#cb333-5" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="통계분석.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측에 사용할 데이터셋 구성</span></span>
+<span id="cb341-2"><a href="통계분석.html#cb341-2" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Cars93[idx,]</span>
+<span id="cb341-3"><a href="통계분석.html#cb341-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-4"><a href="통계분석.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측 수행1 (점추정)</span></span>
+<span id="cb341-5"><a href="통계분석.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>##       28       80       22        9        5 
 ## 21.35801 11.34472 23.02689 25.80836 24.13948</code></pre>
 <ul>
 <li>predict.lm 함수에서 interval 인자의 값을 <b>“none”</b>으로 지정하여 자동차의 가격을 예측하면 점추정을 수행해 단일값이 산출되는 것을 확인할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="통계분석.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측 수행2 (회귀계수의 불확실성을 감안한 구간추정)</span></span>
-<span id="cb335-2"><a href="통계분석.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;confidence&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="통계분석.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 예측 수행2 (회귀계수의 불확실성을 감안한 구간추정)</span></span>
+<span id="cb343-2"><a href="통계분석.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;confidence&quot;</span>)</span></code></pre></div>
 <pre><code>##         fit       lwr      upr
 ## 28 21.35801 19.672604 23.04341
 ## 80 11.34472  8.555107 14.13433
@@ -1581,7 +1601,7 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <ul>
 <li>interval의 인자값을 <b>“confidence”</b>로 지정하여 자동차의 가격을 예측한 결과를 살펴보자. fit은 점추정한 값이며 lwr은 구간의 최소값, upr은 구간의 최대값이다. 예를 들어 28번행의 자동차 가격 예측값은 21.35801 이며, 19.672604 ~ 23.04341 사이일 확률은 95%라고 해석할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="통계분석.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="통계분석.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(Cars93_lm, test, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
 <pre><code>##         fit       lwr      upr
 ## 28 21.35801  5.795423 36.92060
 ## 80 11.34472 -4.375825 27.06526
@@ -1634,9 +1654,9 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 </div>
 <div id="lm함수의-범주형-변수-처리" class="section level5" number="3.6.3.2.2">
 <h5><span class="header-section-number">3.6.3.2.2</span> lm함수의 범주형 변수 처리</h5>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="통계분석.html#cb339-1" aria-hidden="true" tabindex="-1"></a>iris_lm<span class="ot">&lt;-</span><span class="fu">lm</span>(Petal.Length<span class="sc">~</span>Sepal.Length<span class="sc">+</span>Sepal.Width<span class="sc">+</span>Petal.Width<span class="sc">+</span>Species, iris)</span>
-<span id="cb339-2"><a href="통계분석.html#cb339-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-3"><a href="통계분석.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="통계분석.html#cb347-1" aria-hidden="true" tabindex="-1"></a>iris_lm<span class="ot">&lt;-</span><span class="fu">lm</span>(Petal.Length<span class="sc">~</span>Sepal.Length<span class="sc">+</span>Sepal.Width<span class="sc">+</span>Petal.Width<span class="sc">+</span>Species, iris)</span>
+<span id="cb347-2"><a href="통계분석.html#cb347-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-3"><a href="통계분석.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Petal.Length ~ Sepal.Length + Sepal.Width + Petal.Width + 
@@ -1672,8 +1692,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <p><b>[함수 사용법]</b></p>
 <pre><code>lm(formula, data)</code></pre>
 <p><strong>Q. Cars93 데이터에서 엔진크기, RPM, 무게를 독립변수로 설정하고 자동차 가격을 종속변수로 설정하여 다변량 회귀분석을 수행한 뒤 그 결과를 해석해 보자.</strong></p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="통계분석.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb343-2"><a href="통계분석.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="통계분석.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb351-2"><a href="통계분석.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Cars93)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    93 obs. of  27 variables:
 ##  $ Manufacturer      : Factor w/ 32 levels &quot;Acura&quot;,&quot;Audi&quot;,..: 1 1 2 2 3 4 4 4 4 5 ...
 ##  $ Model             : Factor w/ 93 levels &quot;100&quot;,&quot;190E&quot;,&quot;240&quot;,..: 49 56 9 1 6 24 54 74 73 35 ...
@@ -1702,8 +1722,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 ##  $ Weight            : int  2705 3560 3375 3405 3640 2880 3470 4105 3495 3620 ...
 ##  $ Origin            : Factor w/ 2 levels &quot;USA&quot;,&quot;non-USA&quot;: 2 2 2 2 2 1 1 1 1 1 ...
 ##  $ Make              : Factor w/ 93 levels &quot;Acura Integra&quot;,..: 1 2 4 3 5 6 7 9 8 10 ...</code></pre>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="통계분석.html#cb345-1" aria-hidden="true" tabindex="-1"></a>Price_lm<span class="ot">&lt;-</span><span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize<span class="sc">+</span>RPM<span class="sc">+</span>Weight, Cars93)</span>
-<span id="cb345-2"><a href="통계분석.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Price_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="통계분석.html#cb353-1" aria-hidden="true" tabindex="-1"></a>Price_lm<span class="ot">&lt;-</span><span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize<span class="sc">+</span>RPM<span class="sc">+</span>Weight, Cars93)</span>
+<span id="cb353-2"><a href="통계분석.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Price_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize + RPM + Weight, data = Cars93)
@@ -1778,8 +1798,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <ul>
 <li><b>1) 패키지 로드 및 다중회귀모형 생성</b></li>
 </ul>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="통계분석.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb351-2"><a href="통계분석.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_a <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM <span class="sc">+</span> Width <span class="sc">+</span> Length, Cars93))</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="통계분석.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb359-2"><a href="통계분석.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_a <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM <span class="sc">+</span> Width <span class="sc">+</span> Length, Cars93))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize + RPM + Width + Length, data = Cars93)
@@ -1805,7 +1825,7 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <li><p>summary의 결과에서 모형의 유의성을 판단하기 위해 F-통계량을 확인한 결과, 유의확률이 1.762e-13이므로 생성된 회귀모형은 통계적으로 유의함을 확인할 수 있다. 하지만 입력변수들의 통계적 유의성을 검토해 본 결과, Width와 Length 변수의 회귀계수에 대한 유의확률이 0.05보다 큰 것을 확인할 수 있다. 적절한 모형을 선정하기 위해 유의확률이 가장 높은 Width 변수를 제외하고 다시 회귀모형을 생성해 lm_b에 저장해 보자.</p></li>
 <li><p><b>2) 유의확률이 가장 높은 변수 Width를 제거하고 회귀모형(lm_b)을 다시 생성</b></p></li>
 </ul>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="통계분석.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_b <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM <span class="sc">+</span> Length, Cars93))</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="통계분석.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_b <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM <span class="sc">+</span> Length, Cars93))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize + RPM + Length, data = Cars93)
@@ -1830,7 +1850,7 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 <li><p>Width 변수가 제거된 모형의 유의성을 검토한 결과, F-통계량에 대한 유의확률은 8.699e-14으로 유의하게 나타났다. 모든 변수들의 t통계량에 대한 유의확률이 0.05보다 낮아야 하지만 Length 변수의 유의확률이 0.05보다 높게 나타나 유의하지 않은 결과를 보인다. 따라서 유의확률이 가장 높은 Length 변수를 제외한 회귀모형(lm_c)을 다시 생성해 보자.</p></li>
 <li><p><b>3) 유의확률이 가장 높은 변수 Length를 제거하고 회귀모형(lm_c)을 다시 생성</b></p></li>
 </ul>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="통계분석.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_c<span class="ot">&lt;-</span><span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM, Cars93))</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="통계분석.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_c<span class="ot">&lt;-</span><span class="fu">lm</span>(Price <span class="sc">~</span> EngineSize <span class="sc">+</span> RPM, Cars93))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ EngineSize + RPM, data = Cars93)
@@ -1887,8 +1907,8 @@ table(범주형변수1, 범주형변수2) # 두 변수간 이원분할표 생성
 </tbody>
 </table>
 <p><strong>Q. Cars93 데이터에서 엔진크기, 마력, RPM, 너비, 길이, 무게를 독립변수로 가지고, 자동차의 가격을 종속변수로 가지는 선형회귀모형을 생성해보자. 그 후 step 함수를 사용해 ’후진제거법’으로 변수 선택을 수행한 후 결과를 해석해 보자.</strong></p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="통계분석.html#cb358-1" aria-hidden="true" tabindex="-1"></a>lm_result<span class="ot">&lt;-</span><span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize<span class="sc">+</span>Horsepower<span class="sc">+</span>RPM<span class="sc">+</span>Width<span class="sc">+</span>Length<span class="sc">+</span>Weight, Cars93)</span>
-<span id="cb358-2"><a href="통계분석.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(lm_result, <span class="at">direction=</span><span class="st">&quot;backward&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="통계분석.html#cb366-1" aria-hidden="true" tabindex="-1"></a>lm_result<span class="ot">&lt;-</span><span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize<span class="sc">+</span>Horsepower<span class="sc">+</span>RPM<span class="sc">+</span>Width<span class="sc">+</span>Length<span class="sc">+</span>Weight, Cars93)</span>
+<span id="cb366-2"><a href="통계분석.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(lm_result, <span class="at">direction=</span><span class="st">&quot;backward&quot;</span>)</span></code></pre></div>
 <pre><code>## Start:  AIC=322.11
 ## Price ~ EngineSize + Horsepower + RPM + Width + Length + Weight
 ## 

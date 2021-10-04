@@ -24,7 +24,7 @@
 <meta name="author" content="tingyuan" />
 
 
-<meta name="date" content="2021-10-02" />
+<meta name="date" content="2021-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,10 +133,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R기초</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R기초</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#r-소개"><i class="fa fa-check"></i><b>1.1</b> R 소개</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#r-프로그래밍-언어"><i class="fa fa-check"></i><b>1.1.1</b> R 프로그래밍 언어</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#r-설치"><i class="fa fa-check"></i><b>1.1.2</b> R 설치</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r-기본"><i class="fa fa-check"></i><b>1.2</b> R 기본</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#r-다루기"><i class="fa fa-check"></i><b>1.2.1</b> R 다루기</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#r-기초"><i class="fa fa-check"></i><b>1.2.2</b> R 기초</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#데이터-타입"><i class="fa fa-check"></i><b>1.2.3</b> 데이터 타입</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#자주-사용하는-함수"><i class="fa fa-check"></i><b>1.2.4</b> 자주 사용하는 함수</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#데이터-입출력"><i class="fa fa-check"></i><b>1.2.5</b> 데이터 입출력</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#사용자-정의-함수"><i class="fa fa-check"></i><b>1.2.6</b> 사용자 정의 함수</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="데이터-전처리.html"><a href="데이터-전처리.html"><i class="fa fa-check"></i><b>2</b> 데이터 전처리</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#제어문"><i class="fa fa-check"></i><b>2.1</b> 제어문</a></li>
+<li class="chapter" data-level="2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#제어문"><i class="fa fa-check"></i><b>2.1</b> 제어문</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#조건문"><i class="fa fa-check"></i><b>2.1.1</b> 조건문</a></li>
+<li class="chapter" data-level="2.1.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#반복문"><i class="fa fa-check"></i><b>2.1.2</b> 반복문</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터-변환"><i class="fa fa-check"></i><b>2.2</b> 데이터 변환</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#파생변수-생성"><i class="fa fa-check"></i><b>2.2.1</b> 파생변수 생성</a></li>
@@ -297,8 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>VectorSource(text)</code></pre>
 <pre><code>VCorpus(data)</code></pre>
 <p><strong>Q. 아래의 내장 데이터로 Corpus를 살펴보자.</strong></p>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="비정형-데이터마이닝.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;tm&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
-<span id="cb610-2"><a href="비정형-데이터마이닝.html#cb610-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="비정형-데이터마이닝.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;tm&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb618-2"><a href="비정형-데이터마이닝.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code></pre></div>
 <pre><code>## Loading required package: NLP</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;NLP&#39;</code></pre>
@@ -310,8 +330,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:arules&#39;:
 ## 
 ##     inspect</code></pre>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="비정형-데이터마이닝.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crude)</span>
-<span id="cb616-2"><a href="비정형-데이터마이닝.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(crude)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="비정형-데이터마이닝.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crude)</span>
+<span id="cb624-2"><a href="비정형-데이터마이닝.html#cb624-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(crude)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,]</span></code></pre></div>
 <pre><code>##     Length Class             Mode
 ## 127 2      PlainTextDocument list
 ## 144 2      PlainTextDocument list
@@ -322,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>crude 데이터는 로이터 뉴스 기사 중 원유와 관련된 기사 20개가 저장된 데이터이다. summary 결과에서 class는 TextDocument 형태임을 알 수 있고, list 형태로 저장되어 있다.</li>
 </ul>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="비정형-데이터마이닝.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(crude[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="비정형-데이터마이닝.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(crude[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## &lt;&lt;VCorpus&gt;&gt;
 ## Metadata:  corpus specific: 0, document level (indexed): 0
 ## Content:  documents: 1
@@ -407,14 +427,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><strong>Q. 데이터 분석 전문가라는 키워드로 뉴스 기사를 검색하여 10개의 기사를 수집하였다. 수집 데이터를 Corpus로 만들고, tm_map 함수로 데이터를 전처리해 보자.</strong></p>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="비정형-데이터마이닝.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;tm&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
-<span id="cb621-2"><a href="비정형-데이터마이닝.html#cb621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
-<span id="cb621-3"><a href="비정형-데이터마이닝.html#cb621-3" aria-hidden="true" tabindex="-1"></a>news<span class="ot">&lt;-</span><span class="fu">readLines</span>(<span class="fu">file</span>(<span class="st">&quot;./data/키워드_뉴스.txt&quot;</span>, <span class="at">encoding=</span><span class="st">&quot;EUC-KR&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="비정형-데이터마이닝.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;tm&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb629-2"><a href="비정형-데이터마이닝.html#cb629-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb629-3"><a href="비정형-데이터마이닝.html#cb629-3" aria-hidden="true" tabindex="-1"></a>news<span class="ot">&lt;-</span><span class="fu">readLines</span>(<span class="fu">file</span>(<span class="st">&quot;./data/키워드_뉴스.txt&quot;</span>, <span class="at">encoding=</span><span class="st">&quot;EUC-KR&quot;</span>))</span></code></pre></div>
 <details>
 <summary>
 Click for Result
 </summary>
-<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="비정형-데이터마이닝.html#cb622-1" aria-hidden="true" tabindex="-1"></a>news</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="비정형-데이터마이닝.html#cb630-1" aria-hidden="true" tabindex="-1"></a>news</span></code></pre></div>
 <pre><code>##  [1] &quot;동아대학교(총장 한석정)가 &#39;수요자 데이터기반 스마트헬스케어 서비스&#39;분야 ‘4차 산업혁명 혁신선도대학으로 최종선정됐습니다. 동아대가 혁신선도대학으로 펼치게 될 ‘수요자 데이터기반 스마트헬스케어 서비스’ 산업은 리빙데이터(운동·영양·약물)와 메디컬데이터(생체계측·진료기록)를 종합 분석, 다양한 헬스케어 서비스를 제공하는 것입니다. 동아대는 건강과학대학과 의료원, 재활요양병원 등 경쟁력 있는 인프라를 바탕으로 신뢰도 높은 정밀 분석을 실시, ‘헬스케어 기획 전문가’와 ‘헬스케어 데이터분석 전문가’ 등 수요자 맞춤형 헬스케어 서비스 분야를 선도하는 전문 인재를 키워나갈 계획입니다. ‘스마트헬스케어 융합전공’을 신설, 경영정보학과를 중심으로 한 빅데이터 분석, 식품영양학과·의약생명공학과·건강관리학과 중심의 헬스케어 등 학문 간 경계는 교육혁신도 이뤄나갈 방침입니다. &quot;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 ##  [2] &quot;첨단 정보통신기술에 AI 등이 더해지면서 무기체계가 날로 지능화하는 가운데 &#39;국방개혁 2.0&#39; 추진과 4차 산업기술의 군사분야 접목 속도가 빨라지고 있다. 국방부가 2025년까지 군 내부의 데이터베이스를 기초로 전장의 모든 변수를 모아 최선의 작전계획을 영위하는 ‘AI지휘체계’를 구축한다고 발표한 이래 빅데이터 활용에 대한 관심은 날로 증가하고 있다. 15일 국회의원회관에서 열린 ‘미래국방과 4차산업혁명 교육혁신 포럼’에서 2miles 윤혜식 대표는 ‘빅데이터&amp;블록체인을 통한 스마트 국방’을 주제로 발표하면서 데이터, 클라우드, 인텔리전스를 강조했다. 윤 대표는 “빅데이터 시대의 핵심 기술인 모바일, 인공지능, 로봇, 사물인터넷, 클라우드, 블록체인을 새로운 도구로 활용해 서비스를 혁신하는 국방기술의 디지타이징이 필요하다”며 “국방 서비스의 각 영역들의 통합운영이 필요하고 언제 어디서나 정보에 안전하게 접근하는 모빌리티를 확보해야 한다. 분산되어 있는 정보를 한 곳에 모으고 운영상 발생하는 보안 이슈를 통합 모니터링을 통해 해결하는 클라우드 서비스가 중요하다”고 말한 미 육군 CIO Bruce Crawford 장군의 인터뷰 내용을 인용했다. 그는 미사일 대응체계를 사례로 들며 “적군의 미사일 발사를 감지해 아군에게 정보가 전달되는 과정에서 발생될 수 있는 해커의 방해작업을, 블록체인을 기반으로 한 탈 중앙화 미사일 대응체계를 갖추면 다면화된 내부 블록체인의 보안화로 막을수 있어 효과적으로 상대편 미사일에 대응할 수 있게 된다”고 설명했다. 그러면서 “빅테이터를 활용하게 되면 전략자산에 연결된 자동화된 사전 알람으로 원격 모니터링을 이용해 빠르게 공정설비의 이슈를 파악하고 적합한 엔지니어를 투입할 수 있다”며, “이로써 예방보전과 유지보수 속도가 빨라지고 전투력을 증강시킬 수 있다”고 말했다. 이어 윤 대표는 “가상/증강(VR/AR) 등 첨단기술을 활용한 실감형 과학화 훈련체계를 구축함은 물론 물론 내부망으로 연결된 실시간 화면 송수신으로 부상자의 응급처치도 가능하다”며 “신속하고 스마트한 의사결정으로 전투력을 극대화할 수 있다”고 전했다. 그는 이러한 빅데이터 시대의 성공요인으로 고품질의 데이터, 분석에 대한 전방위의 관점, 분석지향의 리더십, 전략적 타깃, 그리고 데이터 분석 전문가 양성이 무엇보다 중요하다고 덧붙였다. 한편 이 날 포럼을 주최한 백승주 국회 국방위원은 축사를 통해 “미래 대한민국의 국방과 안보를 위해 4차 산업혁명 도입의 필요성을 되짚어보면서 향후 4차 산업혁명 기술을 활용한 국방 및 안보 보안강화 방안을 살펴보고자 한다”며, “미래의 변화에 걸맞은 국방과 안보, 교육과 경제제도가 마련되는 본격적인 계기가 되기 바란다”고 말했다.(konas)&quot;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 ##  [3] &quot;SK하이닉스는 김영한(사진) 미국 샌디에이고 캘리포니아대(UCSD) 종신 교수를 수석 연구위원(전무급)으로 영입했다고 10일 밝혔다. 미 스탠퍼드대에서 통계학 석사, 전기공학 석·박사 학위를 취득한 김 연구위원은 2015년 전자업계 최고 권위의 미국 전기전자공학회(IEEE) 석학회원(Fellow)에도 이름을 올린 세계적인 데이터 과학 전문가다. SK하이닉스는 김 수석 연구위원의 영입에 맞춰 2016년 데이터 분석을 전문적으로 담당하기 위해 설립한 데이터 사이언스 조직 산하에 데이터 리서치 조직을 만들었다. 또 데이터 리서치 하에 ‘MIDAS(Machine Intelligence and Data Analytics Solutions)랩’을 신설했다. MIDAS 랩은 반도체 제조·개발 미세공정뿐 아니라 인사·기업문화 등에까지 인공지능(AI) 기반 시스템을 구축하는 역할을 맡게 된다.  SK하이닉스 관계자는 \&quot;최근 반도체 산업은 제조·개발의 미세공정 난도 증가로 처리해야 하는 데이터의 양이 기하급수적으로 늘어났다\&quot;며 \&quot;이에 엔지니어가 직관적으로 판단하는 것이 아니라 AI를 통해 수율(투입량 대비 정상제품 생산 비율)을 올릴 수 있는 최적의 해결 방법을 찾는 것이 경쟁력의 핵심이 되고 있다\&quot;고 설명했다. SK하이닉스는 AI 경쟁력 확보의 일환으로 현지 시각 10일부터 15일까지 미국 캘리포니아에서 열리는 세계 최고 권위의 AI 학회 국제머신러닝학회(ICML)에도 처음으로 참가해 홍보부스를 열 예정이다. 이를 통해 국내·외 우수 빅데이터, AI 전문가를 적극적으로 유치한다는 계획이다. SK하이닉스 CIO(최고정보관리책임자) 송창록 전무는 \&quot;올해부터 반도체 제조·개발 현장에 엔지니어뿐 아니라 뛰어난 데이터 분석 전문가들을 투입할 계획\&quot;이라면서 \&quot;전문가들이 역량을 발휘할 수 있는AI 기반의 업무 시스템을 확장해나가겠다\&quot;고 말했다. &quot;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
@@ -426,26 +446,26 @@ Click for Result
 ##  [9] &quot;포스코 광양제철소(소장 이시우)가 지난 27일 광양제철소본부 대강당에서 ‘2019년 상반기 빅데이터 경진대회’를 개최하고 우수 과제를 공유했다. 빅데이터 경진대회는 4차 산업혁명이라는 시대의 변화를 반영해 엔지니어들이 가진 조업 현장의 기술과 데이터 활용기법을 결합해 스마트팩토리 구현을 가속화하고자 2017년부터 개최해오고 있다. 이번 경진대회에 참여한 광양제철소 엔지니어들은 올해 1월부터 대회 참가를 위한 인원 선발과 과제 선정을 시작으로 사내 교육 콘텐츠를 통해 데이터 통계 및 분석 기초 등 빅데이터 관련 교육을 받았다. 또한, 과제 수행 중에는 사내 데이터 분석 전문가를 투입해 과제를 수행하는 엔지니어들이 빅데이터에 대해 체계적으로 학습하고 데이터 분석 능력을 향상시킬 수 있도록 지원했다. 이날 총 6명이 경연을 펼쳐 ‘두께 불량 및 통판성 향상을 위한 마무리 압연 온도 모델 개발’을 주제로 △효과성 △활용성 △발표력 전 부분에서 가장 높은 점수를 받은 열연부 김경수 대리가 최우수상의 영광을 안았다. 우수상은 압연설비부 임용호 대리와 제강부 윤선혁 대리, 장려상은 선강설비부 황민수 사원, 도금부 윤지선 사원, 발전부 문현익 대리가 차지했다. 이시우 광양제철소장은 강평을 통해 “오늘 발표한 내용들이 실제로 현장에 적용된다면 가까운 미래에 스마트 제철소가 완성될 날도 머지않은 것 같다”며 “광양제철소가 다가올 미래에 경쟁력을 확보할 수 있도록 데이터 분석 능력과 함께 조업 현장의 지식 습득을 위한 학습에도 힘써달라”고 당부했다. 한편, 광양제철소는 매년 상반기와 하반기 빅데이터 경진대회를 개최해오고 있으며 올해 하반기에는 빅데이터를 활용한 조업 모델이 실제 현장에 적용한 사례를 중심으로 경진대회를 개최할 계획이다. &quot;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 ## [10] &quot;KB금융그룹(회장 윤종규)이 역량별 맞춤교육, 연수과정 확대 등 인력 육성 프로그램을 통해 그룹 내 &#39;데이터 분석&#39; 역량을 강화하고 있다. KB금융그룹에 따르면 그룹 내 데이터 분석 초급자들은 각 계열사에 도입된 초급분석 교육과정과 &#39;그룹 데이터분석 CoP(Community of Practice)&#39;를 통해 분석의 기초를 다질 수 있다. 또 빅데이터분석 플랫폼과 시각화툴을 접하도록 해 관련분야에 직원들이 보다 친근하게 다가가게 했다. 중·고급 분석인력에는 연세대 정보대학원과 개설한 &#39;KB데이터분석 아카데미&#39;, 카이스트 전자공학과와 개설한 &#39;AI 인텐시브 코스&#39;를 들을 수 있다. 이러한 외부교육을 통해 KB금융그룹이 지난 3년간 육성한 데이터 분석 전문가는 총 150여명에 달한다.  KB금융그룹은 교육에 그치지 않고, 직원별 데이터 분석 역량에 기반해 인사이동을 실시하고, 프로젝트에 투입시키는 등 인력 운용도 하고 있다. 이는 가시적인 성과로 이어졌다. 대표 사례가 위 교육과정을 수료한 직원이 참여해 개발한 KBotSAM(케이봇쌤)이다. 케이봇쌤은 전세계 수많은 금융 빅데이터를 AI가 매일 분석, 학습해 최적 포트폴리오를 제안하는 머신러닝 알고리즘 기반 로보어드바이저 자산관리서비스다. 또 KB금융그룹은 빅데이터를 활용해 모든 계열사가 신용평가모델을 고도화, 머신러닝과 강화학습 기반 신용평가모형도 개발중이다. 금융사기 방지를 위해서 딥러닝 기반 FDS시스템은 24시간 가동되고 있으며, 성능 향상을 위해 지속적으로 시스템도 고도화하고 있다. KB금융 관계자는 “내부직원 육성을 통해 역량 강화를 도모하고 기술을 내재화해 KB만의 차별적인 AI와 빅데이터 서비스를 통해 초격차 리딩 금융그룹을 만들어 갈 것”이라고 밝혔다. KB금융그룹은 인공지능 기반으로 더욱 정교하고 개인화된 고객 마케팅, 최적 금융상품 추천, 중고차 시세 예측, 아파트 가격 추정 모델 등을 개발해 조만간 서비스를 선보일 예정이다.&quot;</code></pre>
 </details>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="비정형-데이터마이닝.html#cb624-1" aria-hidden="true" tabindex="-1"></a>news.corpus<span class="ot">&lt;-</span><span class="fu">VCorpus</span>(<span class="fu">VectorSource</span>(news))</span>
-<span id="cb624-2"><a href="비정형-데이터마이닝.html#cb624-2" aria-hidden="true" tabindex="-1"></a>news.corpus[[<span class="dv">1</span>]]<span class="sc">$</span>content</span></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="비정형-데이터마이닝.html#cb632-1" aria-hidden="true" tabindex="-1"></a>news.corpus<span class="ot">&lt;-</span><span class="fu">VCorpus</span>(<span class="fu">VectorSource</span>(news))</span>
+<span id="cb632-2"><a href="비정형-데이터마이닝.html#cb632-2" aria-hidden="true" tabindex="-1"></a>news.corpus[[<span class="dv">1</span>]]<span class="sc">$</span>content</span></code></pre></div>
 <pre><code>## [1] &quot;동아대학교(총장 한석정)가 &#39;수요자 데이터기반 스마트헬스케어 서비스&#39;분야 ‘4차 산업혁명 혁신선도대학으로 최종선정됐습니다. 동아대가 혁신선도대학으로 펼치게 될 ‘수요자 데이터기반 스마트헬스케어 서비스’ 산업은 리빙데이터(운동·영양·약물)와 메디컬데이터(생체계측·진료기록)를 종합 분석, 다양한 헬스케어 서비스를 제공하는 것입니다. 동아대는 건강과학대학과 의료원, 재활요양병원 등 경쟁력 있는 인프라를 바탕으로 신뢰도 높은 정밀 분석을 실시, ‘헬스케어 기획 전문가’와 ‘헬스케어 데이터분석 전문가’ 등 수요자 맞춤형 헬스케어 서비스 분야를 선도하는 전문 인재를 키워나갈 계획입니다. ‘스마트헬스케어 융합전공’을 신설, 경영정보학과를 중심으로 한 빅데이터 분석, 식품영양학과·의약생명공학과·건강관리학과 중심의 헬스케어 등 학문 간 경계는 교육혁신도 이뤄나갈 방침입니다. &quot;</code></pre>
 <ul>
 <li>예제 텍스트 파일을 readLines 함수로 news라는 변수에 저장한다. 텍스트 데이터를 VectorSource함수를 통해 문서를 만들고, VCorpus 함수로 Corpus 형태로 변환한다.</li>
 <li>Corpus로 변환된 데이터는 리스트 형태이고 $content를 통해 내용을 확인할 수 있다. Corpus 데이터를 전처리하기 위해 사용자 지정함수를 제작하여 데이터 전처리를 수행한다.</li>
 </ul>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="비정형-데이터마이닝.html#cb626-1" aria-hidden="true" tabindex="-1"></a>clean_txt<span class="ot">&lt;-</span><span class="cf">function</span>(txt){</span>
-<span id="cb626-2"><a href="비정형-데이터마이닝.html#cb626-2" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, removeNumbers)</span>
-<span id="cb626-3"><a href="비정형-데이터마이닝.html#cb626-3" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, removePunctuation)</span>
-<span id="cb626-4"><a href="비정형-데이터마이닝.html#cb626-4" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, stripWhitespace)</span>
-<span id="cb626-5"><a href="비정형-데이터마이닝.html#cb626-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(txt)</span>
-<span id="cb626-6"><a href="비정형-데이터마이닝.html#cb626-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="비정형-데이터마이닝.html#cb634-1" aria-hidden="true" tabindex="-1"></a>clean_txt<span class="ot">&lt;-</span><span class="cf">function</span>(txt){</span>
+<span id="cb634-2"><a href="비정형-데이터마이닝.html#cb634-2" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, removeNumbers)</span>
+<span id="cb634-3"><a href="비정형-데이터마이닝.html#cb634-3" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, removePunctuation)</span>
+<span id="cb634-4"><a href="비정형-데이터마이닝.html#cb634-4" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">tm_map</span>(txt, stripWhitespace)</span>
+<span id="cb634-5"><a href="비정형-데이터마이닝.html#cb634-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(txt)</span>
+<span id="cb634-6"><a href="비정형-데이터마이닝.html#cb634-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>tm_map 함수를 통해 숫자 제거, 문장부호 제거, 공백 제거를 진행하고 txt에 데이터를 저장한다.</li>
 </ul>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="비정형-데이터마이닝.html#cb627-1" aria-hidden="true" tabindex="-1"></a>clean.news<span class="ot">&lt;-</span><span class="fu">clean_txt</span>(news.corpus)</span>
-<span id="cb627-2"><a href="비정형-데이터마이닝.html#cb627-2" aria-hidden="true" tabindex="-1"></a>clean.news[[<span class="dv">1</span>]]<span class="sc">$</span>content</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="비정형-데이터마이닝.html#cb635-1" aria-hidden="true" tabindex="-1"></a>clean.news<span class="ot">&lt;-</span><span class="fu">clean_txt</span>(news.corpus)</span>
+<span id="cb635-2"><a href="비정형-데이터마이닝.html#cb635-2" aria-hidden="true" tabindex="-1"></a>clean.news[[<span class="dv">1</span>]]<span class="sc">$</span>content</span></code></pre></div>
 <pre><code>## [1] &quot;동아대학교총장 한석정가 수요자 데이터기반 스마트헬스케어 서비스분야 ‘차 산업혁명 혁신선도대학으로 최종선정됐습니다 동아대가 혁신선도대학으로 펼치게 될 ‘수요자 데이터기반 스마트헬스케어 서비스’ 산업은 리빙데이터운동·영양·약물와 메디컬데이터생체계측·진료기록를 종합 분석 다양한 헬스케어 서비스를 제공하는 것입니다 동아대는 건강과학대학과 의료원 재활요양병원 등 경쟁력 있는 인프라를 바탕으로 신뢰도 높은 정밀 분석을 실시 ‘헬스케어 기획 전문가’와 ‘헬스케어 데이터분석 전문가’ 등 수요자 맞춤형 헬스케어 서비스 분야를 선도하는 전문 인재를 키워나갈 계획입니다 ‘스마트헬스케어 융합전공’을 신설 경영정보학과를 중심으로 한 빅데이터 분석 식품영양학과·의약생명공학과·건강관리학과 중심의 헬스케어 등 학문 간 경계는 교육혁신도 이뤄나갈 방침입니다 &quot;</code></pre>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="비정형-데이터마이닝.html#cb629-1" aria-hidden="true" tabindex="-1"></a>txt2<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot;&quot;</span>, clean.news[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="비정형-데이터마이닝.html#cb637-1" aria-hidden="true" tabindex="-1"></a>txt2<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot;&quot;</span>, clean.news[[<span class="dv">1</span>]])</span></code></pre></div>
 <ul>
 <li>전처리 결과에서 숫자와 구두점 등을 제거했으나, ’,. 와 같은 부호는 제거되지 않아 gsub 함수를 통해 제거할 수 있다. gsub에서 [[:punct:]]와 같은 용어를 통해 전체 대체가 가능하다.</li>
 </ul>
@@ -510,57 +530,57 @@ Click for Result
 </tbody>
 </table>
 <p><strong>Q. 간단한 문장으로 명사추출, 사전 단어추가, 품사를 확인해 보자.</strong></p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="비정형-데이터마이닝.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;KoNLP&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
-<span id="cb633-2"><a href="비정형-데이터마이닝.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(KoNLP)</span>
-<span id="cb633-3"><a href="비정형-데이터마이닝.html#cb633-3" aria-hidden="true" tabindex="-1"></a><span class="fu">useSejongDic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="비정형-데이터마이닝.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">setdiff</span>(<span class="st">&quot;KoNLP&quot;</span>, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>())))</span>
+<span id="cb641-2"><a href="비정형-데이터마이닝.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(KoNLP)</span>
+<span id="cb641-3"><a href="비정형-데이터마이닝.html#cb641-3" aria-hidden="true" tabindex="-1"></a><span class="fu">useSejongDic</span>()</span></code></pre></div>
 <ul>
 <li>KoNLP 라이브러리를 활성화하고 useSejongDic() 함수를 실행하여 사용하고자 하는 사전을 설정한다.</li>
 </ul>
-<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="비정형-데이터마이닝.html#cb634-1" aria-hidden="true" tabindex="-1"></a>setence<span class="ot">&lt;-</span><span class="st">&#39;아버지가 방에 스르륵 들어가신다&#39;</span></span>
-<span id="cb634-2"><a href="비정형-데이터마이닝.html#cb634-2" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(sentence)</span>
-<span id="cb634-3"><a href="비정형-데이터마이닝.html#cb634-3" aria-hidden="true" tabindex="-1"></a><span class="fu">buildDictionary</span>(<span class="at">ext_dic=</span><span class="st">&quot;sejong&quot;</span>, <span class="at">user_dic=</span><span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">&#39;스르륵&#39;</span>), <span class="fu">c</span>(<span class="st">&#39;mag&#39;</span>)))</span>
-<span id="cb634-4"><a href="비정형-데이터마이닝.html#cb634-4" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(sentence)</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="비정형-데이터마이닝.html#cb642-1" aria-hidden="true" tabindex="-1"></a>setence<span class="ot">&lt;-</span><span class="st">&#39;아버지가 방에 스르륵 들어가신다&#39;</span></span>
+<span id="cb642-2"><a href="비정형-데이터마이닝.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(sentence)</span>
+<span id="cb642-3"><a href="비정형-데이터마이닝.html#cb642-3" aria-hidden="true" tabindex="-1"></a><span class="fu">buildDictionary</span>(<span class="at">ext_dic=</span><span class="st">&quot;sejong&quot;</span>, <span class="at">user_dic=</span><span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">&#39;스르륵&#39;</span>), <span class="fu">c</span>(<span class="st">&#39;mag&#39;</span>)))</span>
+<span id="cb642-4"><a href="비정형-데이터마이닝.html#cb642-4" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(sentence)</span></code></pre></div>
 <ul>
 <li>명사를 추출하기 위해 예제 문장을 setence라는 데이터에 저장하고 extractNoun 함수로 명사를 추출했다. 결과에서 ’스르륵’은 명사가 아니라 부사인데, ’스르륵’이라는 단어가 세종사전에 포함되어 있지 않으므로 ’스르륵’을 부사로 세종사전에 추가한다.</li>
 <li>사전을 추가하고 다시 extractNoun함수를 사용해 결과를 확인하면 ’스르륵’이 제외된 것을 확인할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="비정형-데이터마이닝.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SimplePos22</span>(sentence)</span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="비정형-데이터마이닝.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SimplePos22</span>(sentence)</span></code></pre></div>
 <ul>
 <li>SimplePos22 함수로 sentence의 문장을 형태소 분석을 하여 분리된 단어마다 품사를 확인할 수 있으며, NC은 명사, PV는 동사, PA는 형용사를 의미한다.</li>
 </ul>
 <p><strong>Q. 위의 new 데이터에서 corpus로 변환하지 않고 전처리 및 명사추출, 사전추가, 품사확인을 하고 형용사를 추출해 보자.</strong></p>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="비정형-데이터마이닝.html#cb636-1" aria-hidden="true" tabindex="-1"></a>clean_txt2<span class="ot">&lt;-</span><span class="cf">function</span>(txt) {</span>
-<span id="cb636-2"><a href="비정형-데이터마이닝.html#cb636-2" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">removeNumbers</span>(txt)</span>
-<span id="cb636-3"><a href="비정형-데이터마이닝.html#cb636-3" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">removePunctuation</span>(txt)</span>
-<span id="cb636-4"><a href="비정형-데이터마이닝.html#cb636-4" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">stripWhitespace</span>(txt)</span>
-<span id="cb636-5"><a href="비정형-데이터마이닝.html#cb636-5" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">&quot;[^[:alnum:]]&quot;</span>,<span class="st">&quot; &quot;</span>,txt)</span>
-<span id="cb636-6"><a href="비정형-데이터마이닝.html#cb636-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(txt)</span>
-<span id="cb636-7"><a href="비정형-데이터마이닝.html#cb636-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb636-8"><a href="비정형-데이터마이닝.html#cb636-8" aria-hidden="true" tabindex="-1"></a>clean.news2<span class="ot">&lt;-</span><span class="fu">clean_txt2</span>(news)</span>
-<span id="cb636-9"><a href="비정형-데이터마이닝.html#cb636-9" aria-hidden="true" tabindex="-1"></a>Noun.news[<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="비정형-데이터마이닝.html#cb644-1" aria-hidden="true" tabindex="-1"></a>clean_txt2<span class="ot">&lt;-</span><span class="cf">function</span>(txt) {</span>
+<span id="cb644-2"><a href="비정형-데이터마이닝.html#cb644-2" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">removeNumbers</span>(txt)</span>
+<span id="cb644-3"><a href="비정형-데이터마이닝.html#cb644-3" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">removePunctuation</span>(txt)</span>
+<span id="cb644-4"><a href="비정형-데이터마이닝.html#cb644-4" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">stripWhitespace</span>(txt)</span>
+<span id="cb644-5"><a href="비정형-데이터마이닝.html#cb644-5" aria-hidden="true" tabindex="-1"></a>  txt<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">&quot;[^[:alnum:]]&quot;</span>,<span class="st">&quot; &quot;</span>,txt)</span>
+<span id="cb644-6"><a href="비정형-데이터마이닝.html#cb644-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(txt)</span>
+<span id="cb644-7"><a href="비정형-데이터마이닝.html#cb644-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb644-8"><a href="비정형-데이터마이닝.html#cb644-8" aria-hidden="true" tabindex="-1"></a>clean.news2<span class="ot">&lt;-</span><span class="fu">clean_txt2</span>(news)</span>
+<span id="cb644-9"><a href="비정형-데이터마이닝.html#cb644-9" aria-hidden="true" tabindex="-1"></a>Noun.news[<span class="dv">5</span>]</span></code></pre></div>
 <ul>
 <li>tm패키지의 tm_map 함수의 인자로 사용되는 FUN을 그대로 함수로 적용하여 사용이 가능하다. 사용자 정의함수에 숫자, 문장부호, 공백 제거 함수를 사용했고 gsub 함수를 활용해 영문자/숫자를 제외한 것들을 제거하는 전처리를 한다.</li>
 <li>전처리를 마친 데이터를 Corpus로 반환하지 않고 데이터를 확인했을 때, ‘푸드테크, ’스타트업’ 등과 같은 복합명사가 분리되어 출력되는 것을 확인할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="비정형-데이터마이닝.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="fu">buildDictionary</span>(<span class="at">ext_dic=</span><span class="st">&quot;sejong&quot;</span>, <span class="at">user_dic=</span><span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="fu">read.table</span>(<span class="st">&quot;food.txt&quot;</span>))))</span>
-<span id="cb637-2"><a href="비정형-데이터마이닝.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(clean.news2[<span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="비정형-데이터마이닝.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="fu">buildDictionary</span>(<span class="at">ext_dic=</span><span class="st">&quot;sejong&quot;</span>, <span class="at">user_dic=</span><span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="fu">read.table</span>(<span class="st">&quot;food.txt&quot;</span>))))</span>
+<span id="cb645-2"><a href="비정형-데이터마이닝.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">extractNoun</span>(clean.news2[<span class="dv">5</span>])</span></code></pre></div>
 <ul>
 <li>복합명사를 명사로 인식할 수 있도록 사전에 등록하고 다시 분석 결과를 확인하면 복합명사도 하나의 명사로 추가된 것으로 확인할 수 있다.</li>
 <li>단어사전은 txt파일 형태로도 추가가 가능하며 형태는 ‘단어’, ’품사’로 저장하여 추가할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="비정형-데이터마이닝.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
-<span id="cb638-2"><a href="비정형-데이터마이닝.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb638-3"><a href="비정형-데이터마이닝.html#cb638-3" aria-hidden="true" tabindex="-1"></a>doc1<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="fu">SimplePos22</span>(clean.news2[[<span class="dv">2</span>]]))</span>
-<span id="cb638-4"><a href="비정형-데이터마이닝.html#cb638-4" aria-hidden="true" tabindex="-1"></a>doc1</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="비정형-데이터마이닝.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb646-2"><a href="비정형-데이터마이닝.html#cb646-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb646-3"><a href="비정형-데이터마이닝.html#cb646-3" aria-hidden="true" tabindex="-1"></a>doc1<span class="ot">&lt;-</span><span class="fu">paste</span>(<span class="fu">SimplePos22</span>(clean.news2[[<span class="dv">2</span>]]))</span>
+<span id="cb646-4"><a href="비정형-데이터마이닝.html#cb646-4" aria-hidden="true" tabindex="-1"></a>doc1</span></code></pre></div>
 <ul>
 <li>stringr 패키지는 R에서 문자열을 처리할 수 있는 패키지로, str_match 함수로 문자열 중 특정 부분이 해당하는 데이터를 선별할 수 있다.</li>
 <li>SimplePos22 함수를 실행한 결과가 리스트 형태로 나타나므로, 이를 paste 함수를 사용해 character형 벡터로 변형하여 doc1에 저장한다. str_match 함수를 활용해 품사 중 PA(형용사)인 데이터만 뽑아낸다.</li>
 </ul>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="비정형-데이터마이닝.html#cb639-1" aria-hidden="true" tabindex="-1"></a>doc2<span class="ot">&lt;-</span><span class="fu">str_match</span>(doc1, <span class="st">&quot;([가-힣]+)/PA&quot;</span>)</span>
-<span id="cb639-2"><a href="비정형-데이터마이닝.html#cb639-2" aria-hidden="true" tabindex="-1"></a>doc2</span>
-<span id="cb639-3"><a href="비정형-데이터마이닝.html#cb639-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb639-4"><a href="비정형-데이터마이닝.html#cb639-4" aria-hidden="true" tabindex="-1"></a>doc3<span class="ot">&lt;-</span>doc2[,<span class="dv">2</span>]</span>
-<span id="cb639-5"><a href="비정형-데이터마이닝.html#cb639-5" aria-hidden="true" tabindex="-1"></a>doc3[<span class="sc">!</span><span class="fu">is.na</span>(doc3)]</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="비정형-데이터마이닝.html#cb647-1" aria-hidden="true" tabindex="-1"></a>doc2<span class="ot">&lt;-</span><span class="fu">str_match</span>(doc1, <span class="st">&quot;([가-힣]+)/PA&quot;</span>)</span>
+<span id="cb647-2"><a href="비정형-데이터마이닝.html#cb647-2" aria-hidden="true" tabindex="-1"></a>doc2</span>
+<span id="cb647-3"><a href="비정형-데이터마이닝.html#cb647-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb647-4"><a href="비정형-데이터마이닝.html#cb647-4" aria-hidden="true" tabindex="-1"></a>doc3<span class="ot">&lt;-</span>doc2[,<span class="dv">2</span>]</span>
+<span id="cb647-5"><a href="비정형-데이터마이닝.html#cb647-5" aria-hidden="true" tabindex="-1"></a>doc3[<span class="sc">!</span><span class="fu">is.na</span>(doc3)]</span></code></pre></div>
 <ul>
 <li>doc2 데이터에서 1열은 PA를 포함한 단어가 있는 열이며, 2열은 PA를 제외한 단어만 있는 열이 생성되고 PA가 없는 행은 NA로 채워진다. doc2의 2열의 데이터를 doc3에 저장하고 is.na 함수로 NA를 제외한 데이터만 추출한다.</li>
 </ul>
@@ -574,10 +594,10 @@ Click for Result
 <pre><code>stemDocument(text)</code></pre>
 <pre><code>stemCompletion(text, dictionary)</code></pre>
 <p><strong>Q. analyze, analyzed, analyzing 단어의 어간을 추출하고 가장 기본단어로 만들어 보자.</strong></p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="비정형-데이터마이닝.html#cb642-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span><span class="fu">stemDocument</span>(<span class="fu">c</span>(<span class="st">&#39;analyze&#39;</span>, <span class="st">&#39;analyzed&#39;</span>, <span class="st">&#39;analyzing&#39;</span>))</span>
-<span id="cb642-2"><a href="비정형-데이터마이닝.html#cb642-2" aria-hidden="true" tabindex="-1"></a>test</span>
-<span id="cb642-3"><a href="비정형-데이터마이닝.html#cb642-3" aria-hidden="true" tabindex="-1"></a>completion<span class="ot">&lt;-</span><span class="fu">stemCompletion</span>(test, <span class="at">dictionary=</span><span class="fu">c</span>(<span class="st">&#39;analyze&#39;</span>, <span class="st">&#39;analyzed&#39;</span>, <span class="st">&#39;analyzing&#39;</span>))</span>
-<span id="cb642-4"><a href="비정형-데이터마이닝.html#cb642-4" aria-hidden="true" tabindex="-1"></a>completion</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="비정형-데이터마이닝.html#cb650-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">&lt;-</span><span class="fu">stemDocument</span>(<span class="fu">c</span>(<span class="st">&#39;analyze&#39;</span>, <span class="st">&#39;analyzed&#39;</span>, <span class="st">&#39;analyzing&#39;</span>))</span>
+<span id="cb650-2"><a href="비정형-데이터마이닝.html#cb650-2" aria-hidden="true" tabindex="-1"></a>test</span>
+<span id="cb650-3"><a href="비정형-데이터마이닝.html#cb650-3" aria-hidden="true" tabindex="-1"></a>completion<span class="ot">&lt;-</span><span class="fu">stemCompletion</span>(test, <span class="at">dictionary=</span><span class="fu">c</span>(<span class="st">&#39;analyze&#39;</span>, <span class="st">&#39;analyzed&#39;</span>, <span class="st">&#39;analyzing&#39;</span>))</span>
+<span id="cb650-4"><a href="비정형-데이터마이닝.html#cb650-4" aria-hidden="true" tabindex="-1"></a>completion</span></code></pre></div>
 <ul>
 <li>stemDocument 함수를 통해 앞 어간을 제외한 나머지 부분을 잘려 나가게 만들어 각 단어가 서로 다르지만 사실 모두 analyz-라는 어간을 가지므로 위와 같이 도출된다.</li>
 <li>stemCompletion 함수를 통해 analyz로 stemming 되었던 단어들이 dictionary에 포함된 단어중 가장 기본 어휘로 완성된 것을 확인할 수 있다. 가장 중요한 것은 stemCompletion을 할 때는 단어의 완성을 위해 반드시 dictionary가 필요하다.</li>
@@ -614,37 +634,37 @@ Click for Result
 </tbody>
 </table>
 <p><strong>Q. 앞서 전처리가 완료된 clean.news2 데이터를 Vcorpus로 변환하여 TDM을 생성해 보자.</strong></p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="비정형-데이터마이닝.html#cb644-1" aria-hidden="true" tabindex="-1"></a>VC.news<span class="ot">&lt;-</span><span class="fu">VCorpus</span>(<span class="fu">VectorSource</span>(clean.news2))</span>
-<span id="cb644-2"><a href="비정형-데이터마이닝.html#cb644-2" aria-hidden="true" tabindex="-1"></a>VC.news[[<span class="dv">1</span>]]<span class="sc">$</span>content</span>
-<span id="cb644-3"><a href="비정형-데이터마이닝.html#cb644-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb644-4"><a href="비정형-데이터마이닝.html#cb644-4" aria-hidden="true" tabindex="-1"></a>TDM.news<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news)</span>
-<span id="cb644-5"><a href="비정형-데이터마이닝.html#cb644-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(TDM.news)</span>
-<span id="cb644-6"><a href="비정형-데이터마이닝.html#cb644-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb644-7"><a href="비정형-데이터마이닝.html#cb644-7" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(TDM.news[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="비정형-데이터마이닝.html#cb652-1" aria-hidden="true" tabindex="-1"></a>VC.news<span class="ot">&lt;-</span><span class="fu">VCorpus</span>(<span class="fu">VectorSource</span>(clean.news2))</span>
+<span id="cb652-2"><a href="비정형-데이터마이닝.html#cb652-2" aria-hidden="true" tabindex="-1"></a>VC.news[[<span class="dv">1</span>]]<span class="sc">$</span>content</span>
+<span id="cb652-3"><a href="비정형-데이터마이닝.html#cb652-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb652-4"><a href="비정형-데이터마이닝.html#cb652-4" aria-hidden="true" tabindex="-1"></a>TDM.news<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news)</span>
+<span id="cb652-5"><a href="비정형-데이터마이닝.html#cb652-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(TDM.news)</span>
+<span id="cb652-6"><a href="비정형-데이터마이닝.html#cb652-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb652-7"><a href="비정형-데이터마이닝.html#cb652-7" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(TDM.news[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span></code></pre></div>
 <ul>
 <li>전처리가 완료된 clean.news2 데이터를 VC.news에 Corpus 형태로 저장하고 VC.news 데이터를 TermDocumentMatrix() 함수를 활용하여 TDM을 구축하였다.</li>
 <li>dim 함수를 통해 10개의 기사에서 1011개의 단어가 추출되었다는 것을 확인할 수 있으며, inspect 함수로 TDM 구축 결과를 확인할 수 있다.</li>
 <li>TDM 결과를 확인하면 10개의 문서에서 1~5번째 단어의 분포를 확인할 수 있다. 여기서 ’academy는’이 4번 문서에서 1번 사용됐음을 확인할 수 있다. 대부분의 단어가 모든 문서에서 이용되지 않기 때문에 조회한 내용의 10개 문서와 5개 단어에 대해 사용된 단어는 0 이상의 숫자로 빈도를 나타내고 사용되지 않은 단어는 0으로 표시된다.</li>
 <li>sparsity는 전체 행렬에서 0이 차지하는 비중을 의미하므로, 45/50로 90%에 해당한다.</li>
 </ul>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="비정형-데이터마이닝.html#cb645-1" aria-hidden="true" tabindex="-1"></a>words<span class="ot">&lt;-</span><span class="cf">function</span>(doc) {</span>
-<span id="cb645-2"><a href="비정형-데이터마이닝.html#cb645-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="ot">&lt;-</span><span class="fu">as.character</span>(doc)</span>
-<span id="cb645-3"><a href="비정형-데이터마이닝.html#cb645-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extractNoun</span>(doc)</span>
-<span id="cb645-4"><a href="비정형-데이터마이닝.html#cb645-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb645-5"><a href="비정형-데이터마이닝.html#cb645-5" aria-hidden="true" tabindex="-1"></a>TDM.news2<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words))</span>
-<span id="cb645-6"><a href="비정형-데이터마이닝.html#cb645-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(TDM.news2)</span>
-<span id="cb645-7"><a href="비정형-데이터마이닝.html#cb645-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb645-8"><a href="비정형-데이터마이닝.html#cb645-8" aria-hidden="true" tabindex="-1"></a>tdm2<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(TDM.news2)</span>
-<span id="cb645-9"><a href="비정형-데이터마이닝.html#cb645-9" aria-hidden="true" tabindex="-1"></a>tdm3<span class="ot">&lt;-</span><span class="fu">rowSums</span>(tdm2)</span>
-<span id="cb645-10"><a href="비정형-데이터마이닝.html#cb645-10" aria-hidden="true" tabindex="-1"></a>tdm4<span class="ot">&lt;-</span>tdm3[<span class="fu">order</span>(tdm3, <span class="at">decreasing=</span><span class="cn">TRUE</span>)]</span>
-<span id="cb645-11"><a href="비정형-데이터마이닝.html#cb645-11" aria-hidden="true" tabindex="-1"></a>tdm4[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="비정형-데이터마이닝.html#cb653-1" aria-hidden="true" tabindex="-1"></a>words<span class="ot">&lt;-</span><span class="cf">function</span>(doc) {</span>
+<span id="cb653-2"><a href="비정형-데이터마이닝.html#cb653-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="ot">&lt;-</span><span class="fu">as.character</span>(doc)</span>
+<span id="cb653-3"><a href="비정형-데이터마이닝.html#cb653-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extractNoun</span>(doc)</span>
+<span id="cb653-4"><a href="비정형-데이터마이닝.html#cb653-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb653-5"><a href="비정형-데이터마이닝.html#cb653-5" aria-hidden="true" tabindex="-1"></a>TDM.news2<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words))</span>
+<span id="cb653-6"><a href="비정형-데이터마이닝.html#cb653-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(TDM.news2)</span>
+<span id="cb653-7"><a href="비정형-데이터마이닝.html#cb653-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb653-8"><a href="비정형-데이터마이닝.html#cb653-8" aria-hidden="true" tabindex="-1"></a>tdm2<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(TDM.news2)</span>
+<span id="cb653-9"><a href="비정형-데이터마이닝.html#cb653-9" aria-hidden="true" tabindex="-1"></a>tdm3<span class="ot">&lt;-</span><span class="fu">rowSums</span>(tdm2)</span>
+<span id="cb653-10"><a href="비정형-데이터마이닝.html#cb653-10" aria-hidden="true" tabindex="-1"></a>tdm4<span class="ot">&lt;-</span>tdm3[<span class="fu">order</span>(tdm3, <span class="at">decreasing=</span><span class="cn">TRUE</span>)]</span>
+<span id="cb653-11"><a href="비정형-데이터마이닝.html#cb653-11" aria-hidden="true" tabindex="-1"></a>tdm4[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <ul>
 <li>‘academy는’과 같이 명사 뒤에 조사가 붙는 경우가 있다. extractNoun 함수를 통해 명사만 추출하여 TDM을 다시 구축하면 위와 같은 결과가 나타나게 된다. 모든 문서의 단어 빈도를 분석하여 상위 10개를 추출하면 ’데이터’, ‘빅데이터’ 등 순서로 단어의 빈도를 확인할 수 있다.</li>
 </ul>
 <p><strong>Q. 단어 사전을 정의하여 해당 단어들에 대해서만 분석 결과를 확인해 보자.</strong></p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="비정형-데이터마이닝.html#cb646-1" aria-hidden="true" tabindex="-1"></a>mydict<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;빅데이터&quot;</span>, <span class="st">&quot;스마트&quot;</span>, <span class="st">&quot;산업혁명&quot;</span>, <span class="st">&quot;인공지능&quot;</span>, <span class="st">&quot;사물인터넷&quot;</span>, <span class="st">&quot;AI&quot;</span>, <span class="st">&quot;스타트업&quot;</span>, <span class="st">&quot;머신러닝&quot;</span>)</span>
-<span id="cb646-2"><a href="비정형-데이터마이닝.html#cb646-2" aria-hidden="true" tabindex="-1"></a>my.news<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words, <span class="at">dictionary=</span>mydict))</span>
-<span id="cb646-3"><a href="비정형-데이터마이닝.html#cb646-3" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(my.news)</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="비정형-데이터마이닝.html#cb654-1" aria-hidden="true" tabindex="-1"></a>mydict<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;빅데이터&quot;</span>, <span class="st">&quot;스마트&quot;</span>, <span class="st">&quot;산업혁명&quot;</span>, <span class="st">&quot;인공지능&quot;</span>, <span class="st">&quot;사물인터넷&quot;</span>, <span class="st">&quot;AI&quot;</span>, <span class="st">&quot;스타트업&quot;</span>, <span class="st">&quot;머신러닝&quot;</span>)</span>
+<span id="cb654-2"><a href="비정형-데이터마이닝.html#cb654-2" aria-hidden="true" tabindex="-1"></a>my.news<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words, <span class="at">dictionary=</span>mydict))</span>
+<span id="cb654-3"><a href="비정형-데이터마이닝.html#cb654-3" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(my.news)</span></code></pre></div>
 <ul>
 <li>빅데이터와 관련된 단어를 mydict에 저장하여 TermDocumentMatrix함수의 control 인자에 적용하여 해당 단어들에 대해서만 분석 결과를 확인할 수 있다.</li>
 </ul>
@@ -663,12 +683,12 @@ Click for Result
 |terms|연관성을 확인할 단어|
 |corlimit|최소 연관성|</p>
 <p><strong>Q. VC.news 데이터를 명사만 추출하는 TDM으로 변경하여 TDM에서 ’빅데이터’라는 단어와의 연관성이 0.9 이상인 단어들만 추출해 보자.</strong></p>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="비정형-데이터마이닝.html#cb648-1" aria-hidden="true" tabindex="-1"></a>words<span class="ot">&lt;-</span><span class="cf">function</span>(doc) {</span>
-<span id="cb648-2"><a href="비정형-데이터마이닝.html#cb648-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="ot">&lt;-</span><span class="fu">as.character</span>(doc)</span>
-<span id="cb648-3"><a href="비정형-데이터마이닝.html#cb648-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extractNoun</span>(doc)</span>
-<span id="cb648-4"><a href="비정형-데이터마이닝.html#cb648-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb648-5"><a href="비정형-데이터마이닝.html#cb648-5" aria-hidden="true" tabindex="-1"></a>TDM.news2<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words))</span>
-<span id="cb648-6"><a href="비정형-데이터마이닝.html#cb648-6" aria-hidden="true" tabindex="-1"></a><span class="fu">findAssocs</span>(TDM.news2, <span class="st">&#39;빅데이터&#39;</span>, <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="비정형-데이터마이닝.html#cb656-1" aria-hidden="true" tabindex="-1"></a>words<span class="ot">&lt;-</span><span class="cf">function</span>(doc) {</span>
+<span id="cb656-2"><a href="비정형-데이터마이닝.html#cb656-2" aria-hidden="true" tabindex="-1"></a>  doc<span class="ot">&lt;-</span><span class="fu">as.character</span>(doc)</span>
+<span id="cb656-3"><a href="비정형-데이터마이닝.html#cb656-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extractNoun</span>(doc)</span>
+<span id="cb656-4"><a href="비정형-데이터마이닝.html#cb656-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb656-5"><a href="비정형-데이터마이닝.html#cb656-5" aria-hidden="true" tabindex="-1"></a>TDM.news2<span class="ot">&lt;-</span><span class="fu">TermDocumentMatrix</span>(VC.news, <span class="at">control=</span><span class="fu">list</span>(<span class="at">tokenize=</span>words))</span>
+<span id="cb656-6"><a href="비정형-데이터마이닝.html#cb656-6" aria-hidden="true" tabindex="-1"></a><span class="fu">findAssocs</span>(TDM.news2, <span class="st">&#39;빅데이터&#39;</span>, <span class="fl">0.9</span>)</span></code></pre></div>
 <ul>
 <li>구축된 TDM과 ‘빅데이터’라는 단어와의 연관성을 파악한 결과, ’가맹점’, ‘개발자’ 등의 단어들이 연관된 단어로 나타나며, 연관성에 대한 수치도 해당 단어 아래에 같이 표시됨을 확인할 수 있다.</li>
 </ul>
@@ -687,13 +707,13 @@ Click for Result
 |random.order|단어의 배치를 랜덤으로 할지 정함. F일때, 빈도순으로 그려짐.|
 |colors|빈도에 따라 단어의 색을 지정|</p>
 <p><strong>Q. TDM.news2 데이터를 워드 클라우드로 만들어보자.</strong></p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="비정형-데이터마이닝.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb650-2"><a href="비정형-데이터마이닝.html#cb650-2" aria-hidden="true" tabindex="-1"></a>tdm2<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(TDM.news2)</span>
-<span id="cb650-3"><a href="비정형-데이터마이닝.html#cb650-3" aria-hidden="true" tabindex="-1"></a>term.freq<span class="ot">&lt;-</span><span class="fu">sort</span>(<span class="fu">rowSums</span>(tdm2), <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb650-4"><a href="비정형-데이터마이닝.html#cb650-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(term.freq, <span class="dv">15</span>)</span>
-<span id="cb650-5"><a href="비정형-데이터마이닝.html#cb650-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb650-6"><a href="비정형-데이터마이닝.html#cb650-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words=</span><span class="fu">names</span>(term.freq), <span class="at">freq=</span>term.freq, <span class="at">min.freq=</span><span class="dv">5</span>, </span>
-<span id="cb650-7"><a href="비정형-데이터마이닝.html#cb650-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">random.order=</span><span class="cn">FALSE</span>, <span class="at">colors=</span><span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&#39;Dark2&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="비정형-데이터마이닝.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb658-2"><a href="비정형-데이터마이닝.html#cb658-2" aria-hidden="true" tabindex="-1"></a>tdm2<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(TDM.news2)</span>
+<span id="cb658-3"><a href="비정형-데이터마이닝.html#cb658-3" aria-hidden="true" tabindex="-1"></a>term.freq<span class="ot">&lt;-</span><span class="fu">sort</span>(<span class="fu">rowSums</span>(tdm2), <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb658-4"><a href="비정형-데이터마이닝.html#cb658-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(term.freq, <span class="dv">15</span>)</span>
+<span id="cb658-5"><a href="비정형-데이터마이닝.html#cb658-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb658-6"><a href="비정형-데이터마이닝.html#cb658-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words=</span><span class="fu">names</span>(term.freq), <span class="at">freq=</span>term.freq, <span class="at">min.freq=</span><span class="dv">5</span>, </span>
+<span id="cb658-7"><a href="비정형-데이터마이닝.html#cb658-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">random.order=</span><span class="cn">FALSE</span>, <span class="at">colors=</span><span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&#39;Dark2&#39;</span>))</span></code></pre></div>
 <ul>
 <li>TDM을 Matrix 형태로 변환하여 행 결합을 통해 각 단어마다 빈도를 합쳐 내림차순으로 정렬하여 term.freq 데이터에 저장하고 head 함수를 통해 확인이 가능하다.</li>
 <li>wordcloud 함수로 term.freq 데이터에서 단어만 가져오고, 빈도는 term.freq의 빈도로 지정하고, 최소 빈도 5로 지정하여 워드클라우드를 그린다.</li>
